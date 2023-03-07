@@ -31,7 +31,7 @@ arr.shape
 
 *len(arr)* will also work and shall return *3*.
 
-The 'shape' returns a tuple where each entry is the length of the relevant dimension. Note the comma in *(3,)*. This is to distinguish this value, the tuple, from *(3)* which is just the scalar *3* after the expression is evaluated.
+The 'shape' returns a tuple where each entry is the length of the relevant dimension. Note the comma in *(3,)*. This is to distinguish this value, which is a tuple, from *(3)* which is just the scalar *3* after the expression is evaluated.
 
 An important observation is that while a simple list can contain heterogeneous values, a 'numpy' array is expected to hold values of the same type in all cells. In addition to many goodies that we'll see soon, 'numpy' is intended to make the calculations fast and vectorized. Vectorisation is a technique where special hardware manipulate multiple cells at the same time.
 
@@ -95,7 +95,7 @@ np.sum(mat), np.sum(mat, axis=0), np.sum(mat, axis=1)
 
 We can see that without the *axis* parameter we get a scalar which is the sum of all the elements. With *axis=0* the rows collapse and we get the summation per columns. With *axis=1* the columns collapse, and we end up with as many entries in the result 'numpy' array as we had rows. 
 
-Let's try the following advanced exercise. We're given a matrix. We return another matrix according to the following rules. If a cell in the input matrix is zero, the matching "cell" in the return matrix will be *3* by *3* zeros. Otherwise, a none zero value, will result with a matching "cell" of *3* by *3* ones. It will get soon clear when you'll see the output examples.
+Let's try the following advanced exercise. We're given a matrix. We return another matrix according to the following rules. If a cell in the input matrix is zero, the matching "cell" in the return matrix will be *3* by *3* zeros. Otherwise, a none zero value, will result with a matching "cell" of *3* by *3* ones. It will get soon clear when you'll see the example output.
 
 ``` py linenums="1"
 def inflate(input_matrix):
@@ -124,7 +124,7 @@ array([[1., 1., 1., 1., 1., 1.],
 
 Note that, on line *6* we access a submatrix (in this case just *1* by *1*) using indices (similar to slicing in lists).
 
-The assignment to the variable *transformed* on line *7* needs a clarification. This is the equivalent of the trianary operator from *C/C++*. In *C* we have ```cond ? val_when_true : val_when_false```. With Python this would be ```val_when_true if cond else val_when_false```.
+The assignment to the variable *transformed* on line *7* needs a clarification. This is the equivalent of the ternary operator from *C/C++*. In *C* we have ```cond ? val_when_true : val_when_false```. With Python this would be ```val_when_true if cond else val_when_false```.
 
 Maybe there is a smarter way to achieve what was done above in the function *inflate*. That is what I came up with.
 
