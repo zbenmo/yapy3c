@@ -1,0 +1,11 @@
+site_name: YAPY3C
+theme:
+  name: material
+  palette:
+    primary: darkblue
+    accent: orange
+  font:
+    text: Ubuntu
+  icon:
+    logo: material/snake
+  favicon: images/yapy3c.png    
