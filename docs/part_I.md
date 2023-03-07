@@ -9,6 +9,7 @@ There are a few versions of Python, we’ll use Python 3. Let’s make sure this
 
 ``` py
 import sys
+
 print(sys.version)
 ```
 
@@ -358,7 +359,9 @@ my_reverse('maar')
 my_reverse([3, 4, 5])
 ```
 
+```
 [5, 4, 3]
+```
 
 Note, the implementation of the above function, is based on the function itself. This kind of implementation is called **recursion**. Recursion is a bit more advanced way of writing stuff, but sometimes it is actually simpler. If using recursion, pay attention to a **stopping condition**. The problems should become simpler and simpler, and in the final steps, you should return a simple value, as was the case above when the string was short and its reverse is actually the same value.
 
@@ -368,7 +371,9 @@ I’ve checked the builtin ‘reversed’ function. It behaves a little differen
 list(reversed([1,2,3]))
 ```
 
+```
 [3, 2, 1]
+```
 
 ``` py
 # this is what we had before
@@ -376,7 +381,9 @@ list(reversed([1,2,3]))
 list(reversed('gadol'))
 ```
 
+```
 ['l', 'o', 'd', 'a', 'g']
+```
 
 ``` py
 # but for a string, we’ll get the list of characters (reversed).
@@ -390,7 +397,9 @@ Strings, have some functionality that we’ve not explored before, for example:
 "hello".upper()
 ```
 
+```
 'HELLO'
+```
 
 ## Exercise
 
@@ -410,7 +419,6 @@ The following code demonstrates sampling random numbers between *0* and *1* (eac
 import random
 
 x, y = random.random(), random.random()
-
 square_distance = x ** 2 + y ** 2
 ```
 

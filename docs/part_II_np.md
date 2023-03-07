@@ -18,9 +18,9 @@ type(np)
 
 Why did I say a package? A package may have multiple modules. We’ll talk about it later.
 
-So why is it worth it to learn about 'numpy'? Well, first it is an example yet another useful package. Python is great, yet it is really great thanks to the ecosystem around it. There are packages for data science, packages that are part of web frameworks, packages for developing games. In particular, 'numpy', appears almost always (at least with Python software I've played with).
+So why is it worth it to learn about 'numpy'? Well, first it is an example of yet another useful package. Python is great, yet it is really great thanks to the ecosystem around it. There are packages for data science, packages that are part of web frameworks, packages for developing games. In particular, 'numpy', appears almost always (at least with Python software I've played with).
 
-The theme of 'numpy' is linear algebra. For example, one can wrap a list into 'numpy.ndarray' (n-dimentional array).
+The theme of 'numpy' is linear algebra. For example, one can wrap a list into 'numpy.ndarray' (n-dimensional array).
 
 ``` py
 arr = np.array([1, 2, 3])
@@ -31,9 +31,9 @@ arr.shape
 
 *len(arr)* will also work and shall return *3*.
 
-The 'shape' returns a tuple where each entry is the length of the relevant dimention. Note the comma in *(3,)*. This is to distinguish this value, the tuple, from *(3)* which is just the scalar *3* after the expression is evaluated.
+The 'shape' returns a tuple where each entry is the length of the relevant dimension. Note the comma in *(3,)*. This is to distinguish this value, the tuple, from *(3)* which is just the scalar *3* after the expression is evaluated.
 
-An important observation is that while a simple list can contain hetroganious values, a 'numpy' array is expected to hold values of the same type in all cells. In addition to many goodies that we'll see soon, 'numpy' is intended to make the calculations fast and vectorized. Vectorisation is a technique where special hardware manipulate multiple cells at the same time.
+An important observation is that while a simple list can contain heterogeneous values, a 'numpy' array is expected to hold values of the same type in all cells. In addition to many goodies that we'll see soon, 'numpy' is intended to make the calculations fast and vectorized. Vectorisation is a technique where special hardware manipulate multiple cells at the same time.
 
 To find the type of the elements themselves, use:
 
@@ -42,7 +42,7 @@ arr.dtype
 ```
 In this example it is ```dtype('int64')```.
 
-To find the dimention of a 'numpy' array, one can do:
+To find the dimension of a 'numpy' array, one can do:
 
 ``` py
 len(arr.shape)
@@ -62,7 +62,7 @@ np.prod(arr.shape)
 
 Above, we see a nice utility function from 'numpy' that takes an iterable, in this case the tuple *arr.shape*, and returns the product of the elements.
 
-Let's go to the next dimention:
+Let's go to the next dimension:
 
 ``` py
 mat = np.array([[1, 2], [1, 0], [2, 1]]); mat
@@ -95,7 +95,7 @@ np.sum(mat), np.sum(mat, axis=0), np.sum(mat, axis=1)
 
 We can see that without the *axis* parameter we get a scalar which is the sum of all the elements. With *axis=0* the rows collapse and we get the summation per columns. With *axis=1* the columns collapse, and we end up with as many entries in the result 'numpy' array as we had rows. 
 
-Let's try the following advanced exercise. We're given a matrix. We return another matrix accoridng to the following rules. If a cell in the input matrix is zero, the matching "cell" in the return matrix will be *3* by *3* zeros. Otherwise, a none zero value, will result with a matching "cell" of *3* by *3* ones. It will get soon clear when you'll see the output examples.
+Let's try the following advanced exercise. We're given a matrix. We return another matrix according to the following rules. If a cell in the input matrix is zero, the matching "cell" in the return matrix will be *3* by *3* zeros. Otherwise, a none zero value, will result with a matching "cell" of *3* by *3* ones. It will get soon clear when you'll see the output examples.
 
 ``` py linenums="1"
 def inflate(input_matrix):
@@ -130,7 +130,7 @@ Maybe there is a smarter way to achieve what was done above in the function *inf
 
 And now it is your turn.
 
-## Exersize
+## Exercise
 
 This course is originated in the Netherlands :flag_nl:. Which means that we need to do something with a windmill.
 Here are some building blocks that may help.
