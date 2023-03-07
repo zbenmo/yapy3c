@@ -12,6 +12,8 @@
         <link rel="prev" href="..">
       
       
+        <link rel="next" href="../part_II_np/">
+      
       <link rel="icon" href="../images/yapy3c.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.1">
     
@@ -245,6 +247,21 @@
   
 
     
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../part_II_np/" class="md-nav__link">
+        Part II (numpy)
+      </a>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -298,232 +315,233 @@
 The following should work for you:</p>
 <p>https://www.python.org/shell/</p>
 <p>There are a few versions of Python, we’ll use Python 3. Let’s make sure this is what we have. run there (in your shell):</p>
-<pre><code>import sys
-print(sys.version)
-</code></pre>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span> <span class="nn">sys</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">version</span><span class="p">)</span>
+</span></code></pre></div>
 <p>For me it printed: <em>3.8.0</em>, which is good.</p>
 <p>You see above, that we had to <strong>import</strong> 'sys'. Otherwise <em>sys</em> wasn’t available. Once we imported it, <em>sys.version</em> was the version of the current Python interpreter (the running environment above). The <strong>print</strong> statement just shows us what we’ve imported. We did not need to import anything special to have ‘print’.</p>
 <p>Let’s try just</p>
-<pre><code>sys.version
-</code></pre>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">sys</span><span class="o">.</span><span class="n">version</span>
+</span></code></pre></div>
 <p>It also prints the value (<em>3.8.0</em> for me). This is as we’re in an interactive shell, but generally, unless we print something, an expression, as <em>sys.version</em>, or <em>3 + 4</em>, is just yet another expression, and does not show in the output.
 We can omit the 'print' here, as in this exercise, we’ll be in the interactive shell.
 Let’s try:</p>
-<pre><code>3 + 4
-</code></pre>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="mi">3</span> <span class="o">+</span> <span class="mi">4</span>
+</span></code></pre></div>
 <p>We get a new value. To see the <strong>type</strong> of a value, we use for example:</p>
-<pre><code>type(3)
-</code></pre>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">type</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</span></code></pre></div>
 <p>We get:</p>
 <p><code>&lt;class 'int'&gt;</code>  (an integer)</p>
 <p>What about <em>‘hello’</em>, what is its type?</p>
 <p>We get:</p>
 <p><code>&lt;class 'str'&gt;</code> (a string)</p>
 <p>If you happen to use <em>“hello”</em> it should be the same, both should work.</p>
-<pre><code>my_list = [1, 2, 4]
-type(my_list)
-</code></pre>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nb">type</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>
+</span></code></pre></div>
 <p>We should get:</p>
 <p><code>&lt;class 'list'&gt;</code></p>
 <p>Note above, that we assigned the value into a <strong>variable</strong>, <em>my_list</em>. This is handy as to use later in a program.</p>
 <p>A list can be also constructed as follows:</p>
-<pre><code>list('hello')
-</code></pre>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nb">list</span><span class="p">(</span><span class="s1">&#39;hello&#39;</span><span class="p">)</span>
+</span></code></pre></div>
 <p><code>['h', 'e', 'l', 'l', 'o']</code></p>
 <p>The characters in the string became each an element in the list.</p>
 <p>With lists you can take <strong>slices</strong>, we’ll use the variable <em>my_list</em> from above to demonstrate:</p>
-<pre><code>my_list[1:]
-</code></pre>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">my_list</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+</span></code></pre></div>
 <p><code>[2, 4]</code></p>
-<pre><code>my_list[:2]
-</code></pre>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">my_list</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>
+</span></code></pre></div>
 <p><code>[1, 2]</code></p>
 <p>Clarification: a single element, for example the first, will be <em>my_list[0]</em>, a slice can be for example <em>my_list[1:4]</em>, or as above (<em>1:</em>, means from the second to the end, and <em>:2</em> means up to but not including index 2, therefore the first two elements).</p>
 <p>Note: the first index is 0. So the valid indices for a list ‘lst’ are: 0..len(lst) - 1 (ex. when <em>len(lst) == 3</em> then the valid indices are 0, 1, 2).</p>
 <p>Slices are also lists, try to get the type of a slice.</p>
 <p>A list can be of mixed types, and also nested:</p>
-<pre><code>[1, 'Dog', my_list]
-</code></pre>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Dog&#39;</span><span class="p">,</span> <span class="n">my_list</span><span class="p">]</span>
+</span></code></pre></div>
 <p><code>[1, 'Dog', [1, 2, 4]]</code></p>
 <p>But usually, we’ll use lists where the elements are of the same type.</p>
 <p>Let’s have a <strong>function</strong>:</p>
-<pre><code>def add(a, b):
-    return a + b
-
-add(1, 4)
-</code></pre>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="n">add</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+</span></code></pre></div>
 <p><code>5</code></p>
-<pre><code>add('abc', 'def')
-</code></pre>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">add</span><span class="p">(</span><span class="s1">&#39;abc&#39;</span><span class="p">,</span> <span class="s1">&#39;def&#39;</span><span class="p">)</span>
+</span></code></pre></div>
 <p><code>'abcdef'</code></p>
-<pre><code>add(1, 'def')
-</code></pre>
-<pre><code>Traceback (most recent call last):
- File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
- File &quot;&lt;stdin&gt;&quot;, line 2, in add
-TypeError: unsupported operand type(s) for +: 'int' and 'str'
-</code></pre>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">add</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;def&#39;</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>Traceback (most recent call last):
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a> File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a> File &quot;&lt;stdin&gt;&quot;, line 2, in add
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>TypeError: unsupported operand type(s) for +: &#39;int&#39; and &#39;str&#39;
+</span></code></pre></div>
 <p>So we’ve seen that the same function, <em>add</em>, was good for integers and for strings. For strings ‘+’ means concatenation. When we tried mixed arguments. The call started as expected, but then ‘+’ is not defined between an integer and ‘str’. And so we got an error, or as it is called in Python an <strong>exception</strong>. If we wrote it in a software product, this would either be considered a bug, or it can be handled in run time, with some more control flow constructs (later).</p>
 <p>We can solve it by converting the integer first to a string:</p>
-<pre><code>str(1) + 'def'
-</code></pre>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nb">str</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;def&#39;</span>
+</span></code></pre></div>
 <p><code>'1def'</code></p>
 <p>If we look for a second at the definition of the function above, we see that we’ve started with the word ‘def’, then gave the name of the new function, then a <strong>parameters</strong> list in parentheses, then the column, and inside the function commands were indented with a tab or a few spaces. The last statement in a function is often <strong>return</strong> with the calculated value as the output of the function.</p>
-<pre><code>type(add)
-</code></pre>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nb">type</span><span class="p">(</span><span class="n">add</span><span class="p">)</span>
+</span></code></pre></div>
 <p><code>&lt;class 'function'&gt;</code></p>
 <p>And we can also assign a function to a variable (note: not adding the parentheses   as in a call). The variable can later be activated (called).</p>
-<pre><code>a_func = add
-a_func(9, 8)
-</code></pre>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="n">a_func</span> <span class="o">=</span> <span class="n">add</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="n">a_func</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+</span></code></pre></div>
 <p><code>17</code></p>
 <p>Remember, every time you have a value or a variable and you are not sure what it is, debug by printing its type.</p>
-<pre><code>print(type(print))
-</code></pre>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="nb">print</span><span class="p">))</span>
+</span></code></pre></div>
 <p><code>&lt;class 'builtin_function_or_method'&gt;</code></p>
-<pre><code>print(type(sys))
-</code></pre>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">sys</span><span class="p">))</span>
+</span></code></pre></div>
 <p><code>&lt;class 'module'&gt;</code></p>
-<pre><code>print(type(5 / 2))
-</code></pre>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="mi">5</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))</span>
+</span></code></pre></div>
 <p><code>&lt;class 'float'&gt;</code></p>
 <p>It is not anymore an integer. Dividing an integer by another integer results in a float.</p>
-<pre><code>5 // 2
-</code></pre>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="mi">5</span> <span class="o">//</span> <span class="mi">2</span>
+</span></code></pre></div>
 <p><code>2</code></p>
 <p>Here the result is an integer, and it wasn’t rounded but rather truncated.</p>
 <p>We’ve seen before the type list, that is very useful. Another useful type is a dictionary, or <strong>dict</strong>. It is also referred to sometimes as associative memory. You have keys, and you have values. In a list, you use indices to address the content. Otherwise it is similar.</p>
-<pre><code>{'a': 4, 'b': 'Vier'} # One way to create a 'dict'
-
-my_dict = dict() # yet another way to create a 'dict'
-
-my_dict['my_key'] = 'your_value'
-my_dict
-</code></pre>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="s1">&#39;Vier&#39;</span><span class="p">}</span> <span class="c1"># One way to create a &#39;dict&#39;</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="n">my_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span> <span class="c1"># yet another way to create a &#39;dict&#39;</span>
+</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>
+</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="n">my_dict</span><span class="p">[</span><span class="s1">&#39;my_key&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;your_value&#39;</span>
+</span><span id="__span-20-6"><a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="n">my_dict</span>
+</span></code></pre></div>
 <p><code>{'my_key': 'your_value'}</code></p>
 <p>We have added an entry here to an existing dictionary. To add values to a list, we can for example do:</p>
-<pre><code>my_list.append('Marshmello')
-my_list
-</code></pre>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="n">my_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;Marshmello&#39;</span><span class="p">)</span>
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="n">my_list</span>
+</span></code></pre></div>
 <p><code>[1, 2, 4, 'Marshmello']</code></p>
 <p>There is also a useful type, a <strong>tuple</strong>. For example:</p>
-<pre><code>my_tuple = (1, 3, 'g')
-my_tuple
-</code></pre>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="n">my_tuple</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">)</span>
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="n">my_tuple</span>
+</span></code></pre></div>
 <p><code>(1, 3, 'g')</code></p>
-<pre><code>type(my_tuple)
-</code></pre>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="nb">type</span><span class="p">(</span><span class="n">my_tuple</span><span class="p">)</span>
+</span></code></pre></div>
 <p><code>&lt;class 'tuple'&gt;</code></p>
-<p>You can access elements of a tuple as you do with a list, yet it is not mutable.</p>
-<pre><code>my_tuple[0] = 2
-</code></pre>
-<pre><code>Traceback (most recent call last):
- File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
-TypeError: 'tuple' object does not support item assignment
-</code></pre>
-<pre><code>my_tuple.append('Baby')
-</code></pre>
-<pre><code>Traceback (most recent call last):
- File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
-AttributeError: 'tuple' object has no attribute 'append'
-</code></pre>
+<p>You can access elements of a tuple as you do with a list, yet a tuple is an immutable sequence.</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="n">my_tuple</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>Traceback (most recent call last):
+</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a> File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>TypeError: &#39;tuple&#39; object does not support item assignment
+</span></code></pre></div>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="n">my_tuple</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;Baby&#39;</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>Traceback (most recent call last):
+</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a> File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+</span><span id="__span-27-3"><a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a>AttributeError: &#39;tuple&#39; object has no attribute &#39;append&#39;
+</span></code></pre></div>
 <p>Tuples are useful in many cases. For example we can assign values to two variables at the same time.</p>
-<pre><code>old, new = 'Trump', 'Biden'
-</code></pre>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="n">old</span><span class="p">,</span> <span class="n">new</span> <span class="o">=</span> <span class="s1">&#39;Trump&#39;</span><span class="p">,</span> <span class="s1">&#39;Biden&#39;</span>
+</span></code></pre></div>
 <p>Here the parentheses are implicit.
 Also, sometimes a function can return multiple values, and this can be done with returning a ‘dict’, or a ‘list’, but also sometimes as a tuple.</p>
-<pre><code>for k, v in my_dict.items():
-    print(k, v)
-</code></pre>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">my_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+</span></code></pre></div>
 <p><code>my_key your_value</code></p>
 <p>Note, above is a <strong>for</strong> loop. Its structure somewhat resembles a function definition (the column, and the indentation).
 We got here two loop variables, <em>k</em> and <em>v</em>, as the function <em>items</em> of ‘dict’ instances returns an <strong>iterator</strong> of two values each iteration. We then printed those two in one ‘print’ statement. We happened to have only one key-value pair in the dictionary above.</p>
 <p>Here is another example of a 'for' loop:</p>
-<pre><code>my_sum = 0
-for i in range(3):
-    my_sum += i
-
-my_sum
-</code></pre>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="n">my_sum</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+</span><span id="__span-30-3"><a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>    <span class="n">my_sum</span> <span class="o">+=</span> <span class="n">i</span>
+</span><span id="__span-30-4"><a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a>
+</span><span id="__span-30-5"><a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a><span class="n">my_sum</span>
+</span></code></pre></div>
 <p><code>3</code></p>
 <p>We initialized <em>my_sum</em> to zero, then we added <em>0</em>, <em>1</em>, and finally <em>2</em>, to get <em>3</em>.</p>
-<pre><code>type(range(3))
-</code></pre>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="nb">type</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+</span></code></pre></div>
 <p><code>&lt;class 'range'&gt;</code></p>
 <p><strong>range</strong> resembes a list of consequtive integers that is not mutable. We did not need to create and initialize a list, and also the 'range' has the advantage that it keeps its values in its "stomach", and only makes them available when we iterate over it. If we want the explicit values, we can do:</p>
-<pre><code>list(range(5))
-</code></pre>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+</span></code></pre></div>
 <p><code>[0, 1, 2, 3, 4]</code></p>
 <p>We could have done above also simpler, by using the builtin function ‘sum’:</p>
-<pre><code>sum(range(3))
-</code></pre>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="nb">sum</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+</span></code></pre></div>
 <p><code>3</code></p>
 <p>Here is a small example of a function that returns two values, using the builtin functions ‘min’, and ‘max’.</p>
-<pre><code>def min_and_max(a_list):
-    return min(a_list), max(a_list)
-
-min_and_max(range(6))
-</code></pre>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="k">def</span> <span class="nf">min_and_max</span><span class="p">(</span><span class="n">a_list</span><span class="p">):</span>
+</span><span id="__span-34-2"><a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>    <span class="k">return</span> <span class="nb">min</span><span class="p">(</span><span class="n">a_list</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">a_list</span><span class="p">)</span>
+</span><span id="__span-34-3"><a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a>
+</span><span id="__span-34-4"><a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a><span class="n">min_and_max</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">))</span>
+</span></code></pre></div>
 <p><code>(0, 5)</code></p>
-<pre><code>min_and_max([4, 1, 3])
-</code></pre>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="n">min_and_max</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+</span></code></pre></div>
 <p><code>(1, 4)</code></p>
 <p>Next we’ll see <strong>boolean</strong> conditions and an <strong>if</strong> statement. This is also very important to control the flow of the program.</p>
-<pre><code>len(my_list)
-</code></pre>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="nb">len</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>
+</span></code></pre></div>
 <p><code>4</code></p>
-<pre><code>if len(my_list) &gt; 3:
-    print('it is')
-</code></pre>
+<p>So the built-in function 'len' gives the length of a list. Good to know!</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-37-1"><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">:</span>
+</span><span id="__span-37-2"><a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;it is&#39;</span><span class="p">)</span>
+</span></code></pre></div>
 <p><code>it is</code></p>
 <p>And the type of the expression: <em>len(my_list) &gt; 3</em>, is:</p>
-<pre><code>type(len(my_list) &gt; 3)
-</code></pre>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-38-1"><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="nb">type</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">)</span>
+</span></code></pre></div>
 <p><code>&lt;class 'bool'&gt;</code></p>
-<p>Below is a function to reverse a string (or a list).</p>
-<pre><code>def my_reverse(a_string):
-    if len(a_string) &lt; 2:
-            return a_string
-    else:
-            return my_reverse(a_string[1:]) + a_string[0:1]
-
-my_reverse('maar')
-</code></pre>
+<p>Below is a function to reverse a string (or a list), and a call to that function.</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-39-1"><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="k">def</span> <span class="nf">my_reverse</span><span class="p">(</span><span class="n">a_string</span><span class="p">):</span>
+</span><span id="__span-39-2"><a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a>    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">a_string</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+</span><span id="__span-39-3"><a id="__codelineno-39-3" name="__codelineno-39-3" href="#__codelineno-39-3"></a>            <span class="k">return</span> <span class="n">a_string</span>
+</span><span id="__span-39-4"><a id="__codelineno-39-4" name="__codelineno-39-4" href="#__codelineno-39-4"></a>    <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-39-5"><a id="__codelineno-39-5" name="__codelineno-39-5" href="#__codelineno-39-5"></a>            <span class="k">return</span> <span class="n">my_reverse</span><span class="p">(</span><span class="n">a_string</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span> <span class="o">+</span> <span class="n">a_string</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">]</span>
+</span><span id="__span-39-6"><a id="__codelineno-39-6" name="__codelineno-39-6" href="#__codelineno-39-6"></a>
+</span><span id="__span-39-7"><a id="__codelineno-39-7" name="__codelineno-39-7" href="#__codelineno-39-7"></a><span class="n">my_reverse</span><span class="p">(</span><span class="s1">&#39;maar&#39;</span><span class="p">)</span>
+</span></code></pre></div>
 <p>'raam'</p>
-<pre><code>my_reverse([3, 4, 5])
-</code></pre>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-40-1"><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="n">my_reverse</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+</span></code></pre></div>
 <p>[5, 4, 3]</p>
 <p>Note, the implementation of the above function, is based on the function itself. This kind of implementation is called <strong>recursion</strong>. Recursion is a bit more advanced way of writing stuff, but sometimes it is actually simpler. If using recursion, pay attention to a <strong>stopping condition</strong>. The problems should become simpler and simpler, and in the final steps, you should return a simple value, as was the case above when the string was short and its reverse is actually the same value.</p>
 <p>I’ve checked the builtin ‘reversed’ function. It behaves a little differently for a list, or for a string.</p>
-<pre><code>list(reversed([1,2,3]))
-</code></pre>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-41-1"><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a><span class="nb">list</span><span class="p">(</span><span class="nb">reversed</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]))</span>
+</span></code></pre></div>
 <p>[3, 2, 1]</p>
-<pre><code># this is what we had before
-
-list(reversed('gadol'))
-</code></pre>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-42-1"><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a><span class="c1"># this is what we had before</span>
+</span><span id="__span-42-2"><a id="__codelineno-42-2" name="__codelineno-42-2" href="#__codelineno-42-2"></a>
+</span><span id="__span-42-3"><a id="__codelineno-42-3" name="__codelineno-42-3" href="#__codelineno-42-3"></a><span class="nb">list</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="s1">&#39;gadol&#39;</span><span class="p">))</span>
+</span></code></pre></div>
 <p>['l', 'o', 'd', 'a', 'g']</p>
-<pre><code># but for a string, we’ll get the list of characters (reversed).
-</code></pre>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-43-1"><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a><span class="c1"># but for a string, we’ll get the list of characters (reversed).</span>
+</span></code></pre></div>
 <p>BTW, ‘#’ and then text is a comment, and can be used in a program to help the reader follow the logic. ‘#’ can start after some other code, and from there it is a comment.</p>
 <p>Strings, have some functionality that we’ve not explored before, for example:</p>
-<pre><code>"hello".upper()
-</code></pre>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-44-1"><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a><span class="s2">&quot;hello&quot;</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+</span></code></pre></div>
 <p>'HELLO'</p>
 <h2 id="exercise">Exercise</h2>
-<p>The exercise will be to approximate <strong>𝝅</strong> by <strong>sampling</strong>. Let’s say we have a circle with radius 1. What will be its area? Take a 1 by 1 rectangle. And draw there a quarter of the above circle. The origin <code>(0, 0)</code> is the center of the (¼) circle. The area of the rectangle is <code>1 * 1 == 1</code>. The area of the ¼ circle is <code>𝝅 / 4</code>. Let’s sample a point from the rectangle. We’ll do that by sampling <em>x</em> between 0 and 1, and <em>y</em> between 0 and 1. If <code>(x, y)</code> falls within the quarter circle, we’ll count it in, otherwise, we’ll not count it. After enough samples, the number of counted points, divided by the total number of samples, should be equal to <code>𝝅 / 4</code>. As a check of your work, compare the value that you got for 𝝅 to the number you get from:</p>
-<pre><code>import math
-
-math.pi
-</code></pre>
+<p>The exercise will be to approximate <strong>𝝅</strong> by <strong>sampling</strong>. Let’s say we have a circle with radius 1. What is its area? Now take a 1 by 1 square. And draw there a quarter of the above circle. The origin <code>(0, 0)</code> is the center of the (quarter) circle. The area of the square is <code>1 * 1 == 1</code>. The area of the quarter circle is <code>𝝅 / 4</code>. Let’s sample a point from the rectangle. We’ll do that by sampling <em>x</em> between 0 and 1, and <em>y</em> between 0 and 1. If <code>(x, y)</code> falls within the quarter circle, we’ll count it in, otherwise, we’ll not count it. After enough samples, the number of counted points, divided by the total number of samples, should approximate <code>𝝅 / 4</code>. As a check of your work, compare the value that you got for 𝝅 (after multypling by <em>4</em>) to the number you get from:</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-45-1"><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a><span class="kn">import</span> <span class="nn">math</span>
+</span><span id="__span-45-2"><a id="__codelineno-45-2" name="__codelineno-45-2" href="#__codelineno-45-2"></a>
+</span><span id="__span-45-3"><a id="__codelineno-45-3" name="__codelineno-45-3" href="#__codelineno-45-3"></a><span class="n">math</span><span class="o">.</span><span class="n">pi</span>
+</span></code></pre></div>
 <p>Guidance:</p>
 <p>The following code demonstrates sampling random numbers between <em>0</em> and <em>1</em> (each of type float). Remember that you need for each iteration two random numbers, one for <em>x</em> and another for <em>y</em>, and that the point <code>(x, y)</code> is at square distance of <code>x ** 2 + y ** 2</code> from the origin:</p>
-<pre><code>import random
-
-x, y = random.random(), random.random()
-
-square_distance = x ** 2 + y ** 2
-</code></pre>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-46-1"><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a><span class="kn">import</span> <span class="nn">random</span>
+</span><span id="__span-46-2"><a id="__codelineno-46-2" name="__codelineno-46-2" href="#__codelineno-46-2"></a>
+</span><span id="__span-46-3"><a id="__codelineno-46-3" name="__codelineno-46-3" href="#__codelineno-46-3"></a><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(),</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
+</span><span id="__span-46-4"><a id="__codelineno-46-4" name="__codelineno-46-4" href="#__codelineno-46-4"></a>
+</span><span id="__span-46-5"><a id="__codelineno-46-5" name="__codelineno-46-5" href="#__codelineno-46-5"></a><span class="n">square_distance</span> <span class="o">=</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">y</span> <span class="o">**</span> <span class="mi">2</span>
+</span></code></pre></div>
 <p>Implement your code as a function that receives a parameter for the number of trials, and returns the approximated 𝝅. It is a good idea to write the code in an editor of your preference, and to paste the code to the interactive Python shell, so you can avoid retyping the code for each fix.</p>
 
 
