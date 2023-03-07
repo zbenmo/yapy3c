@@ -316,7 +316,8 @@ The following should work for you:</p>
 <p>https://www.python.org/shell/</p>
 <p>There are a few versions of Python, we’ll use Python 3. Let’s make sure this is what we have. run there (in your shell):</p>
 <div class="language-py highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span> <span class="nn">sys</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">version</span><span class="p">)</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">version</span><span class="p">)</span>
 </span></code></pre></div>
 <p>For me it printed: <em>3.8.0</em>, which is good.</p>
 <p>You see above, that we had to <strong>import</strong> 'sys'. Otherwise <em>sys</em> wasn’t available. Once we imported it, <em>sys.version</em> was the version of the current Python interpreter (the running environment above). The <strong>print</strong> statement just shows us what we’ve imported. We did not need to import anything special to have ‘print’.</p>
@@ -510,37 +511,40 @@ We got here two loop variables, <em>k</em> and <em>v</em>, as the function <em>i
 <p>'raam'</p>
 <div class="language-py highlight"><pre><span></span><code><span id="__span-40-1"><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="n">my_reverse</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
 </span></code></pre></div>
-<p>[5, 4, 3]</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-41-1"><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a>[5, 4, 3]
+</span></code></pre></div>
 <p>Note, the implementation of the above function, is based on the function itself. This kind of implementation is called <strong>recursion</strong>. Recursion is a bit more advanced way of writing stuff, but sometimes it is actually simpler. If using recursion, pay attention to a <strong>stopping condition</strong>. The problems should become simpler and simpler, and in the final steps, you should return a simple value, as was the case above when the string was short and its reverse is actually the same value.</p>
 <p>I’ve checked the builtin ‘reversed’ function. It behaves a little differently for a list, or for a string.</p>
-<div class="language-py highlight"><pre><span></span><code><span id="__span-41-1"><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a><span class="nb">list</span><span class="p">(</span><span class="nb">reversed</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]))</span>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-42-1"><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a><span class="nb">list</span><span class="p">(</span><span class="nb">reversed</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]))</span>
 </span></code></pre></div>
-<p>[3, 2, 1]</p>
-<div class="language-py highlight"><pre><span></span><code><span id="__span-42-1"><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a><span class="c1"># this is what we had before</span>
-</span><span id="__span-42-2"><a id="__codelineno-42-2" name="__codelineno-42-2" href="#__codelineno-42-2"></a>
-</span><span id="__span-42-3"><a id="__codelineno-42-3" name="__codelineno-42-3" href="#__codelineno-42-3"></a><span class="nb">list</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="s1">&#39;gadol&#39;</span><span class="p">))</span>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-43-1"><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a>[3, 2, 1]
 </span></code></pre></div>
-<p>['l', 'o', 'd', 'a', 'g']</p>
-<div class="language-py highlight"><pre><span></span><code><span id="__span-43-1"><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a><span class="c1"># but for a string, we’ll get the list of characters (reversed).</span>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-44-1"><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a><span class="c1"># this is what we had before</span>
+</span><span id="__span-44-2"><a id="__codelineno-44-2" name="__codelineno-44-2" href="#__codelineno-44-2"></a>
+</span><span id="__span-44-3"><a id="__codelineno-44-3" name="__codelineno-44-3" href="#__codelineno-44-3"></a><span class="nb">list</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="s1">&#39;gadol&#39;</span><span class="p">))</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-45-1"><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a>[&#39;l&#39;, &#39;o&#39;, &#39;d&#39;, &#39;a&#39;, &#39;g&#39;]
+</span></code></pre></div>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-46-1"><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a><span class="c1"># but for a string, we’ll get the list of characters (reversed).</span>
 </span></code></pre></div>
 <p>BTW, ‘#’ and then text is a comment, and can be used in a program to help the reader follow the logic. ‘#’ can start after some other code, and from there it is a comment.</p>
 <p>Strings, have some functionality that we’ve not explored before, for example:</p>
-<div class="language-py highlight"><pre><span></span><code><span id="__span-44-1"><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a><span class="s2">&quot;hello&quot;</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-47-1"><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a><span class="s2">&quot;hello&quot;</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
 </span></code></pre></div>
-<p>'HELLO'</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-48-1"><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a>&#39;HELLO&#39;
+</span></code></pre></div>
 <h2 id="exercise">Exercise</h2>
 <p>The exercise will be to approximate <strong>𝝅</strong> by <strong>sampling</strong>. Let’s say we have a circle with radius 1. What is its area? Now take a 1 by 1 square. And draw there a quarter of the above circle. The origin <code>(0, 0)</code> is the center of the (quarter) circle. The area of the square is <code>1 * 1 == 1</code>. The area of the quarter circle is <code>𝝅 / 4</code>. Let’s sample a point from the rectangle. We’ll do that by sampling <em>x</em> between 0 and 1, and <em>y</em> between 0 and 1. If <code>(x, y)</code> falls within the quarter circle, we’ll count it in, otherwise, we’ll not count it. After enough samples, the number of counted points, divided by the total number of samples, should approximate <code>𝝅 / 4</code>. As a check of your work, compare the value that you got for 𝝅 (after multypling by <em>4</em>) to the number you get from:</p>
-<div class="language-py highlight"><pre><span></span><code><span id="__span-45-1"><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a><span class="kn">import</span> <span class="nn">math</span>
-</span><span id="__span-45-2"><a id="__codelineno-45-2" name="__codelineno-45-2" href="#__codelineno-45-2"></a>
-</span><span id="__span-45-3"><a id="__codelineno-45-3" name="__codelineno-45-3" href="#__codelineno-45-3"></a><span class="n">math</span><span class="o">.</span><span class="n">pi</span>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-49-1"><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a><span class="kn">import</span> <span class="nn">math</span>
+</span><span id="__span-49-2"><a id="__codelineno-49-2" name="__codelineno-49-2" href="#__codelineno-49-2"></a>
+</span><span id="__span-49-3"><a id="__codelineno-49-3" name="__codelineno-49-3" href="#__codelineno-49-3"></a><span class="n">math</span><span class="o">.</span><span class="n">pi</span>
 </span></code></pre></div>
 <p>Guidance:</p>
 <p>The following code demonstrates sampling random numbers between <em>0</em> and <em>1</em> (each of type float). Remember that you need for each iteration two random numbers, one for <em>x</em> and another for <em>y</em>, and that the point <code>(x, y)</code> is at square distance of <code>x ** 2 + y ** 2</code> from the origin:</p>
-<div class="language-py highlight"><pre><span></span><code><span id="__span-46-1"><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a><span class="kn">import</span> <span class="nn">random</span>
-</span><span id="__span-46-2"><a id="__codelineno-46-2" name="__codelineno-46-2" href="#__codelineno-46-2"></a>
-</span><span id="__span-46-3"><a id="__codelineno-46-3" name="__codelineno-46-3" href="#__codelineno-46-3"></a><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(),</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
-</span><span id="__span-46-4"><a id="__codelineno-46-4" name="__codelineno-46-4" href="#__codelineno-46-4"></a>
-</span><span id="__span-46-5"><a id="__codelineno-46-5" name="__codelineno-46-5" href="#__codelineno-46-5"></a><span class="n">square_distance</span> <span class="o">=</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">y</span> <span class="o">**</span> <span class="mi">2</span>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-50-1"><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a><span class="kn">import</span> <span class="nn">random</span>
+</span><span id="__span-50-2"><a id="__codelineno-50-2" name="__codelineno-50-2" href="#__codelineno-50-2"></a>
+</span><span id="__span-50-3"><a id="__codelineno-50-3" name="__codelineno-50-3" href="#__codelineno-50-3"></a><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(),</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
+</span><span id="__span-50-4"><a id="__codelineno-50-4" name="__codelineno-50-4" href="#__codelineno-50-4"></a><span class="n">square_distance</span> <span class="o">=</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">y</span> <span class="o">**</span> <span class="mi">2</span>
 </span></code></pre></div>
 <p>Implement your code as a function that receives a parameter for the number of trials, and returns the approximated 𝝅. It is a good idea to write the code in an editor of your preference, and to paste the code to the interactive Python shell, so you can avoid retyping the code for each fix.</p>
 
