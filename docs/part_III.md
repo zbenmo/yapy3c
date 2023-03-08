@@ -24,15 +24,15 @@ scan(2, 5, 7)
 4, 5, 6, 7, 8, 9, 10, 
 ```
 
-The first observation I would like us to note is the string being the first expresion of the function ("Does something ..").
+The first observation I would like us to note is the string being the first expression of the function ("Does something ..").
 This is a string like any other string, it is not a comment.
 And yet it is serving as a comment for the programmer, and for tools that help us edit, debug, and document the function.
 Those strings are called **docstrings**. 
-There is no issue in introducing those strings at the beginning of a function. You can introduce any expression anywhere you want in your program, this expression may be evaluated (depending on the program's control flow), and the program shall continue to the next expression (given that the expression does not raise an exception etc.). Having a string as the first expression had a special meaning and this convension is well integrated in the language and ecosystem.
+There is no issue in introducing those strings at the beginning of a function. You can introduce any expression anywhere you want in your program, this expression may be evaluated (depending on the program's control flow), and the program shall continue to the next expression (given that the expression does not raise an exception etc.). Having a string as the first expression had a special meaning and this convention is well integrated in the language and ecosystem.
 
 We note that 'range' can accept more than one argument. When two arguments are given, the first is the starting point, and the second is the value beyond the last value in the range. So 'range(3)' is equivalent to 'range(0, 3)'.
 
-We see a nested loop above. Note that importance of identation. We must be exact with our identation. When we return to a previous level, we should be in the exact column of the desired level. For example in line *7* the 'print' happens outside the *add* loop.
+We see a nested loop above. Note that importance of indentation. We must be exact with our indentation. When we return to a previous level, we should be in the exact column of the desired level. For example in line *7* the 'print' happens outside the *add* loop.
 
 BTW, a string (any strings) can be given in multiple lines, when it is wrapped with """ (or with '''). For docstring this is especially useful and often used.
 
@@ -46,7 +46,7 @@ versus the downsides."""
   pass
 ```
 
-Above, I defined a function, yet gave no implementation. I used 'pass' to indicate I have no implementation (at least for now). We need to add 'pass' to make the identation clear. If we omit it, and start new expressions at the same identation of the function's defenition, the interpreter would complain that we forgot identation.
+Above, I defined a function, yet gave no implementation. I used 'pass' to indicate I have no implementation (at least for now). We need to add 'pass' to make the indentation clear. If we omit it, and start new expressions at the same indentation of the function's definition, the interpreter would complain that we forgot indentation.
 
 We can still call our function, exactly as expected, with:
 
@@ -125,7 +125,7 @@ words_lower
 
 ```['welcome', 'to', 'my', 'show!']```
 
-There is a very useful construct that is argubly more readable and may be even faster.
+There is a very useful construct that is arguably more readable and may be even faster.
 
 ``` py
 words_lower = [word.lower() for word in words]
@@ -166,7 +166,7 @@ arabic_numbers = {v: k for k, v in roman_numbers.items()}; arabic_numbers
 
 If we wrap an iterable, such as a list, with 'enumerate', we get a new iterable that gives us tuples.
 The first component of a tuple is the index of the matching item, and the second component is the original item in the original iterable.
-A picture (code snippet) is worth a thusand words:
+A picture (code snippet) is worth a thousand words:
 
 ``` py
 enumerate(list("groceries"))
@@ -237,13 +237,13 @@ def from_roman(roman):
 ```
 
 My logic above was to go from right to left, to add when we see the same value or a bigger value (ex. from **I** to **V**),
-and to substract when we see a smaller value (ex. from **V** to **I**).
+and to subtract when we see a smaller value (ex. from **V** to **I**).
 
-To go from right to left, I've wrapped the input string *roman* with 'reversed'. 'reversed' is an iterable that gives us the items in a reversed order. When accessing my mapping dict, I have used 'get' rather than indexing notation as to avoid an exception when a key is not present. But then I have "manually" raises an exception of type 'ValueError' when we got a character that is not currently supported. Note the **f-string** used when creating the exception. f-strings are a template, and we fill the values in, between currly brackaets, with Python expression. This is very convinient way to format a string.
+To go from right to left, I've wrapped the input string *roman* with 'reversed'. 'reversed' is an iterable that gives us the items in a reversed order. When accessing my mapping dict, I have used 'get' rather than indexing notation as to avoid an exception when a key is not present. But then I have "manually" raises an exception of type 'ValueError' when we got a character that is not currently supported. Note the **f-string** used when creating the exception. f-strings are a template, and we fill the values in, between currly brackaets, with Python expression. This is very convenient way to format a string.
 
 The '+=' and '-=' operators are used here and mean the same as is the case in the *C* language. Try to avoid using those special operators when working with complex objects, yet for simple variables of type integer in this example, this should work perfectly.
 
-The reason it may be risky to use '+=' and '-=' with objects is that a lot of times there is not explicit implementation of the operator. Then the operator '+=', as an example, is implicitly converted for example to ```a = a + 1``` which while seems benian actually results in a new object begin assigned to *a* in the example. If some other variable or data structure (for example a dict) used to reference *a* one may believe they have the handle to the up-to-date *a* yet it is not the case. They are probably still referencing the old *a*. Just keep that in mind.
+The reason it may be risky to use '+=' and '-=' with objects is that a lot of times there is not explicit implementation of the operator. Then the operator '+=', as an example, is implicitly converted for example to ```a = a + 1``` which while seems benign actually results in a new object begin assigned to *a* in the example. If some other variable or data structure (for example a dict) used to reference *a* one may believe they have the handle to the up-to-date *a* yet it is not the case. They are probably still referencing the old *a*. Just keep that in mind.
 
 Last thing to notice is that I've added examples in the docstring. This are of the form ``` >>> expression (newline) expected output ```.
 This adds clarity for the intended use, it becomes part of the documentation.
@@ -277,7 +277,7 @@ if __name__ == "__main__":
 
 The snippet above should look for doctests in the file and should execute them, verifying the output.
 
-There is yet another very useful function when we're deeling with sequences (a list for example) and iterations. 'zip' allows us to traverse multiple lists, as an example, together. Examining the first elements, and then the second elements, etc.
+There is yet another very useful function when we're dealing with sequences (a list for example) and iterations. 'zip' allows us to traverse multiple lists, as an example, together. Examining the first elements, and then the second elements, etc.
 
 ``` py
 list(zip(range(3), "abc"))
@@ -321,7 +321,7 @@ def from_roman2(roman):
     
     values = [mapping.get(c, None) for c in roman]
     if None in values:
-        c = next(c for c, v in zip(roman, values) if v is None) # returns the (next) first occurance
+        c = next(c for c, v in zip(roman, values) if v is None) # returns the (next) first occurrence
         raise ValueError(f"Don't know to handle '{c}'.")
     # the sign +1 or -1
     add_or_sub = [1 if v1 >= v2 else -1 for v1, v2 in zip(values[:-1], values[1:])]
