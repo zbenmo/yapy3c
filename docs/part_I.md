@@ -5,7 +5,9 @@ In Part I we learn the basics, data types, and the structure of a program.
 Let’s get an access to a Python environment.
 The following should work for you:
 
-https://www.python.org/shell/
+[https://www.python.org/shell/](https://www.python.org/shell/)
+
+(You are most welcome to use JupyterLab or an editor of your choice and to run your Python scripts with 'python my_script.py', as an example, if you already know your way.)
 
 There are a few versions of Python, we’ll use Python 3. Let’s make sure this is what we have. run there (in your shell):
 

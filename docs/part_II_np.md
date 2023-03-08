@@ -1,10 +1,22 @@
 # Part II (numpy)
 
-We take a little break from pure Python, and introduce a very useful package **numpy**. It is not part of the standard library yet easily installed, for example with:
+We take a little break from pure Python, and introduce a very useful package **numpy**. It is not part of the standard library yet easily installed, for example with (below is done in an OS shell, it is not Python):
 
 ````
 pip install numpy
 ````
+
+If you're wokring with 'pip' or with 'conda' please go and install 'numpy'. For me, 'numpy' was already available with [https://www.python.org/shell/](https://www.python.org/shell/). I've verified it with:
+
+``` py
+import numpy as np
+
+np.__version__
+```
+
+```'1.21.6'```
+
+(Packages also have their version, which is also very important concept to wrap your head around. For now we are good.)
 
 We import the package and follow the convention to alias it *np*:
 

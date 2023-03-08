@@ -21,3 +21,9 @@ markdown_extensions:
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
+nav:
+  - Section:
+    - index.md
+    - part_I.md
+    - part_II_np.md
+    - part_III.md
