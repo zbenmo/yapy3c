@@ -164,7 +164,9 @@ arabic_numbers = {v: k for k, v in roman_numbers.items()}; arabic_numbers
 
 ```{1: 'I', 5: 'V', 10: 'X'}```
 
-If we wrap an iterable, such as a list, with 'enumerate', we get a new iterable that gives us tuples. The first component of the tuple is the index of the item, and the second component is the original component in the original iterable. Wow, I've said it! A picture is worth a thusand words:
+If we wrap an iterable, such as a list, with 'enumerate', we get a new iterable that gives us tuples.
+The first component of a tuple is the index of the matching item, and the second component is the original item in the original iterable.
+A picture (code snippet) is worth a thusand words:
 
 ``` py
 enumerate(list("groceries"))
@@ -172,7 +174,11 @@ enumerate(list("groceries"))
 
 ```<enumerate at 0x7f1b05a48480>```
 
-We turned a string into a list or characters and wrapped it with an 'enumerate'. The output tells us that now we have an 'enumerate'. To show the values, we can construct a list out of the 'enumerate' object we have. We could have iterated over the 'enumerate' or use it in a comprehension expression. The list construction will serve us here.
+We turned a string into a list or characters and wrapped it with an 'enumerate'.
+The output tells us that now we have an 'enumerate'.
+To show the values, we can construct a list out of the 'enumerate' object we have.
+We could have iterated over the 'enumerate' or use it in a comprehension expression.
+The list construction will serve us here.
 
 ``` py
 list(enumerate(list("groceries")))
@@ -193,8 +199,7 @@ list(enumerate(list("groceries")))
 And we see our expected tuples.
 
 Time for a small example.
-
-Let's build a function that takes a roman number as a string and returns the equivalent roman number.
+Let's build a function that takes a roman number as a string and returns the equivalent number.
 
 ``` py
 def from_roman(roman):
@@ -240,7 +245,9 @@ The '+=' and '-=' operators are used here and mean the same as is the case in th
 
 The reason it may be risky to use '+=' and '-=' with objects is that a lot of times there is not explicit implementation of the operator. Then the operator '+=', as an example, is implicitly converted for example to ```a = a + 1``` which while seems benian actually results in a new object begin assigned to *a* in the example. If some other variable or data structure (for example a dict) used to reference *a* one may believe they have the handle to the up-to-date *a* yet it is not the case. They are probably still referencing the old *a*. Just keep that in mind.
 
-Last thing to notice is that I've added examples in the docstring. This are of the form ``` >>> expression (newline) expected output ```. This adds clarity for the intended use, it becomes part of the documentation. But there is more! One can actually execute those tests with Python built-in **doctest**.
+Last thing to notice is that I've added examples in the docstring. This are of the form ``` >>> expression (newline) expected output ```.
+This adds clarity for the intended use, it becomes part of the documentation.
+But there is more! One can actually execute those tests with Python built-in **doctest**.
 
 In a lot of Python file, you'll find a 'main' function, and toward the bottom of the file, an 'if' statement:
 
@@ -253,7 +260,11 @@ if __name__ == "__main__":
   main()
 ```
 
-When you run the file with ```python my_file.py``` the expression in the bottom is evaluated to True and the code in the *main* function is executed. when the 'if' statement is missing code in functions are not called, so you may end up not really running anything. Only code outside functions is executed. It is a good practice to wrap your code in functions and call the starting point, say, *main*, from such an 'if' statement. A file with only functions can still be useful as a part of a module (and be called from outside the file, or from the command line with the *-m* flag). Whole this long detour was to show the following:
+When you run the file with ```python my_file.py``` the expression in the bottom is evaluated to True and the code in the *main* function is executed.
+When the 'if' statement is missing, code in functions is not called, so you may end up not really running anything.
+Only code outside functions is executed. It is a good practice to wrap your code in functions and call the starting point, say, *main*, from such an 'if' statement. A file with only functions can still be useful as a part of a module (and be called from outside the file, or from the command line with the *-m* flag).
+
+Whole this long detour was to show the following:
 
 ``` py
 ... # code containing potentially doctests
@@ -266,7 +277,7 @@ if __name__ == "__main__":
 
 The snippet above should look for doctests in the file and should execute them, verifying the output.
 
-There is yet another very useful function when we're deeling with sequences (a list for example) and iterations. 'zip' allows us to traverse multiple lists for example together. Examining the first elements, and then the second elements, etc.
+There is yet another very useful function when we're deeling with sequences (a list for example) and iterations. 'zip' allows us to traverse multiple lists, as an example, together. Examining the first elements, and then the second elements, etc.
 
 ``` py
 list(zip(range(3), "abc"))
@@ -279,7 +290,7 @@ list(zip(range(3), "abc"))
 ## Exrecise
 
 I've implemented above *from_roman* with the latest things we've learn. Not sure this implementation is better.
-Up to you to decide. Take from it what you like. Nothing wrong with old good loops.
+Up to you to decide. Take from it what you like. Nothing wrong with old good loops. One will often mix and match.
 
 Make sure you can follow what we've done here.
 Can you see why using 'reversed' was not required with this implementation?
@@ -303,6 +314,9 @@ def from_roman2(roman):
     ValueError: Don't know to handle 'M'.    
     """
     
+    if len(roman) < 1:
+        return 0
+    
     mapping = {'I': 1, 'V': 5, 'X': 10}
     
     values = [mapping.get(c, None) for c in roman]
@@ -310,6 +324,8 @@ def from_roman2(roman):
         c = next(c for c, v in zip(roman, values) if v is None) # returns the (next) first occurance
         raise ValueError(f"Don't know to handle '{c}'.")
     # the sign +1 or -1
-    add_or_sub = [1 if v1 >= v2 else -1 for v1, v2 in zip(values[:-1], values[1:])] + [+1] # right most element is added.
+    add_or_sub = [1 if v1 >= v2 else -1 for v1, v2 in zip(values[:-1], values[1:])]
+    assert len(values) - 1 == len(add_or_sub) # make sure we do what we think we do
+    add_or_sub.append(+1) # right most element is added.
     return sum(v * s for v, s in zip(values, add_or_sub))
 ```
