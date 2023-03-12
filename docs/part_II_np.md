@@ -64,6 +64,14 @@ len(arr.shape)
 
 Here BTW we see that 'len' works also on a tuple.
 
+I've recently learnd that one can also just issue:
+
+``` py
+arr.ndim
+```
+
+Which should give the same result ```1```.
+
 To find how many elements in a 'numpy' array, I would go for:
 
 ``` py

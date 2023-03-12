@@ -164,24 +164,24 @@ arabic_numbers = {v: k for k, v in roman_numbers.items()}; arabic_numbers
 
 ```{1: 'I', 5: 'V', 10: 'X'}```
 
-If we wrap an iterable, such as a list, with 'enumerate', we get a new iterable that gives us tuples.
+If we wrap an iterable, such as a list, or a string, with 'enumerate', we get a new iterable that gives us tuples.
 The first component of a tuple is the index of the matching item, and the second component is the original item in the original iterable.
 A picture (code snippet) is worth a thousand words:
 
 ``` py
-enumerate(list("groceries"))
+enumerate(list("groceries")), enumerate("groceries") 
 ```
 
-```<enumerate at 0x7f1b05a48480>```
+```(<enumerate at 0x7f1c281c2f00>, <enumerate at 0x7f1c281c29c0>)```
 
-We turned a string into a list or characters and wrapped it with an 'enumerate'.
-The output tells us that now we have an 'enumerate'.
+We turn a string into a list of characters and wrap the list with an 'enumerate'.
+The output tells us that now we have an 'enumerate'. We also demonstrate that with going directly from the string, being an iterable and wrapping it directly with 'enumerate'. We've ended with two different 'enumerate' objects.
 To show the values, we can construct a list out of the 'enumerate' object we have.
 We could have iterated over the 'enumerate' or use it in a comprehension expression.
 The list construction will serve us here.
 
 ``` py
-list(enumerate(list("groceries")))
+list(enumerate("groceries"))
 ```
 
 ```

@@ -92,7 +92,16 @@ Clarification: a single element, for example the first, will be *my_list[0]*, a 
 
 Note: the first index is 0. So the valid indices for a list ‘lst’ are: 0..len(lst) - 1 (ex. when *len(lst) == 3* then the valid indices are 0, 1, 2).
 
-Slices are also lists, try to get the type of a slice.
+Slices are also lists, try to get the type of a slice. A slice is a "copy" of the original list. While there other ways to copy lists, the following is a common practice:
+
+``` py
+a = [1, 2, 3]
+b = a[:]
+a[0] = 7
+print(a, b)
+```
+
+```[7, 2, 3] [1, 2, 3]```
 
 A list can be of mixed types, and also nested:
 
@@ -141,6 +150,8 @@ str(1) + 'def'
 ```
 
 ```'1def'```
+
+There is an important aspect of Python, that we can already see above. Python does not enforce strong (static) typing. Python is a dynamic language, in the sense that one can pass as an argument a number, but also a string. The only important restriction is that the passed argument(s) adhere to the a **protocol** expected by the function (interface / contract). I refer you here to Wikipedia: [Duck typing](https://en.wikipedia.org/wiki/Duck_typing). In the example above, when we passed a number and a string, and the function *add* discovered it cannot use the '+' operator on them, an exception was raised. 
 
 If we look for a second at the definition of the function above, we see that we’ve started with the word ‘def’, then gave the name of the new function, then a **parameters** list in parentheses, then the column, and inside the function commands were indented with a tab or a few spaces. The last statement in a function is often **return** with the calculated value as the output of the function.
 
