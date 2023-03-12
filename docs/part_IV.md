@@ -222,6 +222,59 @@ Note that the infinite 'while' loop above should not cause our program to never 
 
 There are other ways to create iterators (ex. for your custom objects / classes, or a wrapper for third party constructs), and there are other usages to generators (ex. co-routines). Let's keep that in mind, yet for now, let us get acquainted with generators and make the best usage of them when relevant.
 
+A few more words on 'iterator's, 'generator's, and on 'map'. An alternative to a 'for' loop can be to call 'next' on the iterator. For example, to find the occurance in a list, one can use:
+
+``` py
+l = list(range(2, 20))
+item = next(x for x in l if x % 7 == 0); item 
+```
+
+```7```
+
+Using 'next' can be useful also with a 'map' or a 'generator'. When the iterator is excusted. A *StopIteration* is thrown. We useally don't need to worry about it, as in a 'for' loop this is handled for us. In the example of finding the first (or the next) occurance, we can use an extra argument to 'next' which will act as the fecault then the iterator is excusted instead of throwing the exception.
+
+``` py
+next((x for x in range(3) if x > 7), "No such item")
+```
+
+```'No such item'```
+
+``` py
+next((x for x in range(30) if x > 7), "No such item")
+```
+
+```8```
+
+``` py
+my_g = (x for x in range(2))
+print(next(my_g))
+print(next(my_g))
+print(next(my_g))
+```
+
+```
+0
+1
+---------------------------------------------------------------------------
+StopIteration                             Traceback (most recent call last)
+Cell In[10], line 4
+      2 print(next(my_g))
+      3 print(next(my_g))
+----> 4 print(next(my_g))
+
+StopIteration:
+```
+
+'map' can take multiple iterators, which can be useful similar to 'zip'.
+
+``` py
+import operator
+
+list(map(operator.add, range(3), range(4)))
+```
+
+```[0, 2, 4]``` 
+
 ## Exrecise
 
 We are given a text. The text contains paragraphs, each paragraph contains sentences, and each sentence contains words. One paragraph is separated from the previous one by an empty line. Sentence end with one of {'.', '?', '!'}. Words are separated with ' '. We want to report for every word in the text all the places that it appeared. A place is indicated by a tuple: (paragraph nr., sentence nr., word in a sentence nr.).
