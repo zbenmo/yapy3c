@@ -125,7 +125,7 @@ type(l_squared)
 
 ```[4, 9]```
 
-Pay attention to the fact that the **generator** is now excusted:
+Pay attention to the fact that the **generator** is now exhausted:
 
 ```
 [x for x in l_squared if x > 2]
@@ -177,7 +177,7 @@ list(g)
 [2, 3, 4]
 ```
 
-As the generator is now excusted, if we try above again we'll end up with ```[]```. But luckily we have a function that we can call again to receive a fresh copy of a generator.
+As the generator is now exhausted, if we try above again we'll end up with ```[]```. But luckily we have a function that we can call again to receive a fresh copy of a generator.
 
 ``` py
 list(my_gen([1, 2, 3]))
@@ -205,7 +205,7 @@ for i, r in zip(range(4), random_generator()):
 3 0.16015149066151046
 ```
 
-It seems that 'zip' stops as soon as one of its iterators is excusted. In this case it was the 'range'.
+It seems that 'zip' stops as soon as one of its iterators is exhausted. In this case it was the 'range'.
 
 ``` py
 for i1, i2 in zip(range(4), range(3)):
@@ -231,7 +231,7 @@ item = next(x for x in l if x % 7 == 0); item
 
 ```7```
 
-Using 'next' can be useful also with a 'map' or a 'generator'. When the iterator is excusted. A *StopIteration* is thrown. We useally don't need to worry about it, as in a 'for' loop this is handled for us. In the example of finding the first (or the next) occurance, we can use an extra argument to 'next' which will act as the fecault then the iterator is excusted instead of throwing the exception.
+Using 'next' can be useful also with a 'map' or a 'generator'. When the iterator is exhausted. A *StopIteration* is thrown. We useally don't need to worry about it, as in a 'for' loop this is handled for us. In the example of finding the first (or the next) occurance, we can use an extra argument to 'next' which will act as the default then the iterator is exhausted instead of throwing the exception.
 
 ``` py
 next((x for x in range(3) if x > 7), "No such item")
@@ -334,4 +334,4 @@ for paragraph in paragprahs(text):
 
 ```(output omitted)```
 
-**yield from** is a short-hand for a loop over the iterator (a list in this case) and yielding each of the elements. This is different from returning the list itself. With 'yield from' we are returning a generator that can be iterated on only once. In a way, the list that was created by the call to 'split' can be **garbage collected** when the generator returned by *paragraphs* is excusted. If we returned the list, the caller may still keep a reference to the list somewhere and hence the list may have been kept "alive" in memory.
+**yield from** is a short-hand for a loop over the iterator (a list in this case) and yielding each of the elements. This is different from returning the list itself. With 'yield from' we are returning a generator that can be iterated on only once. In a way, the list that was created by the call to 'split' can be **garbage collected** when the generator returned by *paragraphs* is exhausted. If we returned the list, the caller may still keep a reference to the list somewhere and hence the list may have been kept "alive" in memory.
