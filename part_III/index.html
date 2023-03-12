@@ -12,6 +12,8 @@
         <link rel="prev" href="../part_II_np/">
       
       
+        <link rel="next" href="../part_IV/">
+      
       <link rel="icon" href="../images/yapy3c.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.1">
     
@@ -279,6 +281,21 @@
   
 
     
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../part_IV/" class="md-nav__link">
+        Part IV
+      </a>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -438,18 +455,18 @@ We could have combine lower-casing the words and the filtering. Make your own ju
 </span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="n">arabic_numbers</span> <span class="o">=</span> <span class="p">{</span><span class="n">v</span><span class="p">:</span> <span class="n">k</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">roman_numbers</span><span class="o">.</span><span class="n">items</span><span class="p">()};</span> <span class="n">arabic_numbers</span>
 </span></code></pre></div>
 <p><code>{1: 'I', 5: 'V', 10: 'X'}</code></p>
-<p>If we wrap an iterable, such as a list, with 'enumerate', we get a new iterable that gives us tuples.
+<p>If we wrap an iterable, such as a list, or a string, with 'enumerate', we get a new iterable that gives us tuples.
 The first component of a tuple is the index of the matching item, and the second component is the original item in the original iterable.
 A picture (code snippet) is worth a thousand words:</p>
-<div class="language-py highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="nb">enumerate</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="s2">&quot;groceries&quot;</span><span class="p">))</span>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="nb">enumerate</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="s2">&quot;groceries&quot;</span><span class="p">)),</span> <span class="nb">enumerate</span><span class="p">(</span><span class="s2">&quot;groceries&quot;</span><span class="p">)</span> 
 </span></code></pre></div>
-<p><code>&lt;enumerate at 0x7f1b05a48480&gt;</code></p>
-<p>We turned a string into a list or characters and wrapped it with an 'enumerate'.
-The output tells us that now we have an 'enumerate'.
+<p><code>(&lt;enumerate at 0x7f1c281c2f00&gt;, &lt;enumerate at 0x7f1c281c29c0&gt;)</code></p>
+<p>We turn a string into a list of characters and wrap the list with an 'enumerate'.
+The output tells us that now we have an 'enumerate'. We also demonstrate that with going directly from the string, being an iterable and wrapping it directly with 'enumerate'. We've ended with two different 'enumerate' objects.
 To show the values, we can construct a list out of the 'enumerate' object we have.
 We could have iterated over the 'enumerate' or use it in a comprehension expression.
 The list construction will serve us here.</p>
-<div class="language-py highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="nb">list</span><span class="p">(</span><span class="nb">enumerate</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="s2">&quot;groceries&quot;</span><span class="p">)))</span>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="nb">list</span><span class="p">(</span><span class="nb">enumerate</span><span class="p">(</span><span class="s2">&quot;groceries&quot;</span><span class="p">))</span>
 </span></code></pre></div>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>[(0, &#39;g&#39;),
 </span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a> (1, &#39;r&#39;),
