@@ -64,7 +64,7 @@ len(arr.shape)
 
 Here BTW we see that 'len' works also on a tuple.
 
-I've recently learnd that one can also just issue:
+I've recently learned that one can also just issue:
 
 ``` py
 arr.ndim

@@ -2,7 +2,8 @@
 
 In this part we'll dive a bit into functional programming. There is a very good support for functional programming in Python. A lot of Python code mixes functional programming with object oriented programming, whatever makes sense given the context.
 
-We've already seen the ability to declare functions, and to assign a function to a variable. A function can also be passed as an argument.
+We've already seen the ability to declare functions, and to assign a function to a variable.
+A function can also be passed as an argument.
 
 ``` py
 arr = [(1, 'a'), (7, 'b'), (3, 'c'), (4, 'd'), (2, 'e')]
@@ -11,15 +12,36 @@ sorted(arr)
 
 ```[(1, 'a'), (2, 'e'), (3, 'c'), (4, 'd'), (7, 'b')]```
 
-What do we see? We had a list with tuples *arr*. We used the built-in function 'sorted' that receives an 'iterable' and returs a list with the element sorted. We note that when comparing tuples, the first element takes precedance over the other elements. And so the tuples were ordered by the number.
+What do we see? We had a list with tuples *arr*. We used the built-in function 'sorted' that receives an 'iterable' and returns a list with the element sorted. We note that when comparing tuples, the first element takes precedance over the other elements. And so the tuples were ordered by the number.
+
+Please note that *arr* is still with the original order.
+
+``` py
+arr
+```
+
+``` [(1, 'a'), (7, 'b'), (3, 'c'), (4, 'd'), (2, 'e')] ```
+
+What we got is a new list (a new object). 'list's also have the functionality to sort in-place.
+
+``` py
+arr.sort(); arr
+```
+
+``` [(1, 'a'), (2, 'e'), (3, 'c'), (4, 'd'), (7, 'b')] ```
+
+Calling 'sort' on a list is the "object-oriented" way. The list *arr* was changed. This may be desirable or not.
+With functional programming we'll prefer immotable objects. That way we can worry less about multi-threading (and there are other benefits).
+<!-- Also we would like that when we call the same function with the same arguments, we'll receive the same output. -->
+In this part, we'll show more examples from the functional programming way.
 
 What if we wanted to sort by the string (a single character here)? Luckily 'sorted' has an optional parameter 'key'. It is optional as there is a default of *None*, and when 'key' is not provided, the default *None* is intepreted as just compare the elements themselves. Let's use the 'key' parameter.
 
 ``` py
-def by_the_characted(t):
+def by_the_character(t):
   return t[1]
 
-sorted(arr, key=by_the_characted)
+sorted(arr, key=by_the_character)
 ```
 
 ```[(1, 'a'), (7, 'b'), (3, 'c'), (4, 'd'), (2, 'e')]```
@@ -44,7 +66,7 @@ map(str.upper, sentence.split())
 
 ```<map at 0x7fbb082cdb20>```
 
-We got a map object. To see the values, we we can construct a list out of the map (which is an iterable):
+We got a map object. To see the values, we can construct a list out of the map (which is an iterable):
 
 ``` py
 list(map(str.upper, sentence.split()))
@@ -56,12 +78,12 @@ The function we used in the first argument *str.upper* was taken from the type '
 
 ``` py
 en_to_nl = {
-    'The': 'De',
-    'cat': 'kat',
-    'sat': 'zat',
-    'on': 'op',
-    'the': 'de',
-    'mat.': 'mat.',
+  'The': 'De',
+  'cat': 'kat',
+  'sat': 'zat',
+  'on': 'op',
+  'the': 'de',
+  'mat.': 'mat.',
 }
 
 list(map(en_to_nl.get, sentence.split()))
@@ -69,7 +91,7 @@ list(map(en_to_nl.get, sentence.split()))
 
 ```['De', 'kat', 'zat', 'op', 'de', 'mat.']```
 
-This time the function 'get' was taken from a specific object *en_to_nl*. As long as a simple call, with one argument, which is the current element, is possible it should work.
+This time the function 'get' was taken from a specific object *en_to_nl* (a dict in this case). As long as a simple call, with one argument, which is the current element, is possible it should work.
 
 Note that we gave the dict on multiple lines. Python interpreter is happy with this syntax given that we've openned with curly brackets '{'. A long expression can be placed in parantheses. This should make the program a bit more readable.
 
@@ -185,7 +207,7 @@ list(my_gen([1, 2, 3]))
 
 ```[2, 3, 4]```
 
-A generator is usuful in many situations. Let's have a random numbers generator. Note that if is to wrap a list around it we're prbably going to fail as the iterator we're just defining is infinite (try at your own risk). Therefore we'll use it in another way.
+A generator is usuful in many situations. Let's have a random numbers generator. Note that if is to wrap a list around it we're probably going to fail as the iterator we're just defining is infinite (try at your own risk). Therefore we'll use it in another way.
 
 ``` py
 import random
@@ -218,7 +240,7 @@ for i1, i2 in zip(range(4), range(3)):
 2 2
 ```
 
-Note that the infinite 'while' loop above should not cause our program to never end as after each 'yield' the control is returned to the place in code iterating over the generator.
+Note that the infinite 'while' loop above should not cause our program to never end, as after each 'yield' the control is returned to the place in code iterating over the generator.
 
 There are other ways to create iterators (ex. for your custom objects / classes, or a wrapper for third party constructs), and there are other usages to generators (ex. co-routines). Let's keep that in mind, yet for now, let us get acquainted with generators and make the best usage of them when relevant.
 
@@ -277,11 +299,14 @@ list(map(operator.add, range(3), range(4)))
 
 ## Exrecise
 
-We are given a text. The text contains paragraphs, each paragraph contains sentences, and each sentence contains words. One paragraph is separated from the previous one by an empty line. Sentence end with one of {'.', '?', '!'}. Words are separated with ' '. We want to report for every word in the text all the places that it appeared. A place is indicated by a tuple: (paragraph nr., sentence nr., word in a sentence nr.).
+We are given a text. The text contains paragraphs, each paragraph contains sentences, and each sentence contains words. A paragraph is separated from the previous one, by an empty line. A sentence ends with one of {'.', '?', '!'}. Words are separated with ' '.
+We want to report for every word in the text all the places that it appeared.
+A place is indicated by a tuple: (paragraph nr., sentence nr., word in a sentence nr.).
 
-One possible approach would be to generate paragraphs, for each paragraph to generate sentences, and for each sentence to generate words.
+One possible approach would be to generate paragraphs,
+for each paragraph to generate sentences, and for each sentence to generate words.
 
-Ex. text (*All the Worlds a Stage* by *William Shakespeare*), or at least this is what the website where I find it claims:
+Ex. text:
 
 """
 All the world's a stage,
@@ -320,6 +345,8 @@ That ends this strange eventful history,
 Is second childishness and mere oblivion,
 Sans teeth, sans eyes, sans taste, sans everything.
 """
+
+*All the Worlds a Stage* by *William Shakespeare*  (at least this is what, the website where I found it, claims).
 
 For example, a start of a solution can be:
 
