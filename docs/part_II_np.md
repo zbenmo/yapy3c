@@ -28,7 +28,8 @@ type(np)
 
 ```module```
 
-Why did I say a package? A package may have multiple modules. We’ll talk about it later.
+Why did I say a package? A package may contain, or bring with its installation, multiple Python modules.
+We’ll talk about it later (what is a Python module?, how we create a package?, and relevant considerations).
 
 So why is it worth it to learn about 'numpy'? Well, first it is an example of yet another useful package. Python is great, yet it is really great thanks to the ecosystem around it. There are packages for data science, packages that are part of web frameworks, packages for developing games. In particular, 'numpy', appears almost always (at least with Python software I've played with).
 
@@ -42,6 +43,8 @@ arr.shape
 ```(3,)```
 
 *len(arr)* will also work and shall return *3*.
+
+There exists a standard module 'array' in Python that also deals with memory efficient arrays. We'll skip 'array' and jump directly to 'numpy' which is people often do these days. Potentially 'numpy' is making use of 'array' behind the scenes.
 
 The 'shape' returns a tuple where each entry is the length of the relevant dimension. Note the comma in *(3,)*. This is to distinguish this value, which is a tuple, from *(3)* which is just the scalar *3* after the expression is evaluated.
 

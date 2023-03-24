@@ -283,10 +283,10 @@ TypeError: use_cmp() missing 1 required positional argument: 'b'
 ```
 
 'key' is expecting a function with one parameter; an object.
-Then *sorted* calls this function to obtain the "key" which is then used to compare with another "key" of the other objects.
-What should be do? Give up and add the '<' operator to *MyClass*?
+Then *sorted* calls this function to obtain the "key" which is then used to compare with the "key"s of the other objects.
+What should we do? Give up and add the '<' operator to *MyClass*?
 
-Idea: we'll return an object as a "key". The "key" object shall keep track of the original object, and will delegate to its *cmp* when the '<' is needed.
+Idea: we'll return an object as the "key". The "key" object shall keep track of the original object, and shall delegate to the original object's *cmp* when the '<' is needed.
 
 ``` py
 class Helper:
