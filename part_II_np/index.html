@@ -393,7 +393,7 @@
 <p>We take a little break from pure Python, and introduce a very useful package <strong>numpy</strong>. It is not part of the standard library yet easily installed, for example with (below is done in an OS shell, it is not Python):</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>pip install numpy
 </span></code></pre></div>
-<p>If you're wokring with 'pip' or with 'conda' please go and install 'numpy'. For me, 'numpy' was already available with <a href="https://www.python.org/shell/">https://www.python.org/shell/</a>. I've verified it with:</p>
+<p>If you're working with 'pip' or with 'conda' please go and install 'numpy'. For me, 'numpy' was already available with <a href="https://www.python.org/shell/">https://www.python.org/shell/</a>. I've verified it with:</p>
 <div class="language-py highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">np</span><span class="o">.</span><span class="n">__version__</span>
@@ -415,7 +415,7 @@ We’ll talk about it later (what is a Python module?, how we create a package?,
 </span></code></pre></div>
 <p><code>(3,)</code></p>
 <p><em>len(arr)</em> will also work and shall return <em>3</em>.</p>
-<p>There exists a standard module 'array' in Python that also deals with memory efficient arrays. We'll skip 'array' and jump directly to 'numpy' which is people often do these days. Potentially 'numpy' is making use of 'array' behind the scenes.</p>
+<p>There exists a standard module 'array' in Python that also deals with memory efficient arrays. We'll skip 'array' and jump directly to 'numpy' which is what people often do these days. Potentially 'numpy' is making use of 'array' behind the scenes.</p>
 <p>The 'shape' returns a tuple where each entry is the length of the relevant dimension. Note the comma in <em>(3,)</em>. This is to distinguish this value, which is a tuple, from <em>(3)</em> which is just the scalar <em>3</em> after the expression is evaluated.</p>
 <p>An important observation is that while a simple list can contain heterogeneous values, a 'numpy' array is expected to hold values of the same type in all cells. In addition to many goodies that we'll see soon, 'numpy' is intended to make the calculations fast and vectorized. Vectorisation is a technique where special hardware manipulate multiple cells at the same time.</p>
 <p>To find the type of the elements themselves, use:</p>
@@ -447,7 +447,7 @@ In this example it is <code>dtype('int64')</code>.</p>
 <div class="language-py highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nb">len</span><span class="p">(</span><span class="n">mat</span><span class="o">.</span><span class="n">shape</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">mat</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </span></code></pre></div>
 <p><code>(2, 6)</code></p>
-<p>Here we used ',' between the two expressions. This gave us the tuple <em>(2, 6)</em>. The first element of the tuple is the dimention of <em>mat</em> and the other is the count of elements in <em>mat</em> (similar to what we've verified above for <em>arr</em>).</p>
+<p>Here we used ',' between the two expressions. This gave us the tuple <em>(2, 6)</em>. The first element of the tuple is the dimension of <em>mat</em> and the other is the count of elements in <em>mat</em> (similar to what we've verified above for <em>arr</em>).</p>
 <p>A 2-dimentional 'numpy' array or, a "matrix" has two <strong>axes</strong>; <em>0</em> and <em>1</em>. One axis is the rows and the other is the columns.
 Let's see that in action:</p>
 <div class="language-py highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">mat</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
