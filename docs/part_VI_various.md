@@ -393,3 +393,25 @@ print(a)
 ```
 
 By saying 'nonlocal' one just instructs the runtime to look up in the stack for the variable that should already be available in an upper frame.
+
+## Type Hints
+
+Python is a dynamic language. Duck typing replaces type declarations and hard static enforcements.
+
+On the other hand, to build a more reliable software, and to help ourselves and future users, we may want here and there to implicitly "hint" the expected type or expected protocol of an argument and / or the type of the returned value.
+
+``` py
+from typing import List
+
+
+def my_function(count: int) -> List[str]:
+    return ['Python'] * count
+```
+
+The "hints" add to the documentation. An IDE can use them to highlight potential issues.
+Tools such as *mypy* can verify that we pass the correct arguments.
+
+My suggestion is to add slowly more and more type hints wherever relevant.
+Does not need to happen all the once in all places in your code.
+
+Whatever the members of your team decide..

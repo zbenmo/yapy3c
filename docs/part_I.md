@@ -53,6 +53,8 @@ We get:
 
 If you happen to use *“hello”* it should be the same, both should work.
 
+## Lists
+
 ``` py
 my_list = [1, 2, 4]
 type(my_list)
@@ -112,6 +114,8 @@ A list can be of mixed types, and also nested:
 ```[1, 'Dog', [1, 2, 4]]```
 
 But usually, we’ll use lists where the elements are of the same type.
+
+## Functions
 
 Let’s have a **function**:
 
@@ -222,6 +226,8 @@ my_list
 
 ```[1, 2, 4, 'Marshmello']```
 
+## Tuples
+
 There is also a useful type, a **tuple**. For example:
 
 ``` py
@@ -265,8 +271,9 @@ Tuples are useful in many cases. For example we can assign values to two variabl
 old, new = 'Trump', 'Biden'
 ```
 
-Here the parentheses are implicit.
-Also, sometimes a function can return multiple values, and this can be done with returning a ‘dict’, or a ‘list’, but also sometimes as a tuple.
+Here the parentheses are implicit. Note that the tuple from the right hand side is **unpacked** into the two variables on the left hand side (*old* and *new*).
+
+A function may need to return multiple values, and this can be done by returning a ‘dict’, or a ‘list’, but also a tuple makes the most sense.
 
 ``` py
 for k, v in my_dict.items():
@@ -291,6 +298,8 @@ my_sum
 ```3```
 
 We initialized *my_sum* to zero, then we added *0*, *1*, and finally *2*, to get *3*.
+
+## Ranges
 
 ``` py
 type(range(3))

@@ -6,7 +6,7 @@ We take a little break from pure Python, and introduce a very useful package **n
 pip install numpy
 ````
 
-If you're wokring with 'pip' or with 'conda' please go and install 'numpy'. For me, 'numpy' was already available with [https://www.python.org/shell/](https://www.python.org/shell/). I've verified it with:
+If you're working with 'pip' or with 'conda' please go and install 'numpy'. For me, 'numpy' was already available with [https://www.python.org/shell/](https://www.python.org/shell/). I've verified it with:
 
 ``` py
 import numpy as np
@@ -44,7 +44,7 @@ arr.shape
 
 *len(arr)* will also work and shall return *3*.
 
-There exists a standard module 'array' in Python that also deals with memory efficient arrays. We'll skip 'array' and jump directly to 'numpy' which is people often do these days. Potentially 'numpy' is making use of 'array' behind the scenes.
+There exists a standard module 'array' in Python that also deals with memory efficient arrays. We'll skip 'array' and jump directly to 'numpy' which is what people often do these days. Potentially 'numpy' is making use of 'array' behind the scenes.
 
 The 'shape' returns a tuple where each entry is the length of the relevant dimension. Note the comma in *(3,)*. This is to distinguish this value, which is a tuple, from *(3)* which is just the scalar *3* after the expression is evaluated.
 
@@ -105,7 +105,7 @@ len(mat.shape), np.prod(mat.shape)
 
 ```(2, 6)```
 
-Here we used ',' between the two expressions. This gave us the tuple *(2, 6)*. The first element of the tuple is the dimention of *mat* and the other is the count of elements in *mat* (similar to what we've verified above for *arr*).
+Here we used ',' between the two expressions. This gave us the tuple *(2, 6)*. The first element of the tuple is the dimension of *mat* and the other is the count of elements in *mat* (similar to what we've verified above for *arr*).
 
 A 2-dimentional 'numpy' array or, a "matrix" has two **axes**; *0* and *1*. One axis is the rows and the other is the columns.
 Let's see that in action:
