@@ -204,6 +204,8 @@ It is not anymore an integer. Dividing an integer by another integer results in 
 
 Here the result is an integer, and it wasn’t rounded but rather truncated.
 
+## Dicts
+
 We’ve seen before the type list, that is very useful. Another useful type is a dictionary, or **dict**. It is also referred to sometimes as associative memory. You have keys, and you have values. In a list, you use indices to address the content. Otherwise it is similar.
 
 ``` py

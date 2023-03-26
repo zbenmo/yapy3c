@@ -287,7 +287,7 @@ Traceback (most recent call last):
 NameError: name 'a' is not defined
 ```
 
-If one defines a variable outside of the function then it will be available in the current namespace. It will become "global". This is not as terrible in Python as in other languages, as different namespaces do not share the globals among them. If one wants to access a global variable of another module, this needs to be done implicitly but prepending the name of the model and a dot, as, for example, in ``` my_model.tree_root ```.
+If one defines a variable outside of the function then it will be available in the current namespace. It will become "global". This is not as terrible in Python as in other languages, as different namespaces do not share the globals among them. If one wants to access a global variable of another module, this needs to be done implicitly by prepending the name of the model and a dot, as, for example, in ``` my_model.tree_root ```.
 
 Also in the example below, we see that the function does not assume its variable is the one in the outer context, but rather works with its own local variable.
 
@@ -415,3 +415,70 @@ My suggestion is to add slowly more and more type hints wherever relevant.
 Does not need to happen all the once in all places in your code.
 
 Whatever the members of your team decide..
+
+## JSON / XML / YAML
+
+JavaScript Object Notation (JSON) is a very convinient textual hierarchical format to exchange data.
+Another useful and similar format Extensible Markup Language (XML).
+Both those format have great support in Python.
+A third format that is used often with Python is YAML.
+
+Those formats are useful for exchanging "documents" and for defining configurations.
+A Python code can quickly read a (small) JSON file into a dict. From there access to the different elements can be achieved with normal dict accessors.
+
+``` py
+import json
+
+
+d = dict(a = 3, b = {'c': "hello"})
+
+d_as_json = json.dumps(d)
+
+assert type(d_as_json) == str
+
+del d
+
+d = json.loads(d_as_json)
+
+d['b']['c']
+```
+
+``` 'hello' ```
+
+We can "serialize" a dict for example into a serie of characters that can be saved in a file, or be presented to a human being. It can be very useful in inter-process communication, as the content in HTTP requests, as a message, etc.
+
+All above formats can be, almost with no effort, converted from one format to the other. With Python this would be just by loading from the source format into a dict, and saving to the target format.
+
+``` py
+import yaml
+
+
+print(yaml.dump(d))
+```
+
+```
+a: 3
+b:
+  c: hello
+```
+
+Interesting to know that objects in Python have an accessor attribute *\_\_dict\_\_* that can be a good starting point for serialization.
+
+``` py
+class A:
+    def __init__(self, name: str, age: int):
+        self.name = name
+        self.age = age
+        
+    def can_drive(self) -> bool:
+        return self.age >= 18
+
+
+my_a = A("Jaakov", 16)
+
+my_a.__dict__
+```
+
+```
+{'name': 'Jaakov', 'age': 16}
+```
