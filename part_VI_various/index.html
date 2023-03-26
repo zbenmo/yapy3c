@@ -693,11 +693,15 @@ At any case an open file is associated with an OS resource or a handle, and it i
 </span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>    <span class="n">fh</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Here&#39;s my mobile&quot;</span><span class="p">)</span>
 </span></code></pre></div>
 <p>We "entered" the context manager of the file. When we left (as of the indentation), the file was closed automatically.
-If you have multiple files, for example you implement a filter that reads from one file and writes to another file, you can either indent even more, or also use commas in a single 'with' expression, as follows:</p>
+Note the usage of the <strong>with</strong> statement.</p>
+<p>If you have multiple files, for example you implement a filter that reads from one file and writes to another file, you can either indent even more, or also use commas in a single 'with' expression, as follows:</p>
 <div class="language-py highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;my_file.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fh</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;my_out_file.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fh_w</span><span class="p">:</span>
 </span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">fh</span><span class="p">:</span>
 </span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>        <span class="n">fh_w</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
 </span></code></pre></div>
+<p>Context managers can may be available on additional "resource" kind objects.
+For example database connections.
+You can also create additional classes that support the context manager protocol and can be used in a 'with' statement.</p>
 <h2 id="global-nonlocal">global, nonlocal</h2>
 <p>Most of our variables should be local. What does it mean to be 'local'? Variables that are assigned in a function exist from the time they are defined till the end of the function's execution (when the function returns).</p>
 <div class="language-py highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
