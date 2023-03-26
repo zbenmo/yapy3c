@@ -256,6 +256,8 @@ with open("my_file.txt", "a") as fh:
 ```
 
 We "entered" the context manager of the file. When we left (as of the indentation), the file was closed automatically.
+Note the usage of the **with** statement.
+
 If you have multiple files, for example you implement a filter that reads from one file and writes to another file, you can either indent even more, or also use commas in a single 'with' expression, as follows:
 
 ``` py
@@ -263,6 +265,10 @@ with open("my_file.txt", "r") as fh, open("my_out_file.txt", "w") as fh_w:
     for line in fh:
         fh_w.write(line)
 ```
+
+Context managers can may be available on additional "resource" kind objects.
+For example database connections.
+You can also create additional classes that support the context manager protocol and can be used in a 'with' statement.
 
 ## global, nonlocal
 
