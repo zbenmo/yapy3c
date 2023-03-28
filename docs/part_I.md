@@ -105,6 +105,24 @@ print(a, b)
 
 ```[7, 2, 3] [1, 2, 3]```
 
+The content of a list can be updated, for example like the following:
+
+``` py
+a = [1, 2, 3]
+print(hex(id(a))) # printing the address of the object (in hex)
+a[:2] = [4]
+print(a)
+print(hex(id(a)))
+```
+
+```
+0x7f05e06e28c0
+[4, 3]
+0x7f05e06e28c0
+```
+
+BTW, ‘#’ and then text is a comment, and can be used in a program to help the reader follow the logic. ‘#’ can start after some other code, and from there it is a comment.
+
 A list can be of mixed types, and also nested:
 
 ``` py
@@ -414,8 +432,6 @@ list(reversed('gadol'))
 ``` py
 # but for a string, we’ll get the list of characters (reversed).
 ```
-
-BTW, ‘#’ and then text is a comment, and can be used in a program to help the reader follow the logic. ‘#’ can start after some other code, and from there it is a comment.
 
 Strings, have some functionality that we’ve not explored before, for example:
 

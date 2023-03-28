@@ -1,0 +1,1 @@
+print("hi from my app", __name__)

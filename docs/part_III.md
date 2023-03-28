@@ -30,6 +30,14 @@ And yet it is serving as a comment for the programmer, and for tools that help u
 Those strings are called **docstrings**. 
 There is no issue in introducing those strings at the beginning of a function. You can introduce any expression anywhere you want in your program, this expression may be evaluated (depending on the program's control flow), and the program shall continue to the next expression (given that the expression does not raise an exception etc.). Having a string as the first expression had a special meaning and this convention is well integrated in the language and ecosystem.
 
+One can also access those strings programmaticaly:
+
+``` py
+scan.__doc__
+```
+
+``` "Does something interesting with the arguments passed to it in the parameters 'a', 'b', and 'c'" ```
+
 We note that 'range' can accept more than one argument. When two arguments are given, the first is the starting point, and the second is the value beyond the last value in the range. So 'range(3)' is equivalent to 'range(0, 3)'.
 
 We see a nested loop above. Note that importance of indentation. We must be exact with our indentation. When we return to a previous level, we should be in the exact column of the desired level. For example in line *7* the 'print' happens outside the *add* loop.
@@ -39,14 +47,15 @@ BTW, a string (any strings) can be given in multiple lines, when it is wrapped w
 ``` py
 def deep_neural_network(how_deep):
   """
-This function constructs a DNN based on your specification
-Please take into consideration the benefits of a deep network,
-versus the downsides."""
+  This function constructs a DNN based on your specification
+  Please take into consideration the benefits of a deep network,
+  versus the downsides.
+  """
 
   pass
 ```
 
-Above, I defined a function, yet gave no implementation. I used 'pass' to indicate I have no implementation (at least for now). We need to add 'pass' to make the indentation clear. If we omit it, and start new expressions at the same indentation of the function's definition, the interpreter would complain that we forgot indentation.
+Above, I defined a function, yet gave no implementation. I used **pass** to indicate I have no implementation (at least for now). We need to add 'pass' to make the indentation clear. If we omit it, and start new expressions at the same indentation of the function's definition, the interpreter would complain that we forgot indentation.
 
 We can still call our function, exactly as expected, with:
 
@@ -76,6 +85,8 @@ Type:      function
 
 We've already seen 'list's, 'dict's, and 'tuple's. Let's add to this winning team also 'set's.
 
+## Sets
+
 ``` py
 s1 = set("hello")
 s2 = set("bye")
@@ -99,6 +110,8 @@ nodes_visited_by_now = {'A', 'B', 'C'}
 If you wish to assign an empty set to a variable, use 'set()', as an empty brackets '{}' will be interpreted with an empty dict.
 
 A lot of times, just by using those built-in containers you can achieve very complicated functionality. We will also learn in next parts to create our own classes (object oriented), yet most of your code can often be realized with the basic constructs, types, and containers, available for free in the language, familiar to your fellow programmers, and already tested and optimized for you. Try to avoid cluttering your program with too many new constructs and ideas. This is a least my recommendation, which I picked at the times I was using Ruby and following the Ruby's community. I think it is also very relevant to Python.
+
+## Comprehensions
 
 There are a lot more goodies to learn about Python, we've only scratched the surface. Let's learn about **comprehension**.
 
@@ -239,11 +252,13 @@ def from_roman(roman):
 My logic above was to go from right to left, to add when we see the same value or a bigger value (ex. from **I** to **V**),
 and to subtract when we see a smaller value (ex. from **V** to **I**).
 
-To go from right to left, I've wrapped the input string *roman* with 'reversed'. 'reversed' is an iterable that gives us the items in a reversed order. When accessing my mapping dict, I have used 'get' rather than indexing notation as to avoid an exception when a key is not present. But then I have "manually" raises an exception of type 'ValueError' when we got a character that is not currently supported. Note the **f-string** used when creating the exception. f-strings are a template, and we fill the values in, between currly brackaets, with Python expression. This is very convenient way to format a string.
+To go from right to left, I've wrapped the input string *roman* with 'reversed'. 'reversed' is an iterable that gives us the items in a reversed order. When accessing my mapping dict, I have used 'get' rather than indexing notation as to avoid an exception when a key is not present. But then I have "manually" raises an exception of type 'ValueError' when we got a character that is not currently supported. Note the **f-string** used when creating the exception. f-strings are a template, and we fill the values in, between currly brackts, with Python expression. This is very convenient way to format a string.
 
 The '+=' and '-=' operators are used here and mean the same as is the case in the *C* language. Try to avoid using those special operators when working with complex objects, yet for simple variables of type integer in this example, this should work perfectly.
 
 The reason it may be risky to use '+=' and '-=' with objects is that a lot of times there is not explicit implementation of the operator. Then the operator '+=', as an example, is implicitly converted for example to ```a = a + 1``` which while seems benign actually results in a new object begin assigned to *a* in the example. If some other variable or data structure (for example a dict) used to reference *a* one may believe they have the handle to the up-to-date *a* yet it is not the case. They are probably still referencing the old *a*. Just keep that in mind.
+
+## Doctest
 
 Last thing to notice is that I've added examples in the docstring. This are of the form ``` >>> expression (newline) expected output ```.
 This adds clarity for the intended use, it becomes part of the documentation.
@@ -287,7 +302,9 @@ list(zip(range(3), "abc"))
 
 'zip' is useful in many cases, and you can also use more than two lists (or other iterables).
 
-## Exrecise
+## Exrecise(s)
+
+### Read alternative implementation
 
 I've implemented above *from_roman* with the latest things we've learn. Not sure this implementation is better.
 Up to you to decide. Take from it what you like. Nothing wrong with old good loops. One will often mix and match.
@@ -329,3 +346,13 @@ def from_roman2(roman):
     add_or_sub.append(+1) # right most element is added.
     return sum(v * s for v, s in zip(values, add_or_sub))
 ```
+
+### Removing duplicates from a list
+
+You are given a list. The list contains potential duplicates. Your task is to have the list without the duplicates.
+
+List comprehension? Using a set?  
+Should you create a new list or modify the existing list?  
+In your implementation, do you guarantee to preserve the order of the (unique) elements?
+
+Let's show-and-tell. Let's compare our various possible solutions and approaches.

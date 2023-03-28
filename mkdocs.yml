@@ -30,3 +30,6 @@ nav:
   - part_V_OO.md
   - part_VI_various.md
   - part_VII_pd.md
+  - part_VIII_ecosystem_and_packaging.md
+  - part_IX_pytest_black_flake8.md
+  - part_X_flask.md

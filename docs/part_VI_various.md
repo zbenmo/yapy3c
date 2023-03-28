@@ -229,6 +229,55 @@ f1.calls, f2.calls
 
 Note that *counted* can be used as a utility function decorator in additional places, and that we're making use of '*args' and '**kwargs' that were mentioned above. We add here that in order to pass those further to a function that expects the individual parameters, we also use '\*' and '\*\*' in the call (line 4).
 
+There is a small observation that we need to pay attention to.
+
+``` py
+@counted
+def f3(x, y, a):
+    """This functions returns the 'mixture' of 'x' and 'y',
+    'a' parts 'x' and (1 - a) 'y'"""  
+    
+    assert 0 <= a <= 1 # yes we can do that in Python
+    return x * a + y * (1 - a)
+
+
+print(f3.__doc__)
+```
+
+``` None ```
+
+What just happened? Where is our docstring?
+
+'f3' is not anymore what we think it is. 'f3' is "wrapped".  
+To "fix" that we can do, for example, as follows (see line 5 below).
+
+``` py linenums="1"
+import functools
+
+
+def counted(f):
+    @functools.wraps(f)
+    def wrapped(*args, **kwargs):
+        wrapped.calls += 1
+        return f(*args, **kwargs)
+    wrapped.calls = 0
+    return wrapped
+
+
+@counted
+def f3(x, y, a):
+    """This functions returns the 'mixture' of 'x' and 'y',
+    'a' parts 'x' and (1 - a) 'y'"""  
+    
+    assert 0 <= a <= 1 # yes we can do that in Python
+    return x * a + y * (1 - a)
+
+
+print(f3.__doc__)
+```
+
+``` This functions returns the 'mixture' of 'x' and 'y', 'a' parts 'x' and (1 - a) 'y' ```
+
 ## Context Managers
 
 When we open a file for reading or for manipulation, we probably want to close the file when done with it. There are multiple reasons why to 'close' at the end. Maybe by keeping the file open, another program cannot access the file as we are "holding" it. Then, potentially some of our activity is still only cached and if we want it be reflected in the file, we have to 'flush' or to 'close' the file.
@@ -246,7 +295,7 @@ fh.close()
 
 ``` E.T. phone home ```
 
-Above ('!cat ..') was done in a jupyter notebook and is a shell command line execution.
+Above ('!cat ..') was done in a jupyter notebook and is a shell command-line execution.
 
 A better way to achieve above would be:
 
@@ -255,7 +304,7 @@ with open("my_file.txt", "a") as fh:
     fh.write("\nHere's my mobile")
 ```
 
-We "entered" the context manager of the file. When we left (as of the indentation), the file was closed automatically.
+We "entered" the context manager of the file. When we "exited" (as of the indentation), the file was closed automatically.
 Note the usage of the **with** statement.
 
 If you have multiple files, for example you implement a filter that reads from one file and writes to another file, you can either indent even more, or also use commas in a single 'with' expression, as follows:
