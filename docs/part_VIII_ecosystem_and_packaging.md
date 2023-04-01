@@ -31,12 +31,12 @@ Above we have imported the module 'pandas' and gave it the short-hand convention
 In our namespace we've added the symbol 'pd' that happens to be a module.
 
 Then we've imported from the (sub)module numpy.random everything that is available.
-Using an asteriks is not recommended as we've lost track of what we've brought,
-and we'll confuse ourselves and our friends with refering to items that we don't remember from which module they are.
+Using an asterisk is not recommended as we've lost track of what we've brought,
+and we'll confuse ourselves and our friends with referring to items that we don't remember from which module they are.
 In a quick, temporary, notebook session, you are welcome to use this "fetch all" import.
 
-The last example with 'tqdm', is actualy okay. The custom is to import the module, as we've done with 'pd' and to refer to classes and functions by adding (note the dot) 'pd.' infront of them, for example ```pd.DataFrame()```.  
-If you know that you only need one specific thing out of the module, and you know that the name of the functionality you are using is self-explenatory, then, at least by my standards, this is okay.
+The last example with 'tqdm', is actually okay. The custom is to import the module, as we've done with 'pd' and to refer to classes and functions by adding (note the dot) 'pd.' in front of them, for example ```pd.DataFrame()```.  
+If you know that you only need one specific thing out of the module, and you know that the name of the functionality you are using is self-explanatory, then, at least by my standards, this is okay.
 'tqdm' is a useful utility to see progress bar:
 
 ``` py
@@ -71,7 +71,7 @@ It is okay to confuse a little among those terms.
 
 As mentioned already above, a package is a standard way to wrap modules and additional relevant files, add some metadata, and publish the work (internally or Open Source), to be available to consumption (installation).
 
-A package will often have **dependecies**. Our package shall not contain modules from packages that we've used, but rather indicate the need for those packages. When we install, for example with *pip* (package installer for Python), *conda*, or maybe *poetry*, the tool (say *pip*) shall fetch the dependencies from the web for example from [pypi.org](https://pypi.org/)
+A package will often have **dependencies**. Our package shall not contain modules from packages that we've used, but rather indicate the need for those packages. When we install, for example with *pip* (package installer for Python), *conda*, or maybe *poetry*, the tool (say *pip*) shall fetch the dependencies from the web for example from [pypi.org](https://pypi.org/)
 
 ```
 pip install numpy
@@ -94,7 +94,7 @@ A library is a cross language, or maybe OS related, concept, that means about th
 
 If you happen to "accidently" refer to a package as a 'library', no harm was done.
 
-Packages have versions. This is a way to indicate progress, compatability, changes in the interface.
+Packages have versions. This is a way to indicate progress, compatibility, changes in the interface.
 When you use a package (install it in your environment, or add it as a dependency of your code),
 you can indicate that you are okay with the "latest and greatest", or that you actually need a specific version.
 
@@ -288,7 +288,7 @@ Required-by:
 
 - Now we need a flask application. We'll create for example, 'app.py' and add some contents from an example.
 
-Please note that the installation of 'Flask' also added a commnand to our environment.
+Please note that the installation of 'Flask' also added a command to our environment.
 
 ```
 which flask
@@ -305,7 +305,7 @@ For me it is found here:
 flask --app app.py run
 ```
 
-- Now add all necesasry files to git, then ```git commit -m "initial version"``` for example, (and potentially push to Github).
+- Now add all necessary files to git, then ```git commit -m "initial version"``` for example, (and potentially push to Github).
 
 We had only one Python module (the 'app.py' file). Nothing prevents us from adding additional modules that may be imported from 'app.py'.
 We can also add package requirements to 'requirements.txt' and issue again ```pip install -r requirements.txt```.
@@ -323,7 +323,7 @@ python3 -m venv venv
 pip install -r requirements.txt
 ```
 
-Others may wish to work in their existing virtual environment (or even their global Python environment), and issue immediatly:
+Others may wish to work in their existing virtual environment (or even their global Python environment), and issue immediately:
 
 ```
 pip install -r requirements.txt
@@ -331,7 +331,7 @@ pip install -r requirements.txt
 
 Some may want to use other tools, for example, Poetry for the task.
 
-Note that since the virtual environment mechanism was not part of the repository, each of us can pick his/her favorite way.
+Note that since the virtual environment mechanism was not part of the repository, each of us can pick his/her favourite way.
 
 Also note that it is possible to share a single (git) repository among multiple projects.
 There are advantages for each way.
@@ -396,9 +396,12 @@ __version__ = "0.0.1"
 __all__ = ["to_numpy_arr"]
 ```
 
-I wanted to make 'to_numpy_arr' functionality available directly from the 'tiny' package. '\_\_version\_\_' will be linked and available also in the metadata of the package.
+I wanted to make 'to_numpy_arr' functionality available directly from the 'tiny' package.
+This is done with the '\_\_all\_\_' list variable.  
+'\_\_version\_\_' will be linked and available also in the metadata of the package (see below in 'setup.cfg').
 
-I have a 'doctest' for the module. I have also added a "external" test. This external test will be added to the repository yet will not be included in the package.
+I have a 'doctest' for the module. I have also added an "external" test.
+This external test will be added to the repository yet will not be included in the package.
 
 ``` title="test.py"
 import tiny
@@ -416,7 +419,7 @@ if __name__ == "__main__":
 
 We are almost there. We still need either 'setup.py' (the old way of packaging),
 or 'setup.cfg' + 'pyproject.toml' (a newer way to package).
-I've choosen the second way.
+I've chosen the second way.
 
 ``` title="setup.cfg"
 [metadata]
@@ -530,7 +533,7 @@ that should not influence us.
 
 In 'tiny' with just added a requirement to 'numpy' (any version). That is not a good practice. We've tested 'tiny' with a specific 'numpy' version, maybe with a previous version or with a future version, our code does not work?
 
-It is a good practive to add the version we've used.
+It is a good practice to require the specific version we've used.
 If I run ```pip freeze | grep numpy``` I get ```numpy==1.24.2```.
 We should say that ```numpy >= 1.24.2, < 1.25``` should be okay.
 We've allowed more 'numpy' versions than the one we've used. '1.24.3' should also be okay according to our specification.
@@ -542,4 +545,4 @@ When this happens, check with the user of your package what 'numpy' he/she have 
 Check yourself what happens when you have this 'numpy' version with your package, and decide what is the right remedy. 
 
 In some situations, as of regulatory requirements, you may be asked to list all the dependencies of your software (Open Source and other) and the versions used.
-As far as I can tell, listing the top level of your dependencies is good enough (no need to follow dependencies of your dependencies, if I am not mistaken. Check that with your accompaning regulatory officer).
+As far as I can tell, listing the top level of your dependencies is good enough (no need to follow dependencies of your dependencies, if I am not mistaken. Check that with your accompanying regulatory officer).
