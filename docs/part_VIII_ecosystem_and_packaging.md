@@ -67,7 +67,7 @@ So a package is just a collection of modules. Another interpretation is that whi
 (or some functionality from a module), we install packages (that bring with them modules).
 It is okay to confuse a little between those terms.
 
-## Packages
+## Installable Packages
 
 As mentioned already above, a package is a standard way to wrap modules and additional relevant files, add some metadata, and publish the work (internally or Open Source), to be available to consumption (installation).
 
@@ -293,6 +293,34 @@ Required-by:
 - remember to add 'requirements.txt` to the repository with ```git add requirements.txt```. This text file we do want to keep.
 
 - Now we need a flask application. We'll create for example, 'app.py' and add some contents from an example.
+
+``` py title='app.py'
+from flask import Flask, render_template
+
+
+app = Flask(__name__)
+
+
+@app.route("/<name>")
+def hello_world(name):
+    return render_template('hello.html', name=name)
+```
+
+``` html title="templates/hello.html"
+<!doctype html>
+<html>
+<head>
+<title>Hello from Flask</title> 
+</head>
+<body>
+{% if name %}
+  <h1>Hello {{ name }}!</h1>
+{% else %}
+  <h1>Hello, World!</h1>
+{% endif %}  
+</body>
+</html>
+```
 
 Please note that the installation of 'Flask' also added a command to our environment.
 
@@ -535,7 +563,7 @@ and you believe you've found a bug, you may attempt to solve it by:
 
 - Fork the Github repository of the package.
 
-- Clone (your) relevant github repository into your laptop.
+- Clone (your) relevant Github repository into your laptop.
 
 - ```pip install -e .``` in the just cloned repository (note you are using the Python virtual environment of your project).
 
@@ -578,12 +606,13 @@ As far as I can tell, listing the top level of your dependencies is good enough 
 ## Docker
 
 The last thing I want to bring here is a little philosophical.
-Most likely we'll all going to use Docker these days this way or another.
+Most likely we'll all going to use Docker these days, that way or another.  
 Does it mean that some of the mechanism above are redundant and we can decide not to make use of them?
 
 My feeling is that it is a good thing to have all above mechanisms and also Docker.
-Each mechnism help us "wrap" our development/deployment software in another layer of "trust". Each helps us achieve reproducability and reliability.
+Each mechnism helps us to "wrap" and "isolate" our development / deployment software in another layer of "trust". Each helps us achieve reproducability and reliability.
 
-When you have a Docker image, the image may have some Python functionality before you join with your softare, tools, and processes. By introducing a Python virtual environment, you know that your code shall be happy, while the other things that happen in the containers are as the designer of the image / container wanted.
+When you have a Docker image, the image may have some Python functionality before you join with your software, tools, and processes. By introducing a Python virtual environment, you know that your code shall be happy, while the other things that happen in the containers are as the designer of the image / container wanted.
 
-You can give someone a Docker image, in which you've already installed the right Python packages and other dependencies. Then this user can run a container with your software and never worry about git repositories, Python packages, versions, dependencies, etc. But you as the maintainer of the code, will most likely need to go from time to time and create a new version of the Docker image, and there you will be probably happier if you have the mechanisms above to keep your sanity.
+You can give someone a Docker image, in which you've already installed the right Python packages and other dependencies. Then this user can run a container with your software and never worry about git repositories, Python packages, versions, dependencies, etc.  
+You as the maintainer of the code, will most likely need from time to time to create a new version of the Docker image, and there you will be probably happier if you have the mechanisms above to keep your sanity.

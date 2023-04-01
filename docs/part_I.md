@@ -409,7 +409,7 @@ my_reverse([3, 4, 5])
 
 Note, the implementation of the above function, is based on the function itself. This kind of implementation is called **recursion**. Recursion is a bit more advanced way of writing stuff, but sometimes it is actually simpler. If using recursion, pay attention to a **stopping condition**. The problems should become simpler and simpler, and in the final steps, you should return a simple value, as was the case above when the string was short and its reverse is actually the same value.
 
-I’ve checked the builtin ‘reversed’ function. It behaves a little differently for a list, or for a string.
+I’ve checked the builtin ‘reversed’ function. It behaves a little differently for a list, than for a string.
 
 ``` py
 list(reversed([1,2,3]))
