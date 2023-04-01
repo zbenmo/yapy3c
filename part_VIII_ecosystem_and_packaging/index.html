@@ -1,0 +1,949 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../part_VII_pd/">
+      
+      
+        <link rel="next" href="../part_IX_pytest_black_flake8/">
+      
+      <link rel="icon" href="../images/yapy3c.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.1">
+    
+    
+      
+        <title>Part VIII - Ecosystem and Packaging - YAPY3C</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.402914a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.a0c5b2b5.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Ubuntu";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="darkblue" data-md-color-accent="orange">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#part-viii-ecosystem-and-packaging" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="YAPY3C" class="md-header__button md-logo" aria-label="YAPY3C" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19.5 17H18c1.1 0 2-.9 2-2s-.9-2-2-2V9c0-1 0-2-1.08-2.86.05-.21.08-.42.08-.64C17 3.57 15 2 12.5 2c-2.26 0-4.12 1.31-4.43 3H6L3.71 2.79 3 3.5l2 2-2 2 .71.71L6 6h2.07c.31 1.69 2.17 3 4.43 3 .5 0 1-.08 1.43-.2.04.07.07.14.07.2v4H8c-1.1 0-2 .9-2 2s.9 2 2 2H6.5A2.5 2.5 0 0 0 4 19.5c0 .17 0 .34.05.5H4c-1.1 0-2 .9-2 2h17.5a2.5 2.5 0 0 0 0-5M12 5c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            YAPY3C
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Part VIII - Ecosystem and Packaging
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="YAPY3C" class="md-nav__button md-logo" aria-label="YAPY3C" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19.5 17H18c1.1 0 2-.9 2-2s-.9-2-2-2V9c0-1 0-2-1.08-2.86.05-.21.08-.42.08-.64C17 3.57 15 2 12.5 2c-2.26 0-4.12 1.31-4.43 3H6L3.71 2.79 3 3.5l2 2-2 2 .71.71L6 6h2.07c.31 1.69 2.17 3 4.43 3 .5 0 1-.08 1.43-.2.04.07.07.14.07.2v4H8c-1.1 0-2 .9-2 2s.9 2 2 2H6.5A2.5 2.5 0 0 0 4 19.5c0 .17 0 .34.05.5H4c-1.1 0-2 .9-2 2h17.5a2.5 2.5 0 0 0 0-5M12 5c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1Z"/></svg>
+
+    </a>
+    YAPY3C
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Welcome to Yet Another Python3 Course (YAPY3C)
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../part_I/" class="md-nav__link">
+        Part I
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../part_II_np/" class="md-nav__link">
+        Part II (numpy)
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../part_III/" class="md-nav__link">
+        Part III
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../part_IV/" class="md-nav__link">
+        Part IV
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../part_V_OO/" class="md-nav__link">
+        Part V
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../part_VI_various/" class="md-nav__link">
+        Part VI
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../part_VII_pd/" class="md-nav__link">
+        Part VII (pandas)
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Part VIII - Ecosystem and Packaging
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Part VIII - Ecosystem and Packaging
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#modules" class="md-nav__link">
+    Modules
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#packages" class="md-nav__link">
+    Packages
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#virtual-environments" class="md-nav__link">
+    Virtual Environments
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version-control-repositories-probably-git" class="md-nav__link">
+    Version Control Repositories (probably 'git')
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#publishing-a-package-rather-than-a-git-repository" class="md-nav__link">
+    Publishing a package rather than a (git) repository
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-few-words-on-packages-versions-and-dependencies" class="md-nav__link">
+    A few words on packages' versions and dependencies
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../part_IX_pytest_black_flake8/" class="md-nav__link">
+        Part IX
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../part_X_flask/" class="md-nav__link">
+        Part X
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#modules" class="md-nav__link">
+    Modules
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#packages" class="md-nav__link">
+    Packages
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#virtual-environments" class="md-nav__link">
+    Virtual Environments
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version-control-repositories-probably-git" class="md-nav__link">
+    Version Control Repositories (probably 'git')
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#publishing-a-package-rather-than-a-git-repository" class="md-nav__link">
+    Publishing a package rather than a (git) repository
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-few-words-on-packages-versions-and-dependencies" class="md-nav__link">
+    A few words on packages' versions and dependencies
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="part-viii-ecosystem-and-packaging">Part VIII - Ecosystem and Packaging</h1>
+<p>We've seen already the concept of a module, from Python's standard library, or one from a package that we've installed in our environment.
+Also related concept is a "namespace". Let's try to make some sense with those concepts.</p>
+<h2 id="modules">Modules</h2>
+<p>A module is a (Python) file containing Python code. As simple as that.
+We can import a module from another module. We can execute a module as a script from the command line.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>python my_app.py
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>python -m my_app
+</span></code></pre></div>
+<p>We often have multiple modules (Python files).
+We'll make our life easier by organizing those into directories (Operating-System folders).<br />
+When we have a directory (and potentially subdirectories) with Python files (modules),
+this is getting closer to become a Python package. </p>
+<p>To make it into a package, what is left is to introduce <strong>__init__.py</strong> in each directory.
+The __init__.py file is often empty, yet it is still required.</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">from</span> <span class="nn">numpy.random</span> <span class="kn">import</span> <span class="o">*</span> <span class="c1"># please avoid</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span> <span class="c1"># okay</span>
+</span></code></pre></div>
+<p>Above we have imported the module 'pandas' and gave it the short-hand convention 'pd'.
+In our namespace we've added the symbol 'pd' that happens to be a module.</p>
+<p>Then we've imported from the (sub)module numpy.random everything that is available.
+Using an asteriks is not recommended as we've lost track of what we've brought,
+and we'll confuse ourselves and our friends with refering to items that we don't remember from which module they are.
+In a quick, temporary, notebook session, you are welcome to use this "fetch all" import.</p>
+<p>The last example with 'tqdm', is actualy okay. The custom is to import the module, as we've done with 'pd' and to refer to classes and functions by adding (note the dot) 'pd.' infront of them, for example <code>pd.DataFrame()</code>.<br />
+If you know that you only need one specific thing out of the module, and you know that the name of the functionality you are using is self-explenatory, then, at least by my standards, this is okay.
+'tqdm' is a useful utility to see progress bar:</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">a</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">)):</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:00&lt;00:00, 1181494.08it/s]
+</span></code></pre></div>
+<p>Just a recap. Note the addition of 'pd' to the items in the namespace.</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="nb">print</span><span class="p">(</span><span class="nb">dir</span><span class="p">())</span>
+</span></code></pre></div>
+<p><code>['__annotations__', '__builtins__', '__cached__', '__doc__', '__file__', '__loader__', '__name__', '__package__', '__spec__', 'pd']</code></p>
+<p>When we install a package, the relevant files are added to our Python environment.
+There they can be found by the Python execution-time, and also by our development tools to provide tips and completions.</p>
+<p>So a package is just a collection of modules. Another interpretation is that while we import modules in our Python code,
+(or some functionality from a module), we install packages (that bring with them modules).
+It is okay to confuse a little among those terms.</p>
+<h2 id="packages">Packages</h2>
+<p>As mentioned already above, a package is a standard way to wrap modules and additional relevant files, add some metadata, and publish the work (internally or Open Source), to be available to consumption (installation).</p>
+<p>A package will often have <strong>dependecies</strong>. Our package shall not contain modules from packages that we've used, but rather indicate the need for those packages. When we install, for example with <em>pip</em> (package installer for Python), <em>conda</em>, or maybe <em>poetry</em>, the tool (say <em>pip</em>) shall fetch the dependencies from the web for example from <a href="https://pypi.org/">pypi.org</a></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>pip install numpy
+</span></code></pre></div>
+<p>Above we've installed the package 'numpy'. The module 'numpy' share the name with its package.
+It is not always the case that the module has the same name as the relevant package. For example:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>pip install opencv-python
+</span></code></pre></div>
+<p>But then:</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kn">import</span> <span class="nn">cv2</span>
+</span></code></pre></div>
+<p>A library is a cross language, or maybe OS related, concept, that means about the same as a package. For example, if you install a Python package for computer vision, or for graphics, it may bring with it, additional libraries, that are needed (and were for example developed in <em>C++</em> and compiled/linked into an installable OS library.)</p>
+<p>If you happen to "accidently" refer to a package as a 'library', no harm was done.</p>
+<p>Packages have versions. This is a way to indicate progress, compatability, changes in the interface.
+When you use a package (install it in your environment, or add it as a dependency of your code),
+you can indicate that you are okay with the "latest and greatest", or that you actually need a specific version.</p>
+<p>The version is a string with a trivial "lexicographic" order interpretation.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>pip show pandas
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>Name: pandas
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>Version: 1.5.3
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>Summary: Powerful data structures for data analysis, time series, and statistics
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>Home-page: https://pandas.pydata.org
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>Author: The Pandas Development Team
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>Author-email: pandas-dev@python.org
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>License: BSD-3-Clause
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>Location: /home/oren/projects/yapy3c/venv/lib/python3.8/site-packages
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>Requires: python-dateutil, numpy, pytz
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>Required-by:
+</span></code></pre></div>
+<p>One option to "dive" deeper and see the dependencies versions:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>pip install johnnydep
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>johnnydep pandas
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>2023-03-27 12:57:53 [info     ] init johnnydist                [johnnydep.lib] dist=pandas parent=None
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>2023-03-27 12:57:55 [info     ] init johnnydist                [johnnydep.lib] dist=numpy&gt;=1.20.3 parent=pandas
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>2023-03-27 12:57:59 [info     ] init johnnydist                [johnnydep.lib] dist=python-dateutil&gt;=2.8.1 parent=pandas
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>2023-03-27 12:58:00 [info     ] init johnnydist                [johnnydep.lib] dist=pytz&gt;=2020.1 parent=pandas
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>2023-03-27 12:58:01 [info     ] init johnnydist                [johnnydep.lib] dist=six&gt;=1.5 parent=python-dateutil&gt;=2.8.1
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>name                        summary
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>--------------------------  -----------------------------------------------------------------------
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>pandas                      Powerful data structures for data analysis, time series, and statistics
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>├── numpy&gt;=1.20.3           Fundamental package for array computing in Python
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>├── python-dateutil&gt;=2.8.1  Extensions to the standard Python datetime module
+</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>│   └── six&gt;=1.5            Python 2 and 3 compatibility utilities
+</span><span id="__span-11-12"><a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a>└── pytz&gt;=2020.1            World timezone definitions, modern and historical
+</span></code></pre></div>
+<p>Also useful <code>pip freeze | grep pandas</code> or any other package you're interested to find the current installed version.</p>
+<h2 id="virtual-environments">Virtual Environments</h2>
+<p>We keep installing stuff, how do we know that we don't break previous functionality that we had with other projects?
+It is a good practice to have a separate Python environment for different projects.
+You can use for each of the environments even a different Python version.
+When you create the environment, you should use the "right" Python version.
+Then you activate the environment and you have some protection against breaking the installation of other projects,
+and that you or someone else break your installation.</p>
+<p>There are multiple tools to achieve above.
+'Poetry' and 'Conda' among others. If no specific preference, try first the standard 'venv' module:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>python3 -m venv venv
+</span></code></pre></div>
+<p>Here we choose the name 'venv' to our newly created virtual environment.</p>
+<p>On <strong>Linux</strong> (bash), we would then do:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>source ./venv/bin/activate
+</span></code></pre></div>
+<p>And one can verify the (bash) environment variable:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>env | grep VIRTUAL
+</span></code></pre></div>
+<p><code>VIRTUAL_ENV=/home/oren/projects/yapy3c/venv</code></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>tree -L 1 venv
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>venv
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>├── LICENSE
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>├── bin
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>├── etc
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>├── include
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>├── lib
+</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>├── lib64 -&gt; lib
+</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>├── pyvenv.cfg
+</span><span id="__span-16-9"><a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>└── share
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>which pip
+</span></code></pre></div>
+<p><code>/home/oren/projects/yapy3c/venv/bin/pip</code></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>ls venv/lib/python3.8
+</span></code></pre></div>
+<p><code>site-packages</code></p>
+<p>On <strong>Windows</strong> (PS):</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>.\env\Scripts\activate
+</span></code></pre></div>
+<p>Verify (PS)</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>dir env: | out-string -stream | select-string VIRTUAL
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>_OLD_VIRTUAL_PATH              C:\Python310\Scripts\;C:\Python310\;C:\Perl64\bin;C:\Users\zbenm\AppData\Roaming\Acti...
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>VIRTUAL_ENV                    C:\Users\zbenm\projects\sols_challenge\env
+</span></code></pre></div>
+<p>We can then verify the version of Python, and the versions of our installed packages ('pip show' as above).</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>python --version
+</span></code></pre></div>
+<p><code>Python 3.10.8</code></p>
+<h2 id="version-control-repositories-probably-git">Version Control Repositories (probably 'git')</h2>
+<p>I assume here that you are familiar with the concept of version control and that you are using git.</p>
+<p>Let's say I'm using Github, and want to work on a new project in Python, that shall use Flask.</p>
+<ul>
+<li>
+<p>I'll start by creating a new repository on Github. Alternatively one can just create a new local folder for the project, for example, <code>../projects/my_flask_based_web</code> and <code>git init</code> there.</p>
+</li>
+<li>
+<p>Let's continue with the Github example. When we create the new repository we're given the option to add a README.md file and .gitignore file. We'll add .gitignore and let Github know that we're planning to use Python.</p>
+</li>
+<li>
+<p>We'll clone our new Github repository under our "projects" directory.</p>
+</li>
+<li>
+<p>We'll change directory into the just cloned repository.</p>
+</li>
+<li>
+<p>It make sense now to have here a Python virtual environment. Alternatively one can "share" virtual environments among projects. It is up to you.</p>
+</li>
+<li>
+<p>We'll choose to create a new virtual environment.</p>
+</li>
+</ul>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>python3 -m venv venv
+</span></code></pre></div>
+<p>We're using here 'venv' (rather than the many other ways to create a virtual environment).</p>
+<p>Let's see what is the <code>git status</code>.</p>
+<p>Interesting enough the new directory 'venv' is not shown as a new directory. This is thanks to the contents of '.gitignore', if this is not the case for you, consider adding a line to your '.gitignore' with the directory with your virtual environment. We usually don't add the virtual environment to the git repository.</p>
+<ul>
+<li>
+<p>Let's make sure to activate now the virtual environment.</p>
+</li>
+<li>
+<p>We want to install, in the example, Flask. Instead of quickly <code>pip install Flask</code> let's create a new text file 'requirements.txt' and add one line "Flask". Then we can do:</p>
+</li>
+</ul>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>pip install -r requirements.txt
+</span></code></pre></div>
+<p>Let's check:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>pip show Flask
+</span></code></pre></div>
+<p>For me is showed:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>Name: Flask
+</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>Version: 2.2.3
+</span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>Summary: A simple framework for building complex web applications.
+</span><span id="__span-26-4"><a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a>Home-page: https://palletsprojects.com/p/flask
+</span><span id="__span-26-5"><a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a>Author: Armin Ronacher
+</span><span id="__span-26-6"><a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a>Author-email: armin.ronacher@active-4.com
+</span><span id="__span-26-7"><a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a>License: BSD-3-Clause
+</span><span id="__span-26-8"><a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a>Location: /home/oren/projects/try_flask/venv/lib/python3.8/site-packages
+</span><span id="__span-26-9"><a id="__codelineno-26-9" name="__codelineno-26-9" href="#__codelineno-26-9"></a>Requires: Jinja2, importlib-metadata, Werkzeug, click, itsdangerous
+</span><span id="__span-26-10"><a id="__codelineno-26-10" name="__codelineno-26-10" href="#__codelineno-26-10"></a>Required-by:
+</span></code></pre></div>
+<ul>
+<li>
+<p>remember to add 'requirements.txt` to the repository with <code>git add requirements.txt</code>. This text file we do want to keep.</p>
+</li>
+<li>
+<p>Now we need a flask application. We'll create for example, 'app.py' and add some contents from an example.</p>
+</li>
+</ul>
+<p>Please note that the installation of 'Flask' also added a commnand to our environment.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>which flask
+</span></code></pre></div>
+<p>For me it is found here:</p>
+<p><div class="language-text highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>/home/oren/projects/try_flask/venv/bin/flask
+</span></code></pre></div>
+- Run the application.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>flask --app app.py run
+</span></code></pre></div>
+<ul>
+<li>Now add all necesasry files to git, then <code>git commit -m "initial version"</code> for example, (and potentially push to Github).</li>
+</ul>
+<p>We had only one Python module (the 'app.py' file). Nothing prevents us from adding additional modules that may be imported from 'app.py'.
+We can also add package requirements to 'requirements.txt' and issue again <code>pip install -r requirements.txt</code>.</p>
+<p>Static files and templates can also be created and added to the directory and to the git repository.</p>
+<p>When our colleagues want to have access to the project and potentially join the efforts, we give them a link to the Github repository.
+We also remind them that they need to install the required packages before trying the application.
+This can be documented also, for example, in the README.md file.</p>
+<p>Some of our colleagues will follow you, and do as follows:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>python3 -m venv venv
+</span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>pip install -r requirements.txt
+</span></code></pre></div>
+<p>Others may wish to work in their existing virtual environment (or even their global Python environment), and issue immediatly:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>pip install -r requirements.txt
+</span></code></pre></div>
+<p>Some may want to use other tools, for example, Poetry for the task.</p>
+<p>Note that since the virtual environment mechanism was not part of the repository, each of us can pick his/her favorite way.</p>
+<p>Also note that it is possible to share a single (git) repository among multiple projects.
+There are advantages for each way.
+For example, if each project has its own repository, the projects can advance each in its own pace.
+Less confusion and interdependencies.
+On the other way, if we have multiple (team related) projects in the same repository,
+then the team members are aware of each other work and can iteratively "code review", catch early miscommunications etc. </p>
+<p>It is up to the team to decide what works for the team the best.</p>
+<p>Each of us on his laptop could have a single Python virtual environment for all the projects,
+or a separate Python virtual environment in each project directory.</p>
+<p>Again, up to you to decide what makes sense in your settings and constraints.</p>
+<h2 id="publishing-a-package-rather-than-a-git-repository">Publishing a package rather than a (git) repository</h2>
+<p>Above, "trying Flask", is a top-level project. Our "sharing mechanism" was the version control.</p>
+<p>There are projects that we want to allow others to install in their existing environments,
+so that they can import the functionality from our modules in their own code, without cloning our repository first, or maybe with cloning, but then without being part of the repository maintainers, but rather being "users" of our package.</p>
+<p>We're not far from achieving above. Let's have another project.
+This time our project, let's call it 'tiny', will be a utility package for the use of the previous "trying Flask" project, potentially also for additional projects.</p>
+<p>I've created a new git repository, intended for Python. I've created a new virtual environment and made sure it is activated and there is where I'm working.</p>
+<p>I've started the same, I have a 'requirements.txt' file in which I list 'numpy' as I know I'm going to use it next. I've installed the requirements with <code>pip install -r requirements.txt</code> and started to edit my 'tiny' package.</p>
+<p>The directory where I'm working (the git repository) is named 'tiny_package'. This is how I've named the new repository. But The actual modules I'll have under the (one level deeper) directory 'tiny'. My 'tiny' package shall accept variable number of arguments, and shall return a matching 'numpy array'. This is the functionality I'll introduce.</p>
+<p>Under the directory 'tiny' I'll have a Python module (a Python file) 'mat_math.py', and also the required '__init__.py'.
+Below is the content of the files:</p>
+<div class="language-text highlight"><span class="filename">tiny/mat_math.py</span><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>import numpy as np
+</span><span id="__span-32-2"><a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>
+</span><span id="__span-32-3"><a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a>
+</span><span id="__span-32-4"><a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a>def to_numpy_arr(*args: int) -&gt; &quot;np.ndarray[int]&quot;:
+</span><span id="__span-32-5"><a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a>    &quot;&quot;&quot;
+</span><span id="__span-32-6"><a id="__codelineno-32-6" name="__codelineno-32-6" href="#__codelineno-32-6"></a>    This function takes a variable amount of argument and
+</span><span id="__span-32-7"><a id="__codelineno-32-7" name="__codelineno-32-7" href="#__codelineno-32-7"></a>    returns the matching numpy array
+</span><span id="__span-32-8"><a id="__codelineno-32-8" name="__codelineno-32-8" href="#__codelineno-32-8"></a>
+</span><span id="__span-32-9"><a id="__codelineno-32-9" name="__codelineno-32-9" href="#__codelineno-32-9"></a>    &gt;&gt;&gt; to_numpy_arr(1, 2, 3)
+</span><span id="__span-32-10"><a id="__codelineno-32-10" name="__codelineno-32-10" href="#__codelineno-32-10"></a>    array([1, 2, 3])
+</span><span id="__span-32-11"><a id="__codelineno-32-11" name="__codelineno-32-11" href="#__codelineno-32-11"></a>    &quot;&quot;&quot;
+</span><span id="__span-32-12"><a id="__codelineno-32-12" name="__codelineno-32-12" href="#__codelineno-32-12"></a>    return np.array(args)
+</span><span id="__span-32-13"><a id="__codelineno-32-13" name="__codelineno-32-13" href="#__codelineno-32-13"></a>
+</span><span id="__span-32-14"><a id="__codelineno-32-14" name="__codelineno-32-14" href="#__codelineno-32-14"></a>
+</span><span id="__span-32-15"><a id="__codelineno-32-15" name="__codelineno-32-15" href="#__codelineno-32-15"></a>if __name__ == &quot;__main__&quot;:
+</span><span id="__span-32-16"><a id="__codelineno-32-16" name="__codelineno-32-16" href="#__codelineno-32-16"></a>    import doctest
+</span><span id="__span-32-17"><a id="__codelineno-32-17" name="__codelineno-32-17" href="#__codelineno-32-17"></a>
+</span><span id="__span-32-18"><a id="__codelineno-32-18" name="__codelineno-32-18" href="#__codelineno-32-18"></a>    doctest.testmod()
+</span></code></pre></div>
+<div class="language-text highlight"><span class="filename">tiny/__init__.py</span><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>from .mat_math import to_numpy_arr
+</span><span id="__span-33-2"><a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>
+</span><span id="__span-33-3"><a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a>__version__ = &quot;0.0.1&quot;
+</span><span id="__span-33-4"><a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a>
+</span><span id="__span-33-5"><a id="__codelineno-33-5" name="__codelineno-33-5" href="#__codelineno-33-5"></a>
+</span><span id="__span-33-6"><a id="__codelineno-33-6" name="__codelineno-33-6" href="#__codelineno-33-6"></a>__all__ = [&quot;to_numpy_arr&quot;]
+</span></code></pre></div>
+<p>I wanted to make 'to_numpy_arr' functionality available directly from the 'tiny' package. '__version__' will be linked and available also in the metadata of the package.</p>
+<p>I have a 'doctest' for the module. I have also added a "external" test. This external test will be added to the repository yet will not be included in the package.</p>
+<div class="language-text highlight"><span class="filename">test.py</span><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>import tiny
+</span><span id="__span-34-2"><a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>
+</span><span id="__span-34-3"><a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a>
+</span><span id="__span-34-4"><a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a>def test1():
+</span><span id="__span-34-5"><a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a>    print(&quot;test1&quot;)
+</span><span id="__span-34-6"><a id="__codelineno-34-6" name="__codelineno-34-6" href="#__codelineno-34-6"></a>    assert tiny.to_numpy_arr(1, 7).sum() == 8
+</span><span id="__span-34-7"><a id="__codelineno-34-7" name="__codelineno-34-7" href="#__codelineno-34-7"></a>    print(&quot;test1 passed&quot;)
+</span><span id="__span-34-8"><a id="__codelineno-34-8" name="__codelineno-34-8" href="#__codelineno-34-8"></a>
+</span><span id="__span-34-9"><a id="__codelineno-34-9" name="__codelineno-34-9" href="#__codelineno-34-9"></a>
+</span><span id="__span-34-10"><a id="__codelineno-34-10" name="__codelineno-34-10" href="#__codelineno-34-10"></a>if __name__ == &quot;__main__&quot;:
+</span><span id="__span-34-11"><a id="__codelineno-34-11" name="__codelineno-34-11" href="#__codelineno-34-11"></a>    test1()
+</span></code></pre></div>
+<p>We are almost there. We still need either 'setup.py' (the old way of packaging),
+or 'setup.cfg' + 'pyproject.toml' (a newer way to package).
+I've choosen the second way.</p>
+<div class="language-text highlight"><span class="filename">setup.cfg</span><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>[metadata]
+</span><span id="__span-35-2"><a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a>name = tiny
+</span><span id="__span-35-3"><a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a>version = attr: tiny.__version__
+</span><span id="__span-35-4"><a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a>author = Oren Zeev-Ben-Mordehai
+</span><span id="__span-35-5"><a id="__codelineno-35-5" name="__codelineno-35-5" href="#__codelineno-35-5"></a>author_email = zbenmo@gmail.com
+</span><span id="__span-35-6"><a id="__codelineno-35-6" name="__codelineno-35-6" href="#__codelineno-35-6"></a>url = https://github.com/zbenmo/tiny_package
+</span><span id="__span-35-7"><a id="__codelineno-35-7" name="__codelineno-35-7" href="#__codelineno-35-7"></a>description = for use in a tutorial
+</span><span id="__span-35-8"><a id="__codelineno-35-8" name="__codelineno-35-8" href="#__codelineno-35-8"></a>long_description = file: README.md
+</span><span id="__span-35-9"><a id="__codelineno-35-9" name="__codelineno-35-9" href="#__codelineno-35-9"></a>long_description_content_type = text/markdown
+</span><span id="__span-35-10"><a id="__codelineno-35-10" name="__codelineno-35-10" href="#__codelineno-35-10"></a>keywords = Reinforcement Learning, Framework, Integration
+</span><span id="__span-35-11"><a id="__codelineno-35-11" name="__codelineno-35-11" href="#__codelineno-35-11"></a>license_files = LICENSE.txt
+</span><span id="__span-35-12"><a id="__codelineno-35-12" name="__codelineno-35-12" href="#__codelineno-35-12"></a>classifiers =
+</span><span id="__span-35-13"><a id="__codelineno-35-13" name="__codelineno-35-13" href="#__codelineno-35-13"></a>    Intended Audience :: Developers
+</span><span id="__span-35-14"><a id="__codelineno-35-14" name="__codelineno-35-14" href="#__codelineno-35-14"></a>    Intended Audience :: Science/Research
+</span><span id="__span-35-15"><a id="__codelineno-35-15" name="__codelineno-35-15" href="#__codelineno-35-15"></a>    Programming Language :: Python :: 3
+</span><span id="__span-35-16"><a id="__codelineno-35-16" name="__codelineno-35-16" href="#__codelineno-35-16"></a>    Programming Language :: Python :: 3.7
+</span><span id="__span-35-17"><a id="__codelineno-35-17" name="__codelineno-35-17" href="#__codelineno-35-17"></a>    Programming Language :: Python :: 3.8
+</span><span id="__span-35-18"><a id="__codelineno-35-18" name="__codelineno-35-18" href="#__codelineno-35-18"></a>    Programming Language :: Python :: 3.9
+</span><span id="__span-35-19"><a id="__codelineno-35-19" name="__codelineno-35-19" href="#__codelineno-35-19"></a>    License :: OSI Approved :: MIT License
+</span><span id="__span-35-20"><a id="__codelineno-35-20" name="__codelineno-35-20" href="#__codelineno-35-20"></a>    Topic :: Scientific/Engineering
+</span><span id="__span-35-21"><a id="__codelineno-35-21" name="__codelineno-35-21" href="#__codelineno-35-21"></a>    Topic :: Scientific/Engineering :: Artificial Intelligence
+</span><span id="__span-35-22"><a id="__codelineno-35-22" name="__codelineno-35-22" href="#__codelineno-35-22"></a>
+</span><span id="__span-35-23"><a id="__codelineno-35-23" name="__codelineno-35-23" href="#__codelineno-35-23"></a>[options]
+</span><span id="__span-35-24"><a id="__codelineno-35-24" name="__codelineno-35-24" href="#__codelineno-35-24"></a>packages = find:
+</span><span id="__span-35-25"><a id="__codelineno-35-25" name="__codelineno-35-25" href="#__codelineno-35-25"></a>zip_safe = True
+</span><span id="__span-35-26"><a id="__codelineno-35-26" name="__codelineno-35-26" href="#__codelineno-35-26"></a>include_package_data = True
+</span><span id="__span-35-27"><a id="__codelineno-35-27" name="__codelineno-35-27" href="#__codelineno-35-27"></a>install_requires =
+</span><span id="__span-35-28"><a id="__codelineno-35-28" name="__codelineno-35-28" href="#__codelineno-35-28"></a>    numpy
+</span><span id="__span-35-29"><a id="__codelineno-35-29" name="__codelineno-35-29" href="#__codelineno-35-29"></a>
+</span><span id="__span-35-30"><a id="__codelineno-35-30" name="__codelineno-35-30" href="#__codelineno-35-30"></a>[options.package_data]
+</span><span id="__span-35-31"><a id="__codelineno-35-31" name="__codelineno-35-31" href="#__codelineno-35-31"></a>* = README.md
+</span></code></pre></div>
+<div class="language-text highlight"><span class="filename">pyproject.toml</span><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>[build-system]
+</span><span id="__span-36-2"><a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>requires = [
+</span><span id="__span-36-3"><a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a>    &quot;setuptools&gt;=42&quot;,
+</span><span id="__span-36-4"><a id="__codelineno-36-4" name="__codelineno-36-4" href="#__codelineno-36-4"></a>    &quot;wheel&quot;
+</span><span id="__span-36-5"><a id="__codelineno-36-5" name="__codelineno-36-5" href="#__codelineno-36-5"></a>]
+</span></code></pre></div>
+<p>I've issued the following command:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-37-1"><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>pip install -e .
+</span></code></pre></div>
+<p>This commands tells 'pip' to install the package from the current directory in "development" mode.</p>
+<p>If you got an error:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-38-1"><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>ERROR: File &quot;setup.py&quot; not found. Directory cannot be installed in editable mode: /home/oren/projects/tiny_package
+</span><span id="__span-38-2"><a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a>(A &quot;pyproject.toml&quot; file was found, but editable mode currently requires a setup.py based build.)
+</span></code></pre></div>
+<p>Issue: <code>pip install -U pip</code>, and try again <code>pip install -e .</code>.</p>
+<p>I've verified my external test with:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-39-1"><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>python test.py
+</span></code></pre></div>
+<p>Note: 'requirements.txt' is not needed any more here. We could have <code>pip uninstall numpy</code>, and <code>pip install -e .</code> would have brought 'numpy' again as it is a dependency of 'tiny' project. 'requirements.txt' can be removed from git if was previously added (here in the 'tiny_package' repository.). We do want to add to the repository 'test.py', 'setup.cfg', 'pyproject.toml', and the Python files.</p>
+<p>To build the package, we can use <code>pip install build</code> and issue <code>python -m build</code>.
+to publish the build package for example to 'pypi.org' we can use <code>pip install twine</code> and issue something like <code>python -m twine upload --repository pypi dist/*</code> (we'll need an account for this on 'pypi.org').</p>
+<p>We'll skip the build and the publishing. Instead we'll install the new 'tiny' package also in the other Python virtual environment used for playing with Flask.</p>
+<p>If you wish you can first commit the changes to the 'tiny_package' repository.</p>
+<p>Let's switch to the Python virtual environment used for the Flask experiments.
+We'll introduce a new dependency, a one of the 'tiny' package.
+Declaring the dependency should be done in 'requirements.txt' there.
+We'll make another shortcut for now.</p>
+<ul>
+<li>
+<p>While in the Python virtual environment of the Flask project, navigate to the directory with the 'tiny_package' repository.</p>
+</li>
+<li>
+<p>Make sure you <strong>do not</strong> activate the Python virtual environment there but are still with the virtual environment from the Flask project.</p>
+</li>
+<li>
+<p><code>pip install -e .</code> This will install the 'tiny' package now in the current Python virtual environment used for the Flask project.</p>
+</li>
+</ul>
+<p>In the Flask project, I've added the following "endpoint":</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-40-1"><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="o">..</span>
+</span><span id="__span-40-2"><a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a><span class="kn">import</span> <span class="nn">tiny</span>
+</span><span id="__span-40-3"><a id="__codelineno-40-3" name="__codelineno-40-3" href="#__codelineno-40-3"></a>
+</span><span id="__span-40-4"><a id="__codelineno-40-4" name="__codelineno-40-4" href="#__codelineno-40-4"></a><span class="o">..</span>
+</span><span id="__span-40-5"><a id="__codelineno-40-5" name="__codelineno-40-5" href="#__codelineno-40-5"></a>
+</span><span id="__span-40-6"><a id="__codelineno-40-6" name="__codelineno-40-6" href="#__codelineno-40-6"></a><span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;/try_tiny/&lt;int:first&gt;&#39;</span><span class="p">)</span>
+</span><span id="__span-40-7"><a id="__codelineno-40-7" name="__codelineno-40-7" href="#__codelineno-40-7"></a><span class="k">def</span> <span class="nf">try_tiny</span><span class="p">(</span><span class="n">first</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+</span><span id="__span-40-8"><a id="__codelineno-40-8" name="__codelineno-40-8" href="#__codelineno-40-8"></a>    <span class="n">ret</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">tiny</span><span class="o">.</span><span class="n">to_numpy_arr</span><span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">first</span><span class="p">,</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">first</span><span class="p">))</span>
+</span><span id="__span-40-9"><a id="__codelineno-40-9" name="__codelineno-40-9" href="#__codelineno-40-9"></a>    <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">ret</span><span class="p">))</span>
+</span></code></pre></div>
+<p>The code receives an int, 'first' and returns a "JSON" list with 'first', 'first' multiplied by 2, and 'first' multiplied by 3.</p>
+<p>I needed to convert the 'numpy' array into a list, and the items to 'int' from 'numpy.int32' as the "jsonify" functionality does not know to work with 'numpy'.</p>
+<h2 id="a-few-words-on-packages-versions-and-dependencies">A few words on packages' versions and dependencies</h2>
+<p>Our original project for experimenting with 'Flask' did not need 'numpy'. Let's keep it like that.
+The fact that 'tiny' brought with it 'numpy' is just fine.
+If in a future version 'tiny' will drop that dependency or upgrade the requirement to a higher 'numpy' version,
+that should not influence us.</p>
+<p>In 'tiny' with just added a requirement to 'numpy' (any version). That is not a good practice. We've tested 'tiny' with a specific 'numpy' version, maybe with a previous version or with a future version, our code does not work?</p>
+<p>It is a good practive to add the version we've used.
+If I run <code>pip freeze | grep numpy</code> I get <code>numpy==1.24.2</code>.
+We should say that <code>numpy &gt;= 1.24.2, &lt; 1.25</code> should be okay.
+We've allowed more 'numpy' versions than the one we've used. '1.24.3' should also be okay according to our specification.
+There is a convention, that if a "breaking change" is introduced the version must be incremented in the second position.</p>
+<p>Remember that those are conventions and bugs can still crawl in.
+On the other hand, in many situations it is okay to be a bit "lazy" and just wait till someone complains.
+When this happens, check with the user of your package what 'numpy' he/she have in their Python virtual environment.
+Check yourself what happens when you have this 'numpy' version with your package, and decide what is the right remedy. </p>
+<p>In some situations, as of regulatory requirements, you may be asked to list all the dependencies of your software (Open Source and other) and the versions used.
+As far as I can tell, listing the top level of your dependencies is good enough (no need to follow dependencies of your dependencies, if I am not mistaken. Check that with your accompaning regulatory officer).</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.b78d2936.min.js"></script>
+      
+    
+  </body>
+</html>
