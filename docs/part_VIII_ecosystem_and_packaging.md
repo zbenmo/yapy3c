@@ -65,13 +65,17 @@ There they can be found by the Python execution-time, and also by our developmen
 
 So a package is just a collection of modules. Another interpretation is that while we import modules in our Python code,
 (or some functionality from a module), we install packages (that bring with them modules).
-It is okay to confuse a little among those terms.
+It is okay to confuse a little between those terms.
 
 ## Packages
 
 As mentioned already above, a package is a standard way to wrap modules and additional relevant files, add some metadata, and publish the work (internally or Open Source), to be available to consumption (installation).
 
-A package will often have **dependencies**. Our package shall not contain modules from packages that we've used, but rather indicate the need for those packages. When we install, for example with *pip* (package installer for Python), *conda*, or maybe *poetry*, the tool (say *pip*) shall fetch the dependencies from the web for example from [pypi.org](https://pypi.org/)
+A package often have **dependencies**.
+Our package shall not contain a copy of the modules from packages that we want to use,
+but rather indicate the need for those packages.
+When we install, for example with *pip* (package installer for Python), *conda*, or maybe *poetry*,
+the tool (say *pip*) shall fetch the dependencies for example from [pypi.org](https://pypi.org/)
 
 ```
 pip install numpy
@@ -90,7 +94,9 @@ But then:
 import cv2
 ```
 
-A library is a cross language, or maybe OS related, concept, that means about the same as a package. For example, if you install a Python package for computer vision, or for graphics, it may bring with it, additional libraries, that are needed (and were for example developed in *C++* and compiled/linked into an installable OS library.)
+A library is a cross-language, or maybe OS-related, concept, that means about the same as a package.
+For example, if you install a Python package for computer vision, or for graphics, it may bring with it, additional libraries,
+that are needed (and were for example developed in *C++* and compiled/linked into an installable OS library.)
 
 If you happen to "accidently" refer to a package as a 'library', no harm was done.
 
