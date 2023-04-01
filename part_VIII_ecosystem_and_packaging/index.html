@@ -549,10 +549,14 @@ If you know that you only need one specific thing out of the module, and you kno
 There they can be found by the Python execution-time, and also by our development tools to provide tips and completions.</p>
 <p>So a package is just a collection of modules. Another interpretation is that while we import modules in our Python code,
 (or some functionality from a module), we install packages (that bring with them modules).
-It is okay to confuse a little among those terms.</p>
+It is okay to confuse a little between those terms.</p>
 <h2 id="packages">Packages</h2>
 <p>As mentioned already above, a package is a standard way to wrap modules and additional relevant files, add some metadata, and publish the work (internally or Open Source), to be available to consumption (installation).</p>
-<p>A package will often have <strong>dependencies</strong>. Our package shall not contain modules from packages that we've used, but rather indicate the need for those packages. When we install, for example with <em>pip</em> (package installer for Python), <em>conda</em>, or maybe <em>poetry</em>, the tool (say <em>pip</em>) shall fetch the dependencies from the web for example from <a href="https://pypi.org/">pypi.org</a></p>
+<p>A package often have <strong>dependencies</strong>.
+Our package shall not contain a copy of the modules from packages that we want to use,
+but rather indicate the need for those packages.
+When we install, for example with <em>pip</em> (package installer for Python), <em>conda</em>, or maybe <em>poetry</em>,
+the tool (say <em>pip</em>) shall fetch the dependencies for example from <a href="https://pypi.org/">pypi.org</a></p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>pip install numpy
 </span></code></pre></div>
 <p>Above we've installed the package 'numpy'. The module 'numpy' share the name with its package.
@@ -562,7 +566,9 @@ It is not always the case that the module has the same name as the relevant pack
 <p>But then:</p>
 <div class="language-py highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kn">import</span> <span class="nn">cv2</span>
 </span></code></pre></div>
-<p>A library is a cross language, or maybe OS related, concept, that means about the same as a package. For example, if you install a Python package for computer vision, or for graphics, it may bring with it, additional libraries, that are needed (and were for example developed in <em>C++</em> and compiled/linked into an installable OS library.)</p>
+<p>A library is a cross-language, or maybe OS-related, concept, that means about the same as a package.
+For example, if you install a Python package for computer vision, or for graphics, it may bring with it, additional libraries,
+that are needed (and were for example developed in <em>C++</em> and compiled/linked into an installable OS library.)</p>
 <p>If you happen to "accidently" refer to a package as a 'library', no harm was done.</p>
 <p>Packages have versions. This is a way to indicate progress, compatibility, changes in the interface.
 When you use a package (install it in your environment, or add it as a dependency of your code),
