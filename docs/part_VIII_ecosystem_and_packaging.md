@@ -530,6 +530,23 @@ The code receives an int, 'first' and returns a "JSON" list with 'first', 'first
 
 I needed to convert the 'numpy' array into a list, and the items to 'int' from 'numpy.int32' as the "jsonify" functionality does not know to work with 'numpy'.
 
+If you are using someone's else package, say an Open Source that is maintained in the example on Github,
+and you believe you've found a bug, you may attempt to solve it by:
+
+- Fork the Github repository of the package.
+
+- Clone (your) relevant github repository into your laptop.
+
+- ```pip install -e .``` in the just cloned repository (note you are using the Python virtual environment of your project).
+
+- If all above succeeded you can now attempt to fix the bug.
+
+- If you have a fix, add the changes and commit, then push to your Github repository, and open a PR.
+
+- You now have to keep track of the status of that project / Python package. Your code is working, subject that the fix is present.
+You currently have the fix only in your clone of the original repository. Till it is accepted and updated on pypi.org, you have to keep working with your own copy. This delays also the availability of your project / package for others.  
+You do have the option to require the specific point of the package, from the commit in your repository. Read more on [Stack Overlow](https://stackoverflow.com/a/16584935/1614089).
+
 ## A few words on packages' versions and dependencies
 
 Our original project for experimenting with 'Flask' did not need 'numpy'. Let's keep it like that.
@@ -550,5 +567,23 @@ On the other hand, in many situations it is okay to be a bit "lazy" and just wai
 When this happens, check with the user of your package what 'numpy' he/she have in their Python virtual environment.
 Check yourself what happens when you have this 'numpy' version with your package, and decide what is the right remedy. 
 
+What happens when your project needs ```numpy < 1.25``` while a dependencie of your project, say 'pandas' needs ```numpy >= 1.26```?
+You'll have to investigate. Maybe you can allow also for 'numpy' version '1.26', potentially by modifying a little your code?
+Maybe the dependency 'pandas' has a previous version that can live with ```numpy < 1.25``` and is still good for your project,
+then just require that version of the dependency 'pandas', for example (fictional) ```pandas >= 2.3.0, < 2.3.6```. Sometimes it is more drastic and you'll need to break your project into two processes or use other packages. May the odds be ever in your favour.  
+
 In some situations, as of regulatory requirements, you may be asked to list all the dependencies of your software (Open Source and other) and the versions used.
 As far as I can tell, listing the top level of your dependencies is good enough (no need to follow dependencies of your dependencies, if I am not mistaken. Check that with your accompanying regulatory officer).
+
+## Docker
+
+The last thing I want to bring here is a little philosophical.
+Most likely we'll all going to use Docker these days this way or another.
+Does it mean that some of the mechanism above are redundant and we can decide not to make use of them?
+
+My feeling is that it is a good thing to have all above mechanisms and also Docker.
+Each mechnism help us "wrap" our development/deployment software in another layer of "trust". Each helps us achieve reproducability and reliability.
+
+When you have a Docker image, the image may have some Python functionality before you join with your softare, tools, and processes. By introducing a Python virtual environment, you know that your code shall be happy, while the other things that happen in the containers are as the designer of the image / container wanted.
+
+You can give someone a Docker image, in which you've already installed the right Python packages and other dependencies. Then this user can run a container with your software and never worry about git repositories, Python packages, versions, dependencies, etc. But you as the maintainer of the code, will most likely need to go from time to time and create a new version of the Docker image, and there you will be probably happier if you have the mechanisms above to keep your sanity.
