@@ -391,36 +391,6 @@
   
 
     
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../part_IX_pytest_black_flake8/" class="md-nav__link">
-        Part IX
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../part_X_flask/" class="md-nav__link">
-        Part X
-      </a>
-    </li>
-  
-
-    
   </ul>
 </nav>
                   </div>
@@ -734,7 +704,7 @@ We got here two loop variables, <em>k</em> and <em>v</em>, as the function <em>i
 <div class="language-text highlight"><pre><span></span><code><span id="__span-44-1"><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a>[5, 4, 3]
 </span></code></pre></div>
 <p>Note, the implementation of the above function, is based on the function itself. This kind of implementation is called <strong>recursion</strong>. Recursion is a bit more advanced way of writing stuff, but sometimes it is actually simpler. If using recursion, pay attention to a <strong>stopping condition</strong>. The problems should become simpler and simpler, and in the final steps, you should return a simple value, as was the case above when the string was short and its reverse is actually the same value.</p>
-<p>I’ve checked the builtin ‘reversed’ function. It behaves a little differently for a list, or for a string.</p>
+<p>I’ve checked the builtin ‘reversed’ function. It behaves a little differently for a list, than for a string.</p>
 <div class="language-py highlight"><pre><span></span><code><span id="__span-45-1"><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a><span class="nb">list</span><span class="p">(</span><span class="nb">reversed</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]))</span>
 </span></code></pre></div>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-46-1"><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a>[3, 2, 1]

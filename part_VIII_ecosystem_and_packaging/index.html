@@ -12,8 +12,6 @@
         <link rel="prev" href="../part_VII_pd/">
       
       
-        <link rel="next" href="../part_IX_pytest_black_flake8/">
-      
       <link rel="icon" href="../images/yapy3c.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.1">
     
@@ -349,8 +347,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#packages" class="md-nav__link">
-    Packages
+  <a href="#installable-packages" class="md-nav__link">
+    Installable Packages
   </a>
   
 </li>
@@ -398,36 +396,6 @@
   
 
     
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../part_IX_pytest_black_flake8/" class="md-nav__link">
-        Part IX
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../part_X_flask/" class="md-nav__link">
-        Part X
-      </a>
-    </li>
-  
-
-    
   </ul>
 </nav>
                   </div>
@@ -462,8 +430,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#packages" class="md-nav__link">
-    Packages
+  <a href="#installable-packages" class="md-nav__link">
+    Installable Packages
   </a>
   
 </li>
@@ -564,7 +532,7 @@ There they can be found by the Python execution-time, and also by our developmen
 <p>So a package is just a collection of modules. Another interpretation is that while we import modules in our Python code,
 (or some functionality from a module), we install packages (that bring with them modules).
 It is okay to confuse a little between those terms.</p>
-<h2 id="packages">Packages</h2>
+<h2 id="installable-packages">Installable Packages</h2>
 <p>As mentioned already above, a package is a standard way to wrap modules and additional relevant files, add some metadata, and publish the work (internally or Open Source), to be available to consumption (installation).</p>
 <p>A package often have <strong>dependencies</strong>.
 Our package shall not contain a copy of the modules from packages that we want to use,
@@ -731,14 +699,38 @@ and that you or someone else break your installation.</p>
 <p>Now we need a flask application. We'll create for example, 'app.py' and add some contents from an example.</p>
 </li>
 </ul>
+<div class="language-py highlight"><span class="filename">app.py</span><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">render_template</span>
+</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>
+</span><span id="__span-27-3"><a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a>
+</span><span id="__span-27-4"><a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+</span><span id="__span-27-5"><a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a>
+</span><span id="__span-27-6"><a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a>
+</span><span id="__span-27-7"><a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/&lt;name&gt;&quot;</span><span class="p">)</span>
+</span><span id="__span-27-8"><a id="__codelineno-27-8" name="__codelineno-27-8" href="#__codelineno-27-8"></a><span class="k">def</span> <span class="nf">hello_world</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+</span><span id="__span-27-9"><a id="__codelineno-27-9" name="__codelineno-27-9" href="#__codelineno-27-9"></a>    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;hello.html&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-html highlight"><span class="filename">templates/hello.html</span><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="cp">&lt;!doctype html&gt;</span>
+</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+</span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+</span><span id="__span-28-4"><a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a><span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Hello from Flask<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span> 
+</span><span id="__span-28-5"><a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a><span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+</span><span id="__span-28-6"><a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+</span><span id="__span-28-7"><a id="__codelineno-28-7" name="__codelineno-28-7" href="#__codelineno-28-7"></a>{% if name %}
+</span><span id="__span-28-8"><a id="__codelineno-28-8" name="__codelineno-28-8" href="#__codelineno-28-8"></a>  <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Hello {{ name }}!<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+</span><span id="__span-28-9"><a id="__codelineno-28-9" name="__codelineno-28-9" href="#__codelineno-28-9"></a>{% else %}
+</span><span id="__span-28-10"><a id="__codelineno-28-10" name="__codelineno-28-10" href="#__codelineno-28-10"></a>  <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Hello, World!<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+</span><span id="__span-28-11"><a id="__codelineno-28-11" name="__codelineno-28-11" href="#__codelineno-28-11"></a>{% endif %}  
+</span><span id="__span-28-12"><a id="__codelineno-28-12" name="__codelineno-28-12" href="#__codelineno-28-12"></a><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</span><span id="__span-28-13"><a id="__codelineno-28-13" name="__codelineno-28-13" href="#__codelineno-28-13"></a><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</span></code></pre></div>
 <p>Please note that the installation of 'Flask' also added a command to our environment.</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>which flask
+<div class="language-text highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>which flask
 </span></code></pre></div>
 <p>For me it is found here:</p>
-<p><div class="language-text highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>/home/oren/projects/try_flask/venv/bin/flask
+<p><div class="language-text highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>/home/oren/projects/try_flask/venv/bin/flask
 </span></code></pre></div>
 - Run the application.</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>flask --app app.py run
+<div class="language-text highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>flask --app app.py run
 </span></code></pre></div>
 <ul>
 <li>Now add all necessary files to git, then <code>git commit -m "initial version"</code> for example, (and potentially push to Github).</li>
@@ -750,11 +742,11 @@ We can also add package requirements to 'requirements.txt' and issue again <code
 We also remind them that they need to install the required packages before trying the application.
 This can be documented also, for example, in the README.md file.</p>
 <p>Some of our colleagues will follow you, and do as follows:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>python3 -m venv venv
-</span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>pip install -r requirements.txt
+<div class="language-text highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>python3 -m venv venv
+</span><span id="__span-32-2"><a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>pip install -r requirements.txt
 </span></code></pre></div>
 <p>Others may wish to work in their existing virtual environment (or even their global Python environment), and issue immediately:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>pip install -r requirements.txt
+<div class="language-text highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>pip install -r requirements.txt
 </span></code></pre></div>
 <p>Some may want to use other tools, for example, Poetry for the task.</p>
 <p>Note that since the virtual environment mechanism was not part of the repository, each of us can pick his/her favourite way.</p>
@@ -779,101 +771,101 @@ This time our project, let's call it 'tiny', will be a utility package for the u
 <p>The directory where I'm working (the git repository) is named 'tiny_package'. This is how I've named the new repository. But The actual modules I'll have under the (one level deeper) directory 'tiny'. My 'tiny' package shall accept variable number of arguments, and shall return a matching 'numpy array'. This is the functionality I'll introduce.</p>
 <p>Under the directory 'tiny' I'll have a Python module (a Python file) 'mat_math.py', and also the required '__init__.py'.
 Below is the content of the files:</p>
-<div class="language-text highlight"><span class="filename">tiny/mat_math.py</span><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>import numpy as np
-</span><span id="__span-32-2"><a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>
-</span><span id="__span-32-3"><a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a>
-</span><span id="__span-32-4"><a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a>def to_numpy_arr(*args: int) -&gt; &quot;np.ndarray[int]&quot;:
-</span><span id="__span-32-5"><a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a>    &quot;&quot;&quot;
-</span><span id="__span-32-6"><a id="__codelineno-32-6" name="__codelineno-32-6" href="#__codelineno-32-6"></a>    This function takes a variable amount of argument and
-</span><span id="__span-32-7"><a id="__codelineno-32-7" name="__codelineno-32-7" href="#__codelineno-32-7"></a>    returns the matching numpy array
-</span><span id="__span-32-8"><a id="__codelineno-32-8" name="__codelineno-32-8" href="#__codelineno-32-8"></a>
-</span><span id="__span-32-9"><a id="__codelineno-32-9" name="__codelineno-32-9" href="#__codelineno-32-9"></a>    &gt;&gt;&gt; to_numpy_arr(1, 2, 3)
-</span><span id="__span-32-10"><a id="__codelineno-32-10" name="__codelineno-32-10" href="#__codelineno-32-10"></a>    array([1, 2, 3])
-</span><span id="__span-32-11"><a id="__codelineno-32-11" name="__codelineno-32-11" href="#__codelineno-32-11"></a>    &quot;&quot;&quot;
-</span><span id="__span-32-12"><a id="__codelineno-32-12" name="__codelineno-32-12" href="#__codelineno-32-12"></a>    return np.array(args)
-</span><span id="__span-32-13"><a id="__codelineno-32-13" name="__codelineno-32-13" href="#__codelineno-32-13"></a>
-</span><span id="__span-32-14"><a id="__codelineno-32-14" name="__codelineno-32-14" href="#__codelineno-32-14"></a>
-</span><span id="__span-32-15"><a id="__codelineno-32-15" name="__codelineno-32-15" href="#__codelineno-32-15"></a>if __name__ == &quot;__main__&quot;:
-</span><span id="__span-32-16"><a id="__codelineno-32-16" name="__codelineno-32-16" href="#__codelineno-32-16"></a>    import doctest
-</span><span id="__span-32-17"><a id="__codelineno-32-17" name="__codelineno-32-17" href="#__codelineno-32-17"></a>
-</span><span id="__span-32-18"><a id="__codelineno-32-18" name="__codelineno-32-18" href="#__codelineno-32-18"></a>    doctest.testmod()
+<div class="language-text highlight"><span class="filename">tiny/mat_math.py</span><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>import numpy as np
+</span><span id="__span-34-2"><a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>
+</span><span id="__span-34-3"><a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a>
+</span><span id="__span-34-4"><a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a>def to_numpy_arr(*args: int) -&gt; &quot;np.ndarray[int]&quot;:
+</span><span id="__span-34-5"><a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a>    &quot;&quot;&quot;
+</span><span id="__span-34-6"><a id="__codelineno-34-6" name="__codelineno-34-6" href="#__codelineno-34-6"></a>    This function takes a variable amount of argument and
+</span><span id="__span-34-7"><a id="__codelineno-34-7" name="__codelineno-34-7" href="#__codelineno-34-7"></a>    returns the matching numpy array
+</span><span id="__span-34-8"><a id="__codelineno-34-8" name="__codelineno-34-8" href="#__codelineno-34-8"></a>
+</span><span id="__span-34-9"><a id="__codelineno-34-9" name="__codelineno-34-9" href="#__codelineno-34-9"></a>    &gt;&gt;&gt; to_numpy_arr(1, 2, 3)
+</span><span id="__span-34-10"><a id="__codelineno-34-10" name="__codelineno-34-10" href="#__codelineno-34-10"></a>    array([1, 2, 3])
+</span><span id="__span-34-11"><a id="__codelineno-34-11" name="__codelineno-34-11" href="#__codelineno-34-11"></a>    &quot;&quot;&quot;
+</span><span id="__span-34-12"><a id="__codelineno-34-12" name="__codelineno-34-12" href="#__codelineno-34-12"></a>    return np.array(args)
+</span><span id="__span-34-13"><a id="__codelineno-34-13" name="__codelineno-34-13" href="#__codelineno-34-13"></a>
+</span><span id="__span-34-14"><a id="__codelineno-34-14" name="__codelineno-34-14" href="#__codelineno-34-14"></a>
+</span><span id="__span-34-15"><a id="__codelineno-34-15" name="__codelineno-34-15" href="#__codelineno-34-15"></a>if __name__ == &quot;__main__&quot;:
+</span><span id="__span-34-16"><a id="__codelineno-34-16" name="__codelineno-34-16" href="#__codelineno-34-16"></a>    import doctest
+</span><span id="__span-34-17"><a id="__codelineno-34-17" name="__codelineno-34-17" href="#__codelineno-34-17"></a>
+</span><span id="__span-34-18"><a id="__codelineno-34-18" name="__codelineno-34-18" href="#__codelineno-34-18"></a>    doctest.testmod()
 </span></code></pre></div>
-<div class="language-text highlight"><span class="filename">tiny/__init__.py</span><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>from .mat_math import to_numpy_arr
-</span><span id="__span-33-2"><a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>
-</span><span id="__span-33-3"><a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a>__version__ = &quot;0.0.1&quot;
-</span><span id="__span-33-4"><a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a>
-</span><span id="__span-33-5"><a id="__codelineno-33-5" name="__codelineno-33-5" href="#__codelineno-33-5"></a>
-</span><span id="__span-33-6"><a id="__codelineno-33-6" name="__codelineno-33-6" href="#__codelineno-33-6"></a>__all__ = [&quot;to_numpy_arr&quot;]
+<div class="language-text highlight"><span class="filename">tiny/__init__.py</span><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>from .mat_math import to_numpy_arr
+</span><span id="__span-35-2"><a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a>
+</span><span id="__span-35-3"><a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a>__version__ = &quot;0.0.1&quot;
+</span><span id="__span-35-4"><a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a>
+</span><span id="__span-35-5"><a id="__codelineno-35-5" name="__codelineno-35-5" href="#__codelineno-35-5"></a>
+</span><span id="__span-35-6"><a id="__codelineno-35-6" name="__codelineno-35-6" href="#__codelineno-35-6"></a>__all__ = [&quot;to_numpy_arr&quot;]
 </span></code></pre></div>
 <p>I wanted to make 'to_numpy_arr' functionality available directly from the 'tiny' package.
 This is done with the '__all__' list variable.<br />
 '__version__' will be linked and available also in the metadata of the package (see below in 'setup.cfg').</p>
 <p>I have a 'doctest' for the module. I have also added an "external" test.
 This external test will be added to the repository yet will not be included in the package.</p>
-<div class="language-text highlight"><span class="filename">test.py</span><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>import tiny
-</span><span id="__span-34-2"><a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>
-</span><span id="__span-34-3"><a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a>
-</span><span id="__span-34-4"><a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a>def test1():
-</span><span id="__span-34-5"><a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a>    print(&quot;test1&quot;)
-</span><span id="__span-34-6"><a id="__codelineno-34-6" name="__codelineno-34-6" href="#__codelineno-34-6"></a>    assert tiny.to_numpy_arr(1, 7).sum() == 8
-</span><span id="__span-34-7"><a id="__codelineno-34-7" name="__codelineno-34-7" href="#__codelineno-34-7"></a>    print(&quot;test1 passed&quot;)
-</span><span id="__span-34-8"><a id="__codelineno-34-8" name="__codelineno-34-8" href="#__codelineno-34-8"></a>
-</span><span id="__span-34-9"><a id="__codelineno-34-9" name="__codelineno-34-9" href="#__codelineno-34-9"></a>
-</span><span id="__span-34-10"><a id="__codelineno-34-10" name="__codelineno-34-10" href="#__codelineno-34-10"></a>if __name__ == &quot;__main__&quot;:
-</span><span id="__span-34-11"><a id="__codelineno-34-11" name="__codelineno-34-11" href="#__codelineno-34-11"></a>    test1()
+<div class="language-text highlight"><span class="filename">test.py</span><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>import tiny
+</span><span id="__span-36-2"><a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>
+</span><span id="__span-36-3"><a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a>
+</span><span id="__span-36-4"><a id="__codelineno-36-4" name="__codelineno-36-4" href="#__codelineno-36-4"></a>def test1():
+</span><span id="__span-36-5"><a id="__codelineno-36-5" name="__codelineno-36-5" href="#__codelineno-36-5"></a>    print(&quot;test1&quot;)
+</span><span id="__span-36-6"><a id="__codelineno-36-6" name="__codelineno-36-6" href="#__codelineno-36-6"></a>    assert tiny.to_numpy_arr(1, 7).sum() == 8
+</span><span id="__span-36-7"><a id="__codelineno-36-7" name="__codelineno-36-7" href="#__codelineno-36-7"></a>    print(&quot;test1 passed&quot;)
+</span><span id="__span-36-8"><a id="__codelineno-36-8" name="__codelineno-36-8" href="#__codelineno-36-8"></a>
+</span><span id="__span-36-9"><a id="__codelineno-36-9" name="__codelineno-36-9" href="#__codelineno-36-9"></a>
+</span><span id="__span-36-10"><a id="__codelineno-36-10" name="__codelineno-36-10" href="#__codelineno-36-10"></a>if __name__ == &quot;__main__&quot;:
+</span><span id="__span-36-11"><a id="__codelineno-36-11" name="__codelineno-36-11" href="#__codelineno-36-11"></a>    test1()
 </span></code></pre></div>
 <p>We are almost there. We still need either 'setup.py' (the old way of packaging),
 or 'setup.cfg' + 'pyproject.toml' (a newer way to package).
 I've chosen the second way.</p>
-<div class="language-text highlight"><span class="filename">setup.cfg</span><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>[metadata]
-</span><span id="__span-35-2"><a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a>name = tiny
-</span><span id="__span-35-3"><a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a>version = attr: tiny.__version__
-</span><span id="__span-35-4"><a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a>author = Oren Zeev-Ben-Mordehai
-</span><span id="__span-35-5"><a id="__codelineno-35-5" name="__codelineno-35-5" href="#__codelineno-35-5"></a>author_email = zbenmo@gmail.com
-</span><span id="__span-35-6"><a id="__codelineno-35-6" name="__codelineno-35-6" href="#__codelineno-35-6"></a>url = https://github.com/zbenmo/tiny_package
-</span><span id="__span-35-7"><a id="__codelineno-35-7" name="__codelineno-35-7" href="#__codelineno-35-7"></a>description = for use in a tutorial
-</span><span id="__span-35-8"><a id="__codelineno-35-8" name="__codelineno-35-8" href="#__codelineno-35-8"></a>long_description = file: README.md
-</span><span id="__span-35-9"><a id="__codelineno-35-9" name="__codelineno-35-9" href="#__codelineno-35-9"></a>long_description_content_type = text/markdown
-</span><span id="__span-35-10"><a id="__codelineno-35-10" name="__codelineno-35-10" href="#__codelineno-35-10"></a>keywords = Reinforcement Learning, Framework, Integration
-</span><span id="__span-35-11"><a id="__codelineno-35-11" name="__codelineno-35-11" href="#__codelineno-35-11"></a>license_files = LICENSE.txt
-</span><span id="__span-35-12"><a id="__codelineno-35-12" name="__codelineno-35-12" href="#__codelineno-35-12"></a>classifiers =
-</span><span id="__span-35-13"><a id="__codelineno-35-13" name="__codelineno-35-13" href="#__codelineno-35-13"></a>    Intended Audience :: Developers
-</span><span id="__span-35-14"><a id="__codelineno-35-14" name="__codelineno-35-14" href="#__codelineno-35-14"></a>    Intended Audience :: Science/Research
-</span><span id="__span-35-15"><a id="__codelineno-35-15" name="__codelineno-35-15" href="#__codelineno-35-15"></a>    Programming Language :: Python :: 3
-</span><span id="__span-35-16"><a id="__codelineno-35-16" name="__codelineno-35-16" href="#__codelineno-35-16"></a>    Programming Language :: Python :: 3.7
-</span><span id="__span-35-17"><a id="__codelineno-35-17" name="__codelineno-35-17" href="#__codelineno-35-17"></a>    Programming Language :: Python :: 3.8
-</span><span id="__span-35-18"><a id="__codelineno-35-18" name="__codelineno-35-18" href="#__codelineno-35-18"></a>    Programming Language :: Python :: 3.9
-</span><span id="__span-35-19"><a id="__codelineno-35-19" name="__codelineno-35-19" href="#__codelineno-35-19"></a>    License :: OSI Approved :: MIT License
-</span><span id="__span-35-20"><a id="__codelineno-35-20" name="__codelineno-35-20" href="#__codelineno-35-20"></a>    Topic :: Scientific/Engineering
-</span><span id="__span-35-21"><a id="__codelineno-35-21" name="__codelineno-35-21" href="#__codelineno-35-21"></a>    Topic :: Scientific/Engineering :: Artificial Intelligence
-</span><span id="__span-35-22"><a id="__codelineno-35-22" name="__codelineno-35-22" href="#__codelineno-35-22"></a>
-</span><span id="__span-35-23"><a id="__codelineno-35-23" name="__codelineno-35-23" href="#__codelineno-35-23"></a>[options]
-</span><span id="__span-35-24"><a id="__codelineno-35-24" name="__codelineno-35-24" href="#__codelineno-35-24"></a>packages = find:
-</span><span id="__span-35-25"><a id="__codelineno-35-25" name="__codelineno-35-25" href="#__codelineno-35-25"></a>zip_safe = True
-</span><span id="__span-35-26"><a id="__codelineno-35-26" name="__codelineno-35-26" href="#__codelineno-35-26"></a>include_package_data = True
-</span><span id="__span-35-27"><a id="__codelineno-35-27" name="__codelineno-35-27" href="#__codelineno-35-27"></a>install_requires =
-</span><span id="__span-35-28"><a id="__codelineno-35-28" name="__codelineno-35-28" href="#__codelineno-35-28"></a>    numpy
-</span><span id="__span-35-29"><a id="__codelineno-35-29" name="__codelineno-35-29" href="#__codelineno-35-29"></a>
-</span><span id="__span-35-30"><a id="__codelineno-35-30" name="__codelineno-35-30" href="#__codelineno-35-30"></a>[options.package_data]
-</span><span id="__span-35-31"><a id="__codelineno-35-31" name="__codelineno-35-31" href="#__codelineno-35-31"></a>* = README.md
+<div class="language-text highlight"><span class="filename">setup.cfg</span><pre><span></span><code><span id="__span-37-1"><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>[metadata]
+</span><span id="__span-37-2"><a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a>name = tiny
+</span><span id="__span-37-3"><a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a>version = attr: tiny.__version__
+</span><span id="__span-37-4"><a id="__codelineno-37-4" name="__codelineno-37-4" href="#__codelineno-37-4"></a>author = Oren Zeev-Ben-Mordehai
+</span><span id="__span-37-5"><a id="__codelineno-37-5" name="__codelineno-37-5" href="#__codelineno-37-5"></a>author_email = zbenmo@gmail.com
+</span><span id="__span-37-6"><a id="__codelineno-37-6" name="__codelineno-37-6" href="#__codelineno-37-6"></a>url = https://github.com/zbenmo/tiny_package
+</span><span id="__span-37-7"><a id="__codelineno-37-7" name="__codelineno-37-7" href="#__codelineno-37-7"></a>description = for use in a tutorial
+</span><span id="__span-37-8"><a id="__codelineno-37-8" name="__codelineno-37-8" href="#__codelineno-37-8"></a>long_description = file: README.md
+</span><span id="__span-37-9"><a id="__codelineno-37-9" name="__codelineno-37-9" href="#__codelineno-37-9"></a>long_description_content_type = text/markdown
+</span><span id="__span-37-10"><a id="__codelineno-37-10" name="__codelineno-37-10" href="#__codelineno-37-10"></a>keywords = Reinforcement Learning, Framework, Integration
+</span><span id="__span-37-11"><a id="__codelineno-37-11" name="__codelineno-37-11" href="#__codelineno-37-11"></a>license_files = LICENSE.txt
+</span><span id="__span-37-12"><a id="__codelineno-37-12" name="__codelineno-37-12" href="#__codelineno-37-12"></a>classifiers =
+</span><span id="__span-37-13"><a id="__codelineno-37-13" name="__codelineno-37-13" href="#__codelineno-37-13"></a>    Intended Audience :: Developers
+</span><span id="__span-37-14"><a id="__codelineno-37-14" name="__codelineno-37-14" href="#__codelineno-37-14"></a>    Intended Audience :: Science/Research
+</span><span id="__span-37-15"><a id="__codelineno-37-15" name="__codelineno-37-15" href="#__codelineno-37-15"></a>    Programming Language :: Python :: 3
+</span><span id="__span-37-16"><a id="__codelineno-37-16" name="__codelineno-37-16" href="#__codelineno-37-16"></a>    Programming Language :: Python :: 3.7
+</span><span id="__span-37-17"><a id="__codelineno-37-17" name="__codelineno-37-17" href="#__codelineno-37-17"></a>    Programming Language :: Python :: 3.8
+</span><span id="__span-37-18"><a id="__codelineno-37-18" name="__codelineno-37-18" href="#__codelineno-37-18"></a>    Programming Language :: Python :: 3.9
+</span><span id="__span-37-19"><a id="__codelineno-37-19" name="__codelineno-37-19" href="#__codelineno-37-19"></a>    License :: OSI Approved :: MIT License
+</span><span id="__span-37-20"><a id="__codelineno-37-20" name="__codelineno-37-20" href="#__codelineno-37-20"></a>    Topic :: Scientific/Engineering
+</span><span id="__span-37-21"><a id="__codelineno-37-21" name="__codelineno-37-21" href="#__codelineno-37-21"></a>    Topic :: Scientific/Engineering :: Artificial Intelligence
+</span><span id="__span-37-22"><a id="__codelineno-37-22" name="__codelineno-37-22" href="#__codelineno-37-22"></a>
+</span><span id="__span-37-23"><a id="__codelineno-37-23" name="__codelineno-37-23" href="#__codelineno-37-23"></a>[options]
+</span><span id="__span-37-24"><a id="__codelineno-37-24" name="__codelineno-37-24" href="#__codelineno-37-24"></a>packages = find:
+</span><span id="__span-37-25"><a id="__codelineno-37-25" name="__codelineno-37-25" href="#__codelineno-37-25"></a>zip_safe = True
+</span><span id="__span-37-26"><a id="__codelineno-37-26" name="__codelineno-37-26" href="#__codelineno-37-26"></a>include_package_data = True
+</span><span id="__span-37-27"><a id="__codelineno-37-27" name="__codelineno-37-27" href="#__codelineno-37-27"></a>install_requires =
+</span><span id="__span-37-28"><a id="__codelineno-37-28" name="__codelineno-37-28" href="#__codelineno-37-28"></a>    numpy
+</span><span id="__span-37-29"><a id="__codelineno-37-29" name="__codelineno-37-29" href="#__codelineno-37-29"></a>
+</span><span id="__span-37-30"><a id="__codelineno-37-30" name="__codelineno-37-30" href="#__codelineno-37-30"></a>[options.package_data]
+</span><span id="__span-37-31"><a id="__codelineno-37-31" name="__codelineno-37-31" href="#__codelineno-37-31"></a>* = README.md
 </span></code></pre></div>
-<div class="language-text highlight"><span class="filename">pyproject.toml</span><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>[build-system]
-</span><span id="__span-36-2"><a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>requires = [
-</span><span id="__span-36-3"><a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a>    &quot;setuptools&gt;=42&quot;,
-</span><span id="__span-36-4"><a id="__codelineno-36-4" name="__codelineno-36-4" href="#__codelineno-36-4"></a>    &quot;wheel&quot;
-</span><span id="__span-36-5"><a id="__codelineno-36-5" name="__codelineno-36-5" href="#__codelineno-36-5"></a>]
+<div class="language-text highlight"><span class="filename">pyproject.toml</span><pre><span></span><code><span id="__span-38-1"><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>[build-system]
+</span><span id="__span-38-2"><a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a>requires = [
+</span><span id="__span-38-3"><a id="__codelineno-38-3" name="__codelineno-38-3" href="#__codelineno-38-3"></a>    &quot;setuptools&gt;=42&quot;,
+</span><span id="__span-38-4"><a id="__codelineno-38-4" name="__codelineno-38-4" href="#__codelineno-38-4"></a>    &quot;wheel&quot;
+</span><span id="__span-38-5"><a id="__codelineno-38-5" name="__codelineno-38-5" href="#__codelineno-38-5"></a>]
 </span></code></pre></div>
 <p>I've issued the following command:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-37-1"><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>pip install -e .
+<div class="language-text highlight"><pre><span></span><code><span id="__span-39-1"><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>pip install -e .
 </span></code></pre></div>
 <p>This commands tells 'pip' to install the package from the current directory in "development" mode.</p>
 <p>If you got an error:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-38-1"><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>ERROR: File &quot;setup.py&quot; not found. Directory cannot be installed in editable mode: /home/oren/projects/tiny_package
-</span><span id="__span-38-2"><a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a>(A &quot;pyproject.toml&quot; file was found, but editable mode currently requires a setup.py based build.)
+<div class="language-text highlight"><pre><span></span><code><span id="__span-40-1"><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>ERROR: File &quot;setup.py&quot; not found. Directory cannot be installed in editable mode: /home/oren/projects/tiny_package
+</span><span id="__span-40-2"><a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a>(A &quot;pyproject.toml&quot; file was found, but editable mode currently requires a setup.py based build.)
 </span></code></pre></div>
 <p>Issue: <code>pip install -U pip</code>, and try again <code>pip install -e .</code>.</p>
 <p>I've verified my external test with:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-39-1"><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>python test.py
+<div class="language-text highlight"><pre><span></span><code><span id="__span-41-1"><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a>python test.py
 </span></code></pre></div>
 <p>Note: 'requirements.txt' is not needed any more here. We could have <code>pip uninstall numpy</code>, and <code>pip install -e .</code> would have brought 'numpy' again as it is a dependency of 'tiny' project. 'requirements.txt' can be removed from git if was previously added (here in the 'tiny_package' repository.). We do want to add to the repository 'test.py', 'setup.cfg', 'pyproject.toml', and the Python files.</p>
 <p>To build the package, we can use <code>pip install build</code> and issue <code>python -m build</code>.
@@ -896,15 +888,15 @@ We'll make another shortcut for now.</p>
 </li>
 </ul>
 <p>In the Flask project, I've added the following "endpoint":</p>
-<div class="language-py highlight"><pre><span></span><code><span id="__span-40-1"><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="o">..</span>
-</span><span id="__span-40-2"><a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a><span class="kn">import</span> <span class="nn">tiny</span>
-</span><span id="__span-40-3"><a id="__codelineno-40-3" name="__codelineno-40-3" href="#__codelineno-40-3"></a>
-</span><span id="__span-40-4"><a id="__codelineno-40-4" name="__codelineno-40-4" href="#__codelineno-40-4"></a><span class="o">..</span>
-</span><span id="__span-40-5"><a id="__codelineno-40-5" name="__codelineno-40-5" href="#__codelineno-40-5"></a>
-</span><span id="__span-40-6"><a id="__codelineno-40-6" name="__codelineno-40-6" href="#__codelineno-40-6"></a><span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;/try_tiny/&lt;int:first&gt;&#39;</span><span class="p">)</span>
-</span><span id="__span-40-7"><a id="__codelineno-40-7" name="__codelineno-40-7" href="#__codelineno-40-7"></a><span class="k">def</span> <span class="nf">try_tiny</span><span class="p">(</span><span class="n">first</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
-</span><span id="__span-40-8"><a id="__codelineno-40-8" name="__codelineno-40-8" href="#__codelineno-40-8"></a>    <span class="n">ret</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">tiny</span><span class="o">.</span><span class="n">to_numpy_arr</span><span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">first</span><span class="p">,</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">first</span><span class="p">))</span>
-</span><span id="__span-40-9"><a id="__codelineno-40-9" name="__codelineno-40-9" href="#__codelineno-40-9"></a>    <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">ret</span><span class="p">))</span>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-42-1"><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a><span class="o">..</span>
+</span><span id="__span-42-2"><a id="__codelineno-42-2" name="__codelineno-42-2" href="#__codelineno-42-2"></a><span class="kn">import</span> <span class="nn">tiny</span>
+</span><span id="__span-42-3"><a id="__codelineno-42-3" name="__codelineno-42-3" href="#__codelineno-42-3"></a>
+</span><span id="__span-42-4"><a id="__codelineno-42-4" name="__codelineno-42-4" href="#__codelineno-42-4"></a><span class="o">..</span>
+</span><span id="__span-42-5"><a id="__codelineno-42-5" name="__codelineno-42-5" href="#__codelineno-42-5"></a>
+</span><span id="__span-42-6"><a id="__codelineno-42-6" name="__codelineno-42-6" href="#__codelineno-42-6"></a><span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;/try_tiny/&lt;int:first&gt;&#39;</span><span class="p">)</span>
+</span><span id="__span-42-7"><a id="__codelineno-42-7" name="__codelineno-42-7" href="#__codelineno-42-7"></a><span class="k">def</span> <span class="nf">try_tiny</span><span class="p">(</span><span class="n">first</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+</span><span id="__span-42-8"><a id="__codelineno-42-8" name="__codelineno-42-8" href="#__codelineno-42-8"></a>    <span class="n">ret</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">tiny</span><span class="o">.</span><span class="n">to_numpy_arr</span><span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">first</span><span class="p">,</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">first</span><span class="p">))</span>
+</span><span id="__span-42-9"><a id="__codelineno-42-9" name="__codelineno-42-9" href="#__codelineno-42-9"></a>    <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">ret</span><span class="p">))</span>
 </span></code></pre></div>
 <p>The code receives an int, 'first' and returns a "JSON" list with 'first', 'first' multiplied by 2, and 'first' multiplied by 3.</p>
 <p>I needed to convert the 'numpy' array into a list, and the items to 'int' from 'numpy.int32' as the "jsonify" functionality does not know to work with 'numpy'.</p>
@@ -915,7 +907,7 @@ and you believe you've found a bug, you may attempt to solve it by:</p>
 <p>Fork the Github repository of the package.</p>
 </li>
 <li>
-<p>Clone (your) relevant github repository into your laptop.</p>
+<p>Clone (your) relevant Github repository into your laptop.</p>
 </li>
 <li>
 <p><code>pip install -e .</code> in the just cloned repository (note you are using the Python virtual environment of your project).</p>
@@ -955,12 +947,13 @@ then just require that version of the dependency 'pandas', for example (fictiona
 As far as I can tell, listing the top level of your dependencies is good enough (no need to follow dependencies of your dependencies, if I am not mistaken. Check that with your accompanying regulatory officer).</p>
 <h2 id="docker">Docker</h2>
 <p>The last thing I want to bring here is a little philosophical.
-Most likely we'll all going to use Docker these days this way or another.
+Most likely we'll all going to use Docker these days, that way or another.<br />
 Does it mean that some of the mechanism above are redundant and we can decide not to make use of them?</p>
 <p>My feeling is that it is a good thing to have all above mechanisms and also Docker.
-Each mechnism help us "wrap" our development/deployment software in another layer of "trust". Each helps us achieve reproducability and reliability.</p>
-<p>When you have a Docker image, the image may have some Python functionality before you join with your softare, tools, and processes. By introducing a Python virtual environment, you know that your code shall be happy, while the other things that happen in the containers are as the designer of the image / container wanted.</p>
-<p>You can give someone a Docker image, in which you've already installed the right Python packages and other dependencies. Then this user can run a container with your software and never worry about git repositories, Python packages, versions, dependencies, etc. But you as the maintainer of the code, will most likely need to go from time to time and create a new version of the Docker image, and there you will be probably happier if you have the mechanisms above to keep your sanity.</p>
+Each mechnism helps us to "wrap" and "isolate" our development / deployment software in another layer of "trust". Each helps us achieve reproducability and reliability.</p>
+<p>When you have a Docker image, the image may have some Python functionality before you join with your software, tools, and processes. By introducing a Python virtual environment, you know that your code shall be happy, while the other things that happen in the containers are as the designer of the image / container wanted.</p>
+<p>You can give someone a Docker image, in which you've already installed the right Python packages and other dependencies. Then this user can run a container with your software and never worry about git repositories, Python packages, versions, dependencies, etc.<br />
+You as the maintainer of the code, will most likely need from time to time to create a new version of the Docker image, and there you will be probably happier if you have the mechanisms above to keep your sanity.</p>
 
 
 
