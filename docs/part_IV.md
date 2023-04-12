@@ -46,6 +46,8 @@ sorted(arr, key=by_the_character)
 
 ```[(1, 'a'), (7, 'b'), (3, 'c'), (4, 'd'), (2, 'e')]```
 
+## Lambda functions
+
 We can see that now we have a list sorted by the second elements of the tuples. We can also define functions "on-the-fly", without a spacific name. Those are **lambda** functions. Lambda functions do not require a return statement, it is implicit from the last expression in the "function".
 
 ``` py
@@ -55,6 +57,8 @@ sorted(arr, key=lambda t: t[1])
 ```[(1, 'a'), (7, 'b'), (3, 'c'), (4, 'd'), (2, 'e')]```
 
 Both options are as valid, using an explicit function, or using a lambda function. Pick the one most appropriate in the relevant context.
+
+## Map, Filter
 
 There is yet another way to map one iterator into another, and to filter elements. We've seen explicit for loops, and we've seen comprehensions.
 There are also built in 'map' and 'filter' functionalities.
@@ -130,6 +134,8 @@ The expression above could have been written as follows:
 Note that we did not have to use 'list', as we're already building one, and also the expression was given in a straight forward manner rather than through a (lambda) function.
 
 The reason that we needed 'list' when we worked with 'map' is that the caculation and memory required did not happen yet when we called 'map'. 'map' is "lazy" in the sense that no list was constructed yet, and no element was "mapped" yet. Only during the iteration the transformation happens, one element at a time, and those are collected into a list, only when we explicitly construct a list from the iterator items (by wrapping the map in 'list'). There are situations, in which a pipeline can be constructed, by passing 'map' objects into other 'map' or 'filter' objects, and only at the last step we iterate over the results, or construct a list out of those. This can save time and memory. It might result also with a bit clearer code.
+
+## Generator
 
 To be fair with comprehensions, there is a similar way to do "lazy" evaluation. One can also do above with "comprehensions" that use '()' instead of '[]'.
 
