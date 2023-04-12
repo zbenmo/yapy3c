@@ -225,7 +225,7 @@ gb.get_group("cat")
 
 Above example is taken from [Pandas Cookbook - Grouping](https://pandas.pydata.org/pandas-docs/stable/user_guide/cookbook.html#grouping)
 
-Not specific about 'groupby', but contains also 'groupby' examples and other good Pandas / Notebooks best practices: [Vincent D. Warmerdam: Untitled12.ipynb | PyData Eindhoven 2019](https://www.youtube.com/watch?v=yXGCKqo5cEY&t=1544s)
+Not specific about 'groupby', but contains also 'groupby' examples and other good Pandas / Notebooks best practices: [Vincent D. Warmerdam: Untitled12.ipynb | PyData Eindhoven 2019](https://www.youtube.com/watch?v=yXGCKqo5cEY)
 
 ## Tidy data
 
@@ -251,7 +251,7 @@ A quick summary of the steps taken there (Mammals dataset):
 - pivoting the relevant values back into columns and values in those columns. For example, there should be a column called 'month' and having the relevant values, ex. 'feb_utm', and there should be columns of the bio-climate features, ex. 'mean_temp' with the matching values.
 - We can then merge back tables as needed, for example I demonstrate there counting how many different mammal types are per cell, and showing that in a "map". 
 
-Strongly recommend the following PyData YouTube-recorded talk [Daniel Chen: Cleaning and Tidying Data in Pandas | PyData DC 2018](https://www.youtube.com/watch?v=iYie42M1ZyU&t=4675s).
+Strongly recommend the following PyData YouTube-recorded talk [Daniel Chen: Cleaning and Tidying Data in Pandas | PyData DC 2018](https://www.youtube.com/watch?v=iYie42M1ZyU).
 
 ## Experimenting with k-folds
 
