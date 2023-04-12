@@ -225,6 +225,8 @@ gb.get_group("cat")
 
 Above example is taken from [Pandas Cookbook - Grouping](https://pandas.pydata.org/pandas-docs/stable/user_guide/cookbook.html#grouping)
 
+Not specific about 'groupby', but contains also 'groupby' examples and other good Pandas / Notebooks best practices: [Vincent D. Warmerdam: Untitled12.ipynb | PyData Eindhoven 2019](https://www.youtube.com/watch?v=yXGCKqo5cEY&t=1544s)
+
 ## Tidy data
 
 We often get the data in somewhat different arrangement from what we would like to have for our data analysis, building ML models, etc. The data is given "wide" while we actually want it to be "long", or the other way around.
@@ -439,6 +441,3 @@ Fold 3:
 Fold 4:
 (1048, 14) (261, 14)
 ```
-
-## Exercise
-

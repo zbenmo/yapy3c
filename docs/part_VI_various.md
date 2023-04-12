@@ -537,3 +537,29 @@ my_a.__dict__
 ```
 {'name': 'Jaakov', 'age': 16}
 ```
+
+## Dataclass
+
+When we want to collect some pieces of information into a single variable, for example the *x* and the *y* coordinates of a point, we can use any of the built-in collections such as dict, tuple, list. To add more structure and to add specific functionality we can create a new class, say *Point*. We then need to decide if we want to allow / enforce settings the coordinates in the constructor, and whether those can be modified etc. A useful standard library provided utility decorator is **dataclass**. A lot of times, a dataclass is exactly what we need.
+Here is an example:
+
+``` py
+from dataclasses import dataclass
+
+
+@dataclass
+class Point:
+    x: int
+    y: int
+    
+
+p1 = Point(1, 2)
+p2 = Point(1, 4)
+p1, p2
+```
+
+```
+(Point(x=1, y=2), Point(x=1, y=4))
+```
+
+Check this short (22:18) YouTube recording. [This Is Why Python Data Classes Are Awesome (ArjanCodes)](https://www.youtube.com/watch?v=CvQ7e6yUtnw)
