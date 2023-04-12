@@ -360,6 +360,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#dataclass" class="md-nav__link">
+    Dataclass
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -469,6 +476,13 @@
         <li class="md-nav__item">
   <a href="#json-xml-yaml" class="md-nav__link">
     JSON / XML / YAML
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dataclass" class="md-nav__link">
+    Dataclass
   </a>
   
 </li>
@@ -953,6 +967,25 @@ A Python code can quickly read a (small) JSON file into a dict. From there acces
 </span></code></pre></div>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>{&#39;name&#39;: &#39;Jaakov&#39;, &#39;age&#39;: 16}
 </span></code></pre></div>
+<h2 id="dataclass">Dataclass</h2>
+<p>When we want to collect some pieces of information into a single variable, for example the <em>x</em> and the <em>y</em> coordinates of a point, we can use any of the built-in collections such as dict, tuple, list. To add more structure and to add specific functionality we can create a new class, say <em>Point</em>. We then need to decide if we want to allow / enforce settings the coordinates in the constructor, and whether those can be modified etc. A useful standard library provided utility decorator is <strong>dataclass</strong>. A lot of times, a dataclass is exactly what we need.
+Here is an example:</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
+</span><span id="__span-36-2"><a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>
+</span><span id="__span-36-3"><a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a>
+</span><span id="__span-36-4"><a id="__codelineno-36-4" name="__codelineno-36-4" href="#__codelineno-36-4"></a><span class="nd">@dataclass</span>
+</span><span id="__span-36-5"><a id="__codelineno-36-5" name="__codelineno-36-5" href="#__codelineno-36-5"></a><span class="k">class</span> <span class="nc">Point</span><span class="p">:</span>
+</span><span id="__span-36-6"><a id="__codelineno-36-6" name="__codelineno-36-6" href="#__codelineno-36-6"></a>    <span class="n">x</span><span class="p">:</span> <span class="nb">int</span>
+</span><span id="__span-36-7"><a id="__codelineno-36-7" name="__codelineno-36-7" href="#__codelineno-36-7"></a>    <span class="n">y</span><span class="p">:</span> <span class="nb">int</span>
+</span><span id="__span-36-8"><a id="__codelineno-36-8" name="__codelineno-36-8" href="#__codelineno-36-8"></a>
+</span><span id="__span-36-9"><a id="__codelineno-36-9" name="__codelineno-36-9" href="#__codelineno-36-9"></a>
+</span><span id="__span-36-10"><a id="__codelineno-36-10" name="__codelineno-36-10" href="#__codelineno-36-10"></a><span class="n">p1</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</span><span id="__span-36-11"><a id="__codelineno-36-11" name="__codelineno-36-11" href="#__codelineno-36-11"></a><span class="n">p2</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+</span><span id="__span-36-12"><a id="__codelineno-36-12" name="__codelineno-36-12" href="#__codelineno-36-12"></a><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-37-1"><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>(Point(x=1, y=2), Point(x=1, y=4))
+</span></code></pre></div>
+<p>Check this short (22:18) YouTube recording. <a href="https://www.youtube.com/watch?v=CvQ7e6yUtnw">This Is Why Python Data Classes Are Awesome (ArjanCodes)</a></p>
 
 
 
