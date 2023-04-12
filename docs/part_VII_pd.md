@@ -200,7 +200,56 @@ df
 
 ## Groupby
 
+With 'pandas' we can collect statistics about specific columns. It is also interesting to collect the statistics per value in another columns. For example, collect the survival rate (Titanic) based on gender, or on travel class.
+Such group based statistics is very useful in data analysis and also in ML, potentially helping the model in picking the relevant information from a categorical feature (ex. the gender, the travel class), this is called **target encoding**. Special care needs to be taken to verify the target encoding actually helps or causing **overfitting**, this should be evaluated case by case.
+
+To get the per group statistics we use the 'df.groupby' functionality. The return type of 'groupby' on a dataframe is a 'DataFrameGroupBy'.
+This class allows iterating over "sub-dataframes", one per group, or also aggragating statistics per group.
+
+``` py
+df = pd.DataFrame(
+    {
+        "animal": "cat dog cat fish dog cat cat".split(),
+        "size": list("SSMMMLL"),
+        "weight": [8, 10, 11, 1, 20, 12, 12],
+        "adult": [False] * 5 + [True] * 2,
+    }
+)
+
+gb = df.groupby(["animal"])
+
+gb.get_group("cat")
+```
+
+<table border="1" class="dataframe">  <thead>    <tr style="text-align: right;">      <th></th>      <th>animal</th>      <th>size</th>      <th>weight</th>      <th>adult</th>    </tr>  </thead>  <tbody>    <tr>      <th>0</th>      <td>cat</td>      <td>S</td>      <td>8</td>      <td>False</td>    </tr>    <tr>      <th>2</th>      <td>cat</td>      <td>M</td>      <td>11</td>      <td>False</td>    </tr>    <tr>      <th>5</th>      <td>cat</td>      <td>L</td>      <td>12</td>      <td>True</td>    </tr>    <tr>      <th>6</th>      <td>cat</td>      <td>L</td>      <td>12</td>      <td>True</td>    </tr>  </tbody></table>
+
+Above example is taken from [Pandas Cookbook - Grouping](https://pandas.pydata.org/pandas-docs/stable/user_guide/cookbook.html#grouping)
+
 ## Tidy data
+
+We often get the data in somewhat different arrangement from what we would like to have for our data analysis, building ML models, etc. The data is given "wide" while we actually want it to be "long", or the other way around.
+To change the arrangement into what we need, may seem at first to be more sort-of an art than a science.
+However there are actually many things that we do see often and for which there exist a collection of formulas that are worth to get familiar with.
+
+I will bring here for example a dataset I have played with in the past (Mammals).
+The dataset is given as a table. In the table Europe is divided into cells and for each cell one can see
+what mammals can be found in that cell.
+Each row in the table is about a specific cell.
+There are columns of three types, columns about the cell, columns related to conditions in the cell per-month (rain, temperatures, etc.),
+and binary colunms per mammal (presence).
+
+Wrote a Medium article about it [mammals-dataset-tidy-data](https://medium.com/@zbenmo/mammals-dataset-tidy-data-streamlit-6ed7ccc7b2ae)
+And the relevant github link is [mammals - Github](https://github.com/zbenmo/mammals)
+
+A quick summary of the steps taken there (Mammals dataset):
+
+- Split the data into three tables, metadata about a cell, bio-climate features per-month about the cell, mammals-presence info about cells.
+- 'melting' columns that actually contain information. Example 'mean_temp_feb_utm' columns was now a value under column 'variable', and next to the original value which is under the column 'value'.
+- Spliting the values where needed into new columns. For example split 'mean_temp_feb_utm' from the 'variable' columns to the the values 'mean_temp' and 'feb_utm' under the columns 'statistics', 'month', respectively.
+- pivoting the relevant values back into columns and values in those columns. For example, there should be a column called 'month' and having the relevant values, ex. 'feb_utm', and there should be columns of the bio-climate features, ex. 'mean_temp' with the matching values.
+- We can then merge back tables as needed, for example I demonstrate there counting how many different mammal types are per cell, and showing that in a "map". 
+
+Strongly recommend the following PyData YouTube-recorded talk [Daniel Chen: Cleaning and Tidying Data in Pandas | PyData DC 2018](https://www.youtube.com/watch?v=iYie42M1ZyU&t=4675s).
 
 ## Experimenting with k-folds
 
