@@ -282,6 +282,27 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#lambda-functions" class="md-nav__link">
+    Lambda functions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#map-filter" class="md-nav__link">
+    Map, Filter
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generator" class="md-nav__link">
+    Generator
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exrecise" class="md-nav__link">
     Exrecise
   </a>
@@ -383,6 +404,27 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#lambda-functions" class="md-nav__link">
+    Lambda functions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#map-filter" class="md-nav__link">
+    Map, Filter
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generator" class="md-nav__link">
+    Generator
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exrecise" class="md-nav__link">
     Exrecise
   </a>
@@ -432,11 +474,13 @@ With functional programming we'll prefer immotable objects. That way we can worr
 </span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="nb">sorted</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">by_the_character</span><span class="p">)</span>
 </span></code></pre></div>
 <p><code>[(1, 'a'), (7, 'b'), (3, 'c'), (4, 'd'), (2, 'e')]</code></p>
+<h2 id="lambda-functions">Lambda functions</h2>
 <p>We can see that now we have a list sorted by the second elements of the tuples. We can also define functions "on-the-fly", without a spacific name. Those are <strong>lambda</strong> functions. Lambda functions do not require a return statement, it is implicit from the last expression in the "function".</p>
 <div class="language-py highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">sorted</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 </span></code></pre></div>
 <p><code>[(1, 'a'), (7, 'b'), (3, 'c'), (4, 'd'), (2, 'e')]</code></p>
 <p>Both options are as valid, using an explicit function, or using a lambda function. Pick the one most appropriate in the relevant context.</p>
+<h2 id="map-filter">Map, Filter</h2>
 <p>There is yet another way to map one iterator into another, and to filter elements. We've seen explicit for loops, and we've seen comprehensions.
 There are also built in 'map' and 'filter' functionalities.</p>
 <div class="language-py highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">sentence</span> <span class="o">=</span> <span class="s2">&quot;The cat sat on the mat.&quot;</span>
@@ -486,6 +530,7 @@ The expression above could have been written as follows:</p>
 <p><code>['De', 'DOG', 'zat', 'op', 'de', 'mat.']</code></p>
 <p>Note that we did not have to use 'list', as we're already building one, and also the expression was given in a straight forward manner rather than through a (lambda) function.</p>
 <p>The reason that we needed 'list' when we worked with 'map' is that the caculation and memory required did not happen yet when we called 'map'. 'map' is "lazy" in the sense that no list was constructed yet, and no element was "mapped" yet. Only during the iteration the transformation happens, one element at a time, and those are collected into a list, only when we explicitly construct a list from the iterator items (by wrapping the map in 'list'). There are situations, in which a pipeline can be constructed, by passing 'map' objects into other 'map' or 'filter' objects, and only at the last step we iterate over the results, or construct a list out of those. This can save time and memory. It might result also with a bit clearer code.</p>
+<h2 id="generator">Generator</h2>
 <p>To be fair with comprehensions, there is a similar way to do "lazy" evaluation. One can also do above with "comprehensions" that use '()' instead of '[]'.</p>
 <div class="language-py highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 </span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="n">l_squared</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">**</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">l</span><span class="p">)</span>
