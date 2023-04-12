@@ -600,7 +600,7 @@ This class allows iterating over "sub-dataframes", one per group, or also aggrag
 <table border="1" class="dataframe">  <thead>    <tr style="text-align: right;">      <th></th>      <th>animal</th>      <th>size</th>      <th>weight</th>      <th>adult</th>    </tr>  </thead>  <tbody>    <tr>      <th>0</th>      <td>cat</td>      <td>S</td>      <td>8</td>      <td>False</td>    </tr>    <tr>      <th>2</th>      <td>cat</td>      <td>M</td>      <td>11</td>      <td>False</td>    </tr>    <tr>      <th>5</th>      <td>cat</td>      <td>L</td>      <td>12</td>      <td>True</td>    </tr>    <tr>      <th>6</th>      <td>cat</td>      <td>L</td>      <td>12</td>      <td>True</td>    </tr>  </tbody></table>
 
 <p>Above example is taken from <a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/cookbook.html#grouping">Pandas Cookbook - Grouping</a></p>
-<p>Not specific about 'groupby', but contains also 'groupby' examples and other good Pandas / Notebooks best practices: <a href="https://www.youtube.com/watch?v=yXGCKqo5cEY&amp;t=1544s">Vincent D. Warmerdam: Untitled12.ipynb | PyData Eindhoven 2019</a></p>
+<p>Not specific about 'groupby', but contains also 'groupby' examples and other good Pandas / Notebooks best practices: <a href="https://www.youtube.com/watch?v=yXGCKqo5cEY">Vincent D. Warmerdam: Untitled12.ipynb | PyData Eindhoven 2019</a></p>
 <h2 id="tidy-data">Tidy data</h2>
 <p>We often get the data in somewhat different arrangement from what we would like to have for our data analysis, building ML models, etc. The data is given "wide" while we actually want it to be "long", or the other way around.
 To change the arrangement into what we need, may seem at first to be more sort-of an art than a science.
@@ -621,7 +621,7 @@ And the relevant github link is <a href="https://github.com/zbenmo/mammals">mamm
 <li>pivoting the relevant values back into columns and values in those columns. For example, there should be a column called 'month' and having the relevant values, ex. 'feb_utm', and there should be columns of the bio-climate features, ex. 'mean_temp' with the matching values.</li>
 <li>We can then merge back tables as needed, for example I demonstrate there counting how many different mammal types are per cell, and showing that in a "map". </li>
 </ul>
-<p>Strongly recommend the following PyData YouTube-recorded talk <a href="https://www.youtube.com/watch?v=iYie42M1ZyU&amp;t=4675s">Daniel Chen: Cleaning and Tidying Data in Pandas | PyData DC 2018</a>.</p>
+<p>Strongly recommend the following PyData YouTube-recorded talk <a href="https://www.youtube.com/watch?v=iYie42M1ZyU">Daniel Chen: Cleaning and Tidying Data in Pandas | PyData DC 2018</a>.</p>
 <h2 id="experimenting-with-k-folds">Experimenting with k-folds</h2>
 <p>When we use supervised learning, for example, in machine learning (ML) setting. We'll most likely want to verify the quality of our model on some left aside "training samples". We'll call those the "evaluation set" or also known as "test set".
 A common practice is for example, to keep 30% of the cases for evaluation, and train of the other 70%  (<strong>train / test split</strong>).
