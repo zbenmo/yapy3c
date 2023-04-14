@@ -582,7 +582,7 @@ The fact that 'tiny' brought with it 'numpy' is just fine.
 If in a future version 'tiny' will drop that dependency or upgrade the requirement to a higher 'numpy' version,
 that should not influence us.
 
-In 'tiny' with just added a requirement to 'numpy' (any version). That is not a good practice. We've tested 'tiny' with a specific 'numpy' version, maybe with a previous version or with a future version, our code does not work?
+In 'tiny' we've just added a requirement to 'numpy' (any version). That is not a good practice. We've tested 'tiny' with a specific 'numpy' version, maybe with a previous version or with a future version, our code does not work?
 
 It is a good practice to require the specific version we've used.
 If I run ```pip freeze | grep numpy``` I get ```numpy==1.24.2```.
