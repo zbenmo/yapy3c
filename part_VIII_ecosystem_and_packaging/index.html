@@ -929,7 +929,7 @@ You do have the option to require the specific point of the package, from the co
 The fact that 'tiny' brought with it 'numpy' is just fine.
 If in a future version 'tiny' will drop that dependency or upgrade the requirement to a higher 'numpy' version,
 that should not influence us.</p>
-<p>In 'tiny' with just added a requirement to 'numpy' (any version). That is not a good practice. We've tested 'tiny' with a specific 'numpy' version, maybe with a previous version or with a future version, our code does not work?</p>
+<p>In 'tiny' we've just added a requirement to 'numpy' (any version). That is not a good practice. We've tested 'tiny' with a specific 'numpy' version, maybe with a previous version or with a future version, our code does not work?</p>
 <p>It is a good practice to require the specific version we've used.
 If I run <code>pip freeze | grep numpy</code> I get <code>numpy==1.24.2</code>.
 We should say that <code>numpy &gt;= 1.24.2, &lt; 1.25</code> should be okay.
