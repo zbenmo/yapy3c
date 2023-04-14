@@ -237,7 +237,7 @@ my_dict
 
 ```{'my_key': 'your_value'}```
 
-We have added an entry here to an existing dictionary. To add values to a list, we can for example do:
+We have added an entry here to an existing dict. To add values to a list, we can for example do:
 
 ``` py
 my_list.append('Marshmello')
@@ -303,7 +303,7 @@ for k, v in my_dict.items():
 ```my_key your_value```
 
 Note, above is a **for** loop. Its structure somewhat resembles a function definition (the column, and the indentation).
-We got here two loop variables, *k* and *v*, as the function *items* of ‘dict’ instances returns an **iterator** of two values each iteration. We then printed those two in one ‘print’ statement. We happened to have only one key-value pair in the dictionary above.
+We got here two loop variables, *k* and *v*, as the function *items* of ‘dict’ instances returns an **iterator** of two values each iteration. We then printed those two in one ‘print’ statement. We happened to have only one key-value pair in the dict above.
 
 Here is another example of a 'for' loop:
 

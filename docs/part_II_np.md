@@ -162,8 +162,6 @@ We can see that without the *axis* parameter we get a scalar which is the sum of
 'numpy' speeds calculations. In addition to the code being optimized, written probably in C, etc. There is an important concept of **vectorization**. For example, add two 'numpy' arrays of the same length, element-wise. There are at least two advantages, 1. The code does not contain an explicit loop, and 2. The implementation may make use of hardware that can indeed calculate multiple entries in parallel.
 
 ``` py
-import time
-
 a = np.random.randn(5_000_000)
 b = np.random.randn(5_000_000)
 ```
