@@ -303,7 +303,7 @@ list(map(operator.add, range(3), range(4)))
 
 ```[0, 2, 4]``` 
 
-## Exrecise
+## Exercise
 
 We are given a text. The text contains paragraphs, each paragraph contains sentences, and each sentence contains words. A paragraph is separated from the previous one, by an empty line. A sentence ends with one of {'.', '?', '!'}. Words are separated with ' '.
 We want to report for every word in the text all the places that it appeared.
@@ -367,4 +367,7 @@ for paragraph in paragprahs(text):
 
 ```(output omitted)```
 
-**yield from** is a short-hand for a loop over the iterator (a list in this case) and yielding each of the elements. This is different from returning the list itself. With 'yield from' we are returning a generator that can be iterated on only once. In a way, the list that was created by the call to 'split' can be **garbage collected** when the generator returned by *paragraphs* is exhausted. If we returned the list, the caller may still keep a reference to the list somewhere and hence the list may have been kept "alive" in memory.
+**yield from** is a short-hand for a loop over the iterator (a list in this case) and yielding each of the elements. This is different from returning the list itself.
+With 'yield from' we are returning a generator that can be iterated-on only once. Our interface is a generator, we have not commited to a function that returns a list. You can also think of it as follows.
+The list that was created by the call to 'split' can be **garbage collected** as soon as the generator returned by *paragraphs* is exhausted.
+On the other hand, if we have returned the list, the caller may have kept a reference to the list and hence the list may have been kept "alive" in memory.
