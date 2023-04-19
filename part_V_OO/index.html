@@ -297,6 +297,27 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#class-inheritance" class="md-nav__link">
+    Class Inheritance
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-of-oop-and-functional-programming-used-together" class="md-nav__link">
+    Example of OOP and functional programming used together
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    Properties
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     Exercise
   </a>
@@ -381,6 +402,27 @@
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#class-inheritance" class="md-nav__link">
+    Class Inheritance
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-of-oop-and-functional-programming-used-together" class="md-nav__link">
+    Example of OOP and functional programming used together
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    Properties
+  </a>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
@@ -482,6 +524,7 @@ In the <em>__init__</em> function we have the opportunity to initialize member v
 </span></code></pre></div>
 <p><code>It is clean now.</code></p>
 <p>If possible, avoid using this practice, just for your own sanity. But good to remember that it is an option.</p>
+<h2 id="class-inheritance">Class Inheritance</h2>
 <p>Inheritance is possible, here is a simple example:</p>
 <div class="language-py highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">class</span> <span class="nc">CompanyCar</span><span class="p">(</span><span class="n">Car</span><span class="p">):</span>
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
@@ -554,6 +597,7 @@ you may not find the car object in a dict if you previously added it there as a 
 <p>Object Oriented Programming (OOP) is very useful and definetly worth learning. For example with <strong>Polymorphism</strong> one can loop for example over a list of "communication channels", and "send" a message through all of those. The implementation of the "emails" instance will possibly be different from the "SMS" one, yet the interface of "send" is the same.</p>
 <p>While OOP brings a lot of capabilities there are issues that we should be careful with, such as multiple inheritance. When a class inherits from multiple classes, and there are conflicts, what takes precedence? How does everything work togther. There is a concept of <strong>Mixin</strong>s that are regular Python classes, yet are meant to be self contained, used by inheritance just to add functionality, avoiding adding member variables, so less issues with multiple inheritance.</p>
 <p>A side note (a possible repetitive suggestion). Use object oriented as needed, yet prefer a simple existing class / container if such exists and does the work reasonably.</p>
+<h2 id="example-of-oop-and-functional-programming-used-together">Example of OOP and functional programming used together</h2>
 <p>Next I'm going to bring a nice example of the power of OOP when used in combination with functional programming.</p>
 <div class="language-py highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">permutations</span>
 </span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>
@@ -646,6 +690,70 @@ What should we do? Give up and add the '&lt;' operator to <em>MyClass</em>?</p>
 <p><code>[(1, 2), (2, 3), (3, 1)]</code></p>
 <p>We probably could have implemented <em>__lt__</em> directly in <em>MyClass</em> yet this would have kill the story.
 In <em>functools</em> you can find <em>cmp_to_key</em> that does exacly what we've just done (<code>from functools import cmp_to_key</code>).</p>
+<h2 id="properties">Properties</h2>
+<p>An object often has methods, accessors of attributes, and setters of attributes. You can add attributes "on the fly" as in:</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="k">class</span> <span class="nc">Check</span><span class="p">:</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>    <span class="k">pass</span>
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>
+</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="n">check</span> <span class="o">=</span> <span class="n">Check</span><span class="p">()</span>
+</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="n">check</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="mi">3</span>
+</span><span id="__span-20-6"><a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">check</span><span class="o">.</span><span class="vm">__dict__</span><span class="si">=}</span><span class="s1"> -&gt; </span><span class="si">{</span><span class="n">check</span><span class="o">.</span><span class="n">a</span><span class="si">=}</span><span class="s1">&#39;</span><span class="p">)</span>
+</span><span id="__span-20-7"><a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a><span class="n">check2</span> <span class="o">=</span> <span class="n">Check</span><span class="p">()</span>
+</span><span id="__span-20-8"><a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a><span class="n">check2</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="s2">&quot;hello&quot;</span>
+</span><span id="__span-20-9"><a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">check2</span><span class="o">.</span><span class="vm">__dict__</span><span class="si">=}</span><span class="s1"> -&gt; </span><span class="si">{</span><span class="n">check2</span><span class="o">.</span><span class="n">b</span><span class="si">=}</span><span class="s1">&#39;</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>check.__dict__={&#39;a&#39;: 3} -&gt; check.a=3
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>check2.__dict__={&#39;b&#39;: &#39;hello&#39;} -&gt; check2.b=&#39;hello&#39;
+</span></code></pre></div>
+<p>Above is not a great practice but is allowed.
+Often we will want to initialize all the member variables in the constructor (<em>__init__</em>), even with a <em>None</em> values.
+Also it often also makes sense to have a "get" method for accessing the value (also known as accesor),
+and a matching "set" method for changing the value. </p>
+<p>We prefer accessors and setters as to allow us to verify the value (in the assignment), potentially adjusting the state of the object with respect to the change, for example invalidate some cached value or recalculating that value.<br />
+Accessors give also the possibility to have "computed" attributes. For example:</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="kn">import</span> <span class="nn">datetime</span>
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="kn">from</span> <span class="nn">dateutil.relativedelta</span> <span class="kn">import</span> <span class="n">relativedelta</span>
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>
+</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>
+</span><span id="__span-22-5"><a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a><span class="k">class</span> <span class="nc">Person</span><span class="p">:</span>
+</span><span id="__span-22-6"><a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dob</span><span class="p">):</span>
+</span><span id="__span-22-7"><a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">dob</span> <span class="o">=</span> <span class="n">dob</span>
+</span><span id="__span-22-8"><a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a>
+</span><span id="__span-22-9"><a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a>    <span class="k">def</span> <span class="nf">get_age</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="__span-22-10"><a id="__codelineno-22-10" name="__codelineno-22-10" href="#__codelineno-22-10"></a>        <span class="k">return</span> <span class="n">relativedelta</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">today</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">dob</span><span class="p">)</span><span class="o">.</span><span class="n">years</span>
+</span><span id="__span-22-11"><a id="__codelineno-22-11" name="__codelineno-22-11" href="#__codelineno-22-11"></a>
+</span><span id="__span-22-12"><a id="__codelineno-22-12" name="__codelineno-22-12" href="#__codelineno-22-12"></a>
+</span><span id="__span-22-13"><a id="__codelineno-22-13" name="__codelineno-22-13" href="#__codelineno-22-13"></a><span class="n">moshe</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+</span><span id="__span-22-14"><a id="__codelineno-22-14" name="__codelineno-22-14" href="#__codelineno-22-14"></a><span class="n">moshe</span><span class="o">.</span><span class="n">get_age</span><span class="p">()</span>
+</span></code></pre></div>
+<p><code>23</code></p>
+<p>A nice way to achieve above will be with <strong>properties</strong>. A property wraps an accessor function and a potential setter function to behave just like a native attribute.</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="kn">import</span> <span class="nn">datetime</span>
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="kn">from</span> <span class="nn">dateutil.relativedelta</span> <span class="kn">import</span> <span class="n">relativedelta</span>
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>
+</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>
+</span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="k">class</span> <span class="nc">Person</span><span class="p">:</span>
+</span><span id="__span-23-6"><a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dob</span><span class="p">):</span>
+</span><span id="__span-23-7"><a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_dob</span> <span class="o">=</span> <span class="n">dob</span>
+</span><span id="__span-23-8"><a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a>
+</span><span id="__span-23-9"><a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a>    <span class="nd">@property</span>
+</span><span id="__span-23-10"><a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a>    <span class="k">def</span> <span class="nf">age</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="__span-23-11"><a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a>        <span class="k">return</span> <span class="n">relativedelta</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">today</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dob</span><span class="p">)</span><span class="o">.</span><span class="n">years</span>
+</span><span id="__span-23-12"><a id="__codelineno-23-12" name="__codelineno-23-12" href="#__codelineno-23-12"></a>
+</span><span id="__span-23-13"><a id="__codelineno-23-13" name="__codelineno-23-13" href="#__codelineno-23-13"></a>    <span class="nd">@age</span><span class="o">.</span><span class="n">setter</span>
+</span><span id="__span-23-14"><a id="__codelineno-23-14" name="__codelineno-23-14" href="#__codelineno-23-14"></a>    <span class="k">def</span> <span class="nf">age</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">age</span><span class="p">):</span>
+</span><span id="__span-23-15"><a id="__codelineno-23-15" name="__codelineno-23-15" href="#__codelineno-23-15"></a>        <span class="n">today</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">today</span><span class="p">()</span>
+</span><span id="__span-23-16"><a id="__codelineno-23-16" name="__codelineno-23-16" href="#__codelineno-23-16"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_dob</span> <span class="o">=</span> <span class="n">today</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">year</span><span class="o">=</span><span class="n">today</span><span class="o">.</span><span class="n">year</span> <span class="o">-</span> <span class="n">age</span><span class="p">)</span>
+</span><span id="__span-23-17"><a id="__codelineno-23-17" name="__codelineno-23-17" href="#__codelineno-23-17"></a>
+</span><span id="__span-23-18"><a id="__codelineno-23-18" name="__codelineno-23-18" href="#__codelineno-23-18"></a>
+</span><span id="__span-23-19"><a id="__codelineno-23-19" name="__codelineno-23-19" href="#__codelineno-23-19"></a><span class="n">moshe</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+</span><span id="__span-23-20"><a id="__codelineno-23-20" name="__codelineno-23-20" href="#__codelineno-23-20"></a><span class="nb">print</span><span class="p">(</span><span class="n">moshe</span><span class="o">.</span><span class="n">age</span><span class="p">)</span>
+</span><span id="__span-23-21"><a id="__codelineno-23-21" name="__codelineno-23-21" href="#__codelineno-23-21"></a><span class="n">moshe</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="mi">33</span>
+</span><span id="__span-23-22"><a id="__codelineno-23-22" name="__codelineno-23-22" href="#__codelineno-23-22"></a><span class="nb">print</span><span class="p">(</span><span class="n">moshe</span><span class="o">.</span><span class="n">age</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>23
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>33
+</span></code></pre></div>
 <h2 id="exercise">Exercise</h2>
 <p>Are you familier with the game "Animals"?
 One person picks an animal (in his head). The other person (this will be the computer in this example), tries to guess the animal.
@@ -663,9 +771,9 @@ Otherwise, the computer asks three questions as follows:</p>
 <p>Then the game continues. The computer get's smarter and smarter, by keeping trace of the possible animals and the questions that help to tell among those.</p>
 <p>A possible approach can be to create for the computer a "tree". A "node" in the tree is either a question, or an animal. A question leads to two subtrees, the one if the user's answer was "no" and another if the user's answer was "yes". An animal is a leaf node.</p>
 <p>Implement this game, potentially with a few classes such as "TreeNode", "Animal", "Question". The following may be handy.</p>
-<div class="language-py highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="n">a</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;enter you name&quot;</span><span class="p">)</span>
-</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>
-</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="n">a</span>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="n">a</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;enter you name&quot;</span><span class="p">)</span>
+</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>
+</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="n">a</span>
 </span></code></pre></div>
 <p>I have entered 'Oren' and indeed that was the content of <em>a</em> as a str.</p>
 
