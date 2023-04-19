@@ -97,6 +97,8 @@ my_car.wash()
 
 If possible, avoid using this practice, just for your own sanity. But good to remember that it is an option.
 
+## Class Inheritance
+
 Inheritance is possible, here is a simple example:
 
 ``` py
@@ -195,6 +197,8 @@ Object Oriented Programming (OOP) is very useful and definetly worth learning. F
 While OOP brings a lot of capabilities there are issues that we should be careful with, such as multiple inheritance. When a class inherits from multiple classes, and there are conflicts, what takes precedence? How does everything work togther. There is a concept of **Mixin**s that are regular Python classes, yet are meant to be self contained, used by inheritance just to add functionality, avoiding adding member variables, so less issues with multiple inheritance.
 
 A side note (a possible repetitive suggestion). Use object oriented as needed, yet prefer a simple existing class / container if such exists and does the work reasonably.
+
+## Example of OOP and functional programming used together
 
 Next I'm going to bring a nice example of the power of OOP when used in combination with functional programming.
 
@@ -308,6 +312,86 @@ sorted(objs, key=Helper)
 
 We probably could have implemented *\_\_lt\_\_* directly in *MyClass* yet this would have kill the story.
 In *functools* you can find *cmp_to_key* that does exacly what we've just done (``` from functools import cmp_to_key ```).
+
+## Properties
+
+An object often has methods, accessors of attributes, and setters of attributes. You can add attributes "on the fly" as in:
+
+``` py
+class Check:
+    pass
+
+check = Check()
+check.a = 3
+print(f'{check.__dict__=} -> {check.a=}')
+check2 = Check()
+check2.b = "hello"
+print(f'{check2.__dict__=} -> {check2.b=}')
+```
+
+```
+check.__dict__={'a': 3} -> check.a=3
+check2.__dict__={'b': 'hello'} -> check2.b='hello'
+```
+
+Above is not a great practice but is allowed.
+Often we will want to initialize all the member variables in the constructor (*\_\_init\_\_*), even with a *None* values.
+Also it often also makes sense to have a "get" method for accessing the value (also known as accesor),
+and a matching "set" method for changing the value. 
+
+We prefer accessors and setters as to allow us to verify the value (in the assignment), potentially adjusting the state of the object with respect to the change, for example invalidate some cached value or recalculating that value.  
+Accessors give also the possibility to have "computed" attributes. For example:
+
+``` py
+import datetime
+from dateutil.relativedelta import relativedelta
+
+
+class Person:
+    def __init__(self, dob):
+        self.dob = dob
+        
+    def get_age(self):
+        return relativedelta(datetime.datetime.today(), self.dob).years
+
+
+moshe = Person(datetime.datetime(2000, 4, 1))
+moshe.get_age()
+```
+
+``` 23 ```
+
+A nice way to achieve above will be with **properties**. A property wraps an accessor function and a potential setter function to behave just like a native attribute.
+
+``` py
+import datetime
+from dateutil.relativedelta import relativedelta
+
+
+class Person:
+    def __init__(self, dob):
+        self._dob = dob
+
+    @property
+    def age(self):
+        return relativedelta(datetime.datetime.today(), self._dob).years
+    
+    @age.setter
+    def age(self, age):
+        today = datetime.datetime.today()
+        self._dob = today.replace(year=today.year - age)
+
+
+moshe = Person(datetime.datetime(2000, 4, 1))
+print(moshe.age)
+moshe.age = 33
+print(moshe.age)
+```
+
+```
+23
+33
+```
 
 ## Exercise
 
