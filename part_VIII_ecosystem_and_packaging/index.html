@@ -375,6 +375,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#contributing-to-someones-else-repository" class="md-nav__link">
+    Contributing to someone's else repository
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#a-few-words-on-packages-versions-and-dependencies" class="md-nav__link">
     A few words on packages' versions and dependencies
   </a>
@@ -453,6 +460,13 @@
         <li class="md-nav__item">
   <a href="#publishing-a-package-rather-than-a-git-repository" class="md-nav__link">
     Publishing a package rather than a (git) repository
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contributing-to-someones-else-repository" class="md-nav__link">
+    Contributing to someone's else repository
   </a>
   
 </li>
@@ -741,15 +755,16 @@ We can also add package requirements to 'requirements.txt' and issue again <code
 <p>When our colleagues want to have access to the project and potentially join the efforts, we give them a link to the Github repository.
 We also remind them that they need to install the required packages before trying the application.
 This can be documented also, for example, in the README.md file.</p>
-<p>Some of our colleagues will follow you, and do as follows:</p>
+<p>Some of our colleagues may also do as we have:</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>python3 -m venv venv
-</span><span id="__span-32-2"><a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>pip install -r requirements.txt
+</span><span id="__span-32-2"><a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>source ./venv/bin/activate
+</span><span id="__span-32-3"><a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a>pip install -r requirements.txt
 </span></code></pre></div>
 <p>Others may wish to work in their existing virtual environment (or even their global Python environment), and issue immediately:</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>pip install -r requirements.txt
 </span></code></pre></div>
-<p>Some may want to use other tools, for example, Poetry for the task.</p>
-<p>Note that since the virtual environment mechanism was not part of the repository, each of us can pick his/her favourite way.</p>
+<p>Some may want to use other tools, Poetry for example, for the task.</p>
+<p>Note that since the virtual environment mechanism was not part of the repository, each of us can pick their favourite way.</p>
 <p>Also note that it is possible to share a single (git) repository among multiple projects.
 There are advantages for each way.
 For example, if each project has its own repository, the projects can advance each in its own pace.
@@ -766,7 +781,7 @@ or a separate Python virtual environment in each project directory.</p>
 so that they can import the functionality from our modules in their own code, without cloning our repository first, or maybe with cloning, but then without being part of the repository maintainers, but rather being "users" of our package.</p>
 <p>We're not far from achieving above. Let's have another project.
 This time our project, let's call it 'tiny', will be a utility package for the use of the previous "trying Flask" project, potentially also for additional projects.</p>
-<p>I've created a new git repository, intended for Python. I've created a new virtual environment and made sure it is activated and there is where I'm working.</p>
+<p>I've created a new git repository, intended for Python. I've created a new virtual environment and made sure it is activated and there, is where I'm working.</p>
 <p>I've started the same, I have a 'requirements.txt' file in which I list 'numpy' as I know I'm going to use it next. I've installed the requirements with <code>pip install -r requirements.txt</code> and started to edit my 'tiny' package.</p>
 <p>The directory where I'm working (the git repository) is named 'tiny_package'. This is how I've named the new repository. But The actual modules I'll have under the (one level deeper) directory 'tiny'. My 'tiny' package shall accept variable number of arguments, and shall return a matching 'numpy array'. This is the functionality I'll introduce.</p>
 <p>Under the directory 'tiny' I'll have a Python module (a Python file) 'mat_math.py', and also the required '__init__.py'.
@@ -826,7 +841,7 @@ I've chosen the second way.</p>
 </span><span id="__span-37-7"><a id="__codelineno-37-7" name="__codelineno-37-7" href="#__codelineno-37-7"></a>description = for use in a tutorial
 </span><span id="__span-37-8"><a id="__codelineno-37-8" name="__codelineno-37-8" href="#__codelineno-37-8"></a>long_description = file: README.md
 </span><span id="__span-37-9"><a id="__codelineno-37-9" name="__codelineno-37-9" href="#__codelineno-37-9"></a>long_description_content_type = text/markdown
-</span><span id="__span-37-10"><a id="__codelineno-37-10" name="__codelineno-37-10" href="#__codelineno-37-10"></a>keywords = Reinforcement Learning, Framework, Integration
+</span><span id="__span-37-10"><a id="__codelineno-37-10" name="__codelineno-37-10" href="#__codelineno-37-10"></a>keywords = GAI, Robots, Terminator
 </span><span id="__span-37-11"><a id="__codelineno-37-11" name="__codelineno-37-11" href="#__codelineno-37-11"></a>license_files = LICENSE.txt
 </span><span id="__span-37-12"><a id="__codelineno-37-12" name="__codelineno-37-12" href="#__codelineno-37-12"></a>classifiers =
 </span><span id="__span-37-13"><a id="__codelineno-37-13" name="__codelineno-37-13" href="#__codelineno-37-13"></a>    Intended Audience :: Developers
@@ -869,7 +884,7 @@ I've chosen the second way.</p>
 </span></code></pre></div>
 <p>Note: 'requirements.txt' is not needed any more here. We could have <code>pip uninstall numpy</code>, and <code>pip install -e .</code> would have brought 'numpy' again as it is a dependency of 'tiny' project. 'requirements.txt' can be removed from git if was previously added (here in the 'tiny_package' repository.). We do want to add to the repository 'test.py', 'setup.cfg', 'pyproject.toml', and the Python files.</p>
 <p>To build the package, we can use <code>pip install build</code> and issue <code>python -m build</code>.
-to publish the build package for example to 'pypi.org' we can use <code>pip install twine</code> and issue something like <code>python -m twine upload --repository pypi dist/*</code> (we'll need an account for this on 'pypi.org').</p>
+In order to publish the built package for example to 'pypi.org' we can use <code>pip install twine</code> and issue something like <code>python -m twine upload --repository pypi dist/*</code> (we'll need an account for this on 'pypi.org').</p>
 <p>We'll skip the build and the publishing. Instead we'll install the new 'tiny' package also in the other Python virtual environment used for playing with Flask.</p>
 <p>If you wish you can first commit the changes to the 'tiny_package' repository.</p>
 <p>Let's switch to the Python virtual environment used for the Flask experiments.
@@ -878,13 +893,13 @@ Declaring the dependency should be done in 'requirements.txt' there.
 We'll make another shortcut for now.</p>
 <ul>
 <li>
-<p>While in the Python virtual environment of the Flask project, navigate to the directory with the 'tiny_package' repository.</p>
+<p>While in the Python virtual environment of <u>the Flask project</u>, navigate to the directory with the 'tiny_package' repository.</p>
 </li>
 <li>
-<p>Make sure you <strong>do not</strong> activate the Python virtual environment there but are still with the virtual environment from the Flask project.</p>
+<p>Make sure you <strong>do not</strong> activate the Python virtual environment there, but are still with the virtual environment from the Flask project.</p>
 </li>
 <li>
-<p><code>pip install -e .</code> This will install the 'tiny' package now in the current Python virtual environment used for the Flask project.</p>
+<p><code>pip install -e .</code> This shall install the 'tiny' package now in the current Python virtual environment used for the Flask project.</p>
 </li>
 </ul>
 <p>In the Flask project, I've added the following "endpoint":</p>
@@ -900,6 +915,7 @@ We'll make another shortcut for now.</p>
 </span></code></pre></div>
 <p>The code receives an int, 'first' and returns a "JSON" list with 'first', 'first' multiplied by 2, and 'first' multiplied by 3.</p>
 <p>I needed to convert the 'numpy' array into a list, and the items to 'int' from 'numpy.int32' as the "jsonify" functionality does not know to work with 'numpy'.</p>
+<h2 id="contributing-to-someones-else-repository">Contributing to someone's else repository</h2>
 <p>If you are using someone's else package, say an Open Source that is maintained in the example on Github,
 and you believe you've found a bug, you may attempt to solve it by:</p>
 <ul>
@@ -910,7 +926,7 @@ and you believe you've found a bug, you may attempt to solve it by:</p>
 <p>Clone (your) relevant Github repository into your laptop.</p>
 </li>
 <li>
-<p><code>pip install -e .</code> in the just cloned repository (note you are using the Python virtual environment of your project).</p>
+<p>Assuming the repository contains an installable Python package. <code>pip install -e .</code> in the, just cloned repository (note you are using the Python virtual environment of your project).</p>
 </li>
 <li>
 <p>If all above succeeded you can now attempt to fix the bug.</p>
@@ -920,7 +936,7 @@ and you believe you've found a bug, you may attempt to solve it by:</p>
 </li>
 <li>
 <p>You now have to keep track of the status of that project / Python package. Your code is working, subject that the fix is present.
-You currently have the fix only in your clone of the original repository. Till it is accepted and updated on pypi.org, you have to keep working with your own copy. This delays also the availability of your project / package for others.<br />
+You currently have the fix only in your clone of the original repository. Till the fix is accepted and updated on pypi.org, you have to keep working with your own copy. This delays also the availability of your project / package for others.
 You do have the option to require the specific point of the package, from the commit in your repository. Read more on <a href="https://stackoverflow.com/a/16584935/1614089">Stack Overlow</a>.</p>
 </li>
 </ul>
@@ -937,7 +953,7 @@ We've allowed more 'numpy' versions than the one we've used. '1.24.3' should als
 There is a convention, that if a "breaking change" is introduced the version must be incremented in the second position.</p>
 <p>Remember that those are conventions and bugs can still crawl in.
 On the other hand, in many situations it is okay to be a bit "lazy" and just wait till someone complains.
-When this happens, check with the user of your package what 'numpy' he/she have in their Python virtual environment.
+When this happens, check with the user of your package what 'numpy' they have in their Python virtual environment.
 Check yourself what happens when you have this 'numpy' version with your package, and decide what is the right remedy. </p>
 <p>What happens when your project needs <code>numpy &lt; 1.25</code> while a dependencie of your project, say 'pandas' needs <code>numpy &gt;= 1.26</code>?
 You'll have to investigate. Maybe you can allow also for 'numpy' version '1.26', potentially by modifying a little your code?
