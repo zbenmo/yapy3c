@@ -794,22 +794,29 @@ For example database connections.
 You can also create additional classes that support the context manager protocol and can be used in a 'with' statement.</p>
 <h2 id="global-nonlocal">global, nonlocal</h2>
 <p>Most of our variables should be local. What does it mean to be 'local'? Variables that are assigned in a function exist from the time they are defined till the end of the function's execution (when the function returns).</p>
-<div class="language-py highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>    <span class="n">a</span> <span class="o">=</span> <span class="mi">3</span>
-</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>
-</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>
-</span><span id="__span-20-6"><a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-</span><span id="__span-20-7"><a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a>    <span class="n">main</span><span class="p">()</span>
-</span><span id="__span-20-8"><a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-</span></code></pre></div>
+<div class="language-py highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-20-1">1</a></span>
+<span class="normal"><a href="#__codelineno-20-2">2</a></span>
+<span class="normal"><a href="#__codelineno-20-3">3</a></span>
+<span class="normal"><a href="#__codelineno-20-4">4</a></span>
+<span class="normal"><a href="#__codelineno-20-5">5</a></span>
+<span class="normal"><a href="#__codelineno-20-6">6</a></span>
+<span class="normal"><a href="#__codelineno-20-7">7</a></span>
+<span class="normal"><a href="#__codelineno-20-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1"></a><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2"></a>    <span class="n">a</span> <span class="o">=</span> <span class="mi">3</span>
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4"></a>
+</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5"></a>
+</span><span id="__span-20-6"><a id="__codelineno-20-6" name="__codelineno-20-6"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+</span><span id="__span-20-7"><a id="__codelineno-20-7" name="__codelineno-20-7"></a>    <span class="n">main</span><span class="p">()</span>
+</span><span id="__span-20-8"><a id="__codelineno-20-8" name="__codelineno-20-8"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>3
 </span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>Traceback (most recent call last):
 </span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>  File &quot;try2.py&quot;, line 8, in &lt;module&gt;
 </span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>    print(a)
 </span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>NameError: name &#39;a&#39; is not defined
 </span></code></pre></div>
-<p>If one defines a variable outside of the function then it will be available in the current namespace. It will become "global". This is not as terrible in Python as in other languages, as different namespaces do not share the globals among them. If one wants to access a global variable of another module, this needs to be done implicitly by prepending the name of the model and a dot, as, for example, in <code>my_model.tree_root</code>.</p>
+<p>If one defines a variable outside of the function then it will be available in the current namespace. It will become "global". This is not as terrible in Python as in other languages, as different namespaces do not share the globals among them. If one wants to access a global variable of another module, this needs to be done explicitly by prepending the name of the model and a dot, as, for example, in <code>my_model.tree_root</code>.</p>
 <p>Also in the example below, we see that the function does not assume its variable is the one in the outer context, but rather works with its own local variable.</p>
 <div class="language-py highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="n">a</span> <span class="o">=</span> <span class="mi">3</span>
 </span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>
@@ -826,7 +833,7 @@ You can also create additional classes that support the context manager protocol
 </span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>3
 </span></code></pre></div>
 <p>It is good that the function <em>f_a</em> did not have a side effect of changing our "global" <em>a</em>.</p>
-<p>But what if we actually did mean to have it the same variable <em>a</em>? We need to make it implicit.</p>
+<p>But what if we actually did mean to have it the same variable <em>a</em>? We need to make it explicit.</p>
 <div class="language-py highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="n">a</span> <span class="o">=</span> <span class="mi">3</span>
 </span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>
 </span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>
@@ -885,7 +892,7 @@ You can also create additional classes that support the context manager protocol
 </span><span id="__span-27-18"><a id="__codelineno-27-18" name="__codelineno-27-18" href="#__codelineno-27-18"></a>
 </span><span id="__span-27-19"><a id="__codelineno-27-19" name="__codelineno-27-19" href="#__codelineno-27-19"></a>UnboundLocalError: local variable &#39;a&#39; referenced before assignment
 </span></code></pre></div>
-<p>A possible solution is to implicitly declare <em>a</em> to be 'nonlocal':</p>
+<p>A possible solution is to explicitly declare <em>a</em> to be 'nonlocal':</p>
 <div class="language-py highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="n">a</span> <span class="o">=</span> <span class="mi">3</span>
 </span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>
 </span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="k">def</span> <span class="nf">f_a2</span><span class="p">():</span>
@@ -905,7 +912,7 @@ You can also create additional classes that support the context manager protocol
 <p>By saying 'nonlocal' one just instructs the runtime to look up in the stack for the variable that should already be available in an upper frame.</p>
 <h2 id="type-hints">Type Hints</h2>
 <p>Python is a dynamic language. Duck typing replaces type declarations and hard static enforcements.</p>
-<p>On the other hand, to build a more reliable software, and to help ourselves and future users, we may want here and there to implicitly "hint" the expected type or expected protocol of an argument and / or the type of the returned value.</p>
+<p>On the other hand, to build a more reliable software, and to help ourselves and future users, we may want here and there to explicitly "hint" the expected type or expected protocol of an argument and / or the type of the returned value.</p>
 <div class="language-py highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
 </span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>
 </span><span id="__span-30-3"><a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>
