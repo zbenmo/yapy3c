@@ -323,7 +323,7 @@ You can also create additional classes that support the context manager protocol
 
 Most of our variables should be local. What does it mean to be 'local'? Variables that are assigned in a function exist from the time they are defined till the end of the function's execution (when the function returns).
 
-``` py
+``` py linenums="1"
 def main():
     a = 3
     print(a)
@@ -342,7 +342,7 @@ Traceback (most recent call last):
 NameError: name 'a' is not defined
 ```
 
-If one defines a variable outside of the function then it will be available in the current namespace. It will become "global". This is not as terrible in Python as in other languages, as different namespaces do not share the globals among them. If one wants to access a global variable of another module, this needs to be done implicitly by prepending the name of the model and a dot, as, for example, in ``` my_model.tree_root ```.
+If one defines a variable outside of the function then it will be available in the current namespace. It will become "global". This is not as terrible in Python as in other languages, as different namespaces do not share the globals among them. If one wants to access a global variable of another module, this needs to be done explicitly by prepending the name of the model and a dot, as, for example, in ``` my_model.tree_root ```.
 
 Also in the example below, we see that the function does not assume its variable is the one in the outer context, but rather works with its own local variable.
 
@@ -366,7 +366,7 @@ print(a)
 
 It is good that the function *f_a* did not have a side effect of changing our "global" *a*.
 
-But what if we actually did mean to have it the same variable *a*? We need to make it implicit.
+But what if we actually did mean to have it the same variable *a*? We need to make it explicit.
 
 ``` py
 a = 3
@@ -425,7 +425,7 @@ Cell In[31], line 6, in f_a2.<locals>.f_a3()
 UnboundLocalError: local variable 'a' referenced before assignment
 ```
 
-A possible solution is to implicitly declare *a* to be 'nonlocal':
+A possible solution is to explicitly declare *a* to be 'nonlocal':
 
 ``` py
 a = 3
@@ -453,7 +453,7 @@ By saying 'nonlocal' one just instructs the runtime to look up in the stack for 
 
 Python is a dynamic language. Duck typing replaces type declarations and hard static enforcements.
 
-On the other hand, to build a more reliable software, and to help ourselves and future users, we may want here and there to implicitly "hint" the expected type or expected protocol of an argument and / or the type of the returned value.
+On the other hand, to build a more reliable software, and to help ourselves and future users, we may want here and there to explicitly "hint" the expected type or expected protocol of an argument and / or the type of the returned value.
 
 ``` py
 from typing import List
@@ -551,7 +551,7 @@ from dataclasses import dataclass
 class Point:
     x: int
     y: int
-    
+
 
 p1 = Point(1, 2)
 p2 = Point(1, 4)

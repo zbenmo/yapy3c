@@ -264,7 +264,7 @@ If we can afford the time, it might even better to repeat the experiment a few t
 We often use the 'scikit-learn' for exploratory data analysis (EDA) and for ML modeling. 'scikit-learn' contains also functions and classes that help with preprocessing, model selection and evaluation, and related tasks. The packages 'pandas' and 'scikit-learn' work well together.
 For example the following will prepare for us a "train / test split".
 
-Remember to add 'scikit=learn' to your 'requirements.txt', followed by ```pip install -r requirements.txt```, or just install it directly with for example ```pip install scikit=learn```. 
+Remember to add 'scikit-learn' to your 'requirements.txt', followed by ```pip install -r requirements.txt```, or just install it directly with for example ```pip install scikit-learn```. 
 
 ``` py
 import pandas as pd

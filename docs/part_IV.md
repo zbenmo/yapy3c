@@ -213,7 +213,7 @@ list(my_gen([1, 2, 3]))
 
 ```[2, 3, 4]```
 
-A generator is usuful in many situations. Let's have a random numbers generator. Note that if is to wrap a list around it we're probably going to fail as the iterator we're just defining is infinite (try at your own risk). Therefore we'll use it in another way.
+A generator is usuful in many situations. Let's have a random numbers generator. Note that if we try to wrap a list around it we're probably going to fail as the iterator we're just defining is infinite (try at your own risk). Therefore we'll use it in another way.
 
 ``` py
 import random

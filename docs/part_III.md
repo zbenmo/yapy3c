@@ -256,7 +256,7 @@ To go from right to left, I've wrapped the input string *roman* with 'reversed'.
 
 The '+=' and '-=' operators are used here and mean the same as is the case in the *C* language. Try to avoid using those special operators when working with complex objects, yet for simple variables of type integer in this example, this should work perfectly.
 
-The reason it may be risky to use '+=' and '-=' with objects is that a lot of times there is not explicit implementation of the operator. Then the operator '+=', as an example, is implicitly converted for example to ```a = a + 1``` which while seems benign actually results in a new object begin assigned to *a* in the example. If some other variable or data structure (for example a dict) used to reference *a* one may believe they have the handle to the up-to-date *a* yet it is not the case. They are probably still referencing the old *a*. Just keep that in mind.
+The reason it may be risky to use '+=' and '-=' with objects is that a lot of times there is no explicit implementation of the operator. Then the operator '+=', as an example, is implicitly converted for example to ```a = a + 1``` which while seems benign actually results in a new object begin assigned to *a* in the example. If some other variable or data structure (for example a dict) used to reference *a* one may believe they have the handle to the up-to-date *a* yet it is not the case. They are probably still referencing the old *a*. Just keep that in mind.
 
 ## Doctest
 
@@ -291,6 +291,8 @@ if __name__ == "__main__":
 ```
 
 The snippet above should look for doctests in the file and should execute them, verifying the output.
+
+## Zipping
 
 There is yet another very useful function when we're dealing with sequences (a list for example) and iterations. 'zip' allows us to traverse multiple lists, as an example, together. Examining the first elements, and then the second elements, etc.
 
