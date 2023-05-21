@@ -21,6 +21,11 @@ markdown_extensions:
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format      
 nav:
   - index.md
   - part_I.md
@@ -31,5 +36,5 @@ nav:
   - part_VI_various.md
   - part_VII_pd.md
   - part_VIII_ecosystem_and_packaging.md
-  # - part_IX_pytest_black_flake8.md
-  # - part_X_flask.md
+  - part_IX_flask.md
+  # - part_X_pytest_black_flake8.md
