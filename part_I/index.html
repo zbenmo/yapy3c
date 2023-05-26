@@ -738,7 +738,13 @@ We got here two loop variables, <em>k</em> and <em>v</em>, as the function <em>i
 <div class="language-text highlight"><pre><span></span><code><span id="__span-51-1"><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a>&#39;HELLO&#39;
 </span></code></pre></div>
 <h2 id="exercise">Exercise</h2>
-<p>The exercise will be to approximate <strong>𝝅</strong> by <strong>sampling</strong>. Let’s say we have a circle with radius 1. What is its area? Now take a 1 by 1 square. And draw there a quarter of the above circle. The origin <code>(0, 0)</code> is the center of the (quarter) circle. The area of the square is <code>1 * 1 == 1</code>. The area of the quarter circle is <code>𝝅 / 4</code>. Let’s sample a point from the rectangle. We’ll do that by sampling <em>x</em> between 0 and 1, and <em>y</em> between 0 and 1. If <code>(x, y)</code> falls within the quarter circle, we’ll count it in, otherwise, we’ll not count it. After enough samples, the number of counted points, divided by the total number of samples, should approximate <code>𝝅 / 4</code>. As a check of your work, compare the value that you got for 𝝅 (after multypling by <em>4</em>) to the number you get from:</p>
+<p>The exercise will be to approximate <strong>𝝅</strong> by <strong>sampling</strong>. Let’s say we have a circle with radius 1. What is its area? Now take a 1 by 1 square. And draw there a quarter of the above circle. The origin <code>(0, 0)</code> is the center of the (quarter) circle. The area of the square is <code>1 * 1 == 1</code>. The area of the quarter circle is <code>𝝅 / 4</code>. Let’s sample a point from the rectangle. We’ll do that by sampling <em>x</em> between 0 and 1, and <em>y</em> between 0 and 1. If <code>(x, y)</code> falls within the quarter circle, we’ll count it in, otherwise, we’ll not count it. After enough samples, the number of counted points, divided by the total number of samples, should approximate <code>𝝅 / 4</code>.</p>
+<figure style="width:60%">
+  <img src="../images/Pi.png" title="approximate 𝝅 by sampling"/>
+  <figcaption>approximate 𝝅 by sampling</figcaption>
+</figure>
+
+<p>As a check of your work, compare the value that you got for 𝝅 (after multypling by <em>4</em>) to the number you get from:</p>
 <div class="language-py highlight"><pre><span></span><code><span id="__span-52-1"><a id="__codelineno-52-1" name="__codelineno-52-1" href="#__codelineno-52-1"></a><span class="kn">import</span> <span class="nn">math</span>
 </span><span id="__span-52-2"><a id="__codelineno-52-2" name="__codelineno-52-2" href="#__codelineno-52-2"></a>
 </span><span id="__span-52-3"><a id="__codelineno-52-3" name="__codelineno-52-3" href="#__codelineno-52-3"></a><span class="n">math</span><span class="o">.</span><span class="n">pi</span>
