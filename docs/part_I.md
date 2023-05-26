@@ -445,7 +445,14 @@ Strings, have some functionality that we’ve not explored before, for example:
 
 ## Exercise
 
-The exercise will be to approximate **𝝅** by **sampling**. Let’s say we have a circle with radius 1. What is its area? Now take a 1 by 1 square. And draw there a quarter of the above circle. The origin ```(0, 0)``` is the center of the (quarter) circle. The area of the square is ```1 * 1 == 1```. The area of the quarter circle is ```𝝅 / 4```. Let’s sample a point from the rectangle. We’ll do that by sampling *x* between 0 and 1, and *y* between 0 and 1. If ```(x, y)``` falls within the quarter circle, we’ll count it in, otherwise, we’ll not count it. After enough samples, the number of counted points, divided by the total number of samples, should approximate ```𝝅 / 4```. As a check of your work, compare the value that you got for 𝝅 (after multypling by *4*) to the number you get from:
+The exercise will be to approximate **𝝅** by **sampling**. Let’s say we have a circle with radius 1. What is its area? Now take a 1 by 1 square. And draw there a quarter of the above circle. The origin ```(0, 0)``` is the center of the (quarter) circle. The area of the square is ```1 * 1 == 1```. The area of the quarter circle is ```𝝅 / 4```. Let’s sample a point from the rectangle. We’ll do that by sampling *x* between 0 and 1, and *y* between 0 and 1. If ```(x, y)``` falls within the quarter circle, we’ll count it in, otherwise, we’ll not count it. After enough samples, the number of counted points, divided by the total number of samples, should approximate ```𝝅 / 4```.
+
+<figure style="width:60%">
+  <img src="../images/Pi.png" title="approximate 𝝅 by sampling"/>
+  <figcaption>approximate 𝝅 by sampling</figcaption>
+</figure>
+
+As a check of your work, compare the value that you got for 𝝅 (after multypling by *4*) to the number you get from:
 
 ``` py
 import math
