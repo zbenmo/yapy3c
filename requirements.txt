@@ -11,3 +11,5 @@ seaborn
 nbconvert
 
 streamlit
+
+networkx

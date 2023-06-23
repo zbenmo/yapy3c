@@ -291,7 +291,7 @@ Tuples are useful in many cases. For example we can assign values to two variabl
 old, new = 'Trump', 'Biden'
 ```
 
-Here the parentheses are implicit. Note that the tuple from the right hand side is **unpacked** into the two variables on the left hand side (*old* and *new*).
+Here the parentheses are implicit. Note that the tuple from the right-hand side is **unpacked** into the two variables on the left hand side (*old* and *new*).
 
 A function may need to return multiple values, and this can be done by returning a ‘dict’, or a ‘list’, but also a tuple makes the most sense.
 

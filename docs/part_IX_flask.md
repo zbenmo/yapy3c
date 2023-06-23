@@ -69,7 +69,7 @@ flask run
 
 ``` * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit) ```
 
-In the example above, the "view" served by the function 'hello', is decorated by the route '\'.
+In the example above, the "view" served by the function 'hello', is decorated by the route '/'.
 
 The module name 'app.py' is a default for the 'flask' command. If we want, we can use a different file name, but then in the command line we need to indicate where is our application.
 
